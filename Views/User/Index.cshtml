@@ -1,0 +1,33 @@
+@model The_Book_Cave.Models.InputModels.UserInputModel
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Innskráning</title>
+  </head>
+<body>
+  </br>
+  </br>
+  <h3>Innskráning</h3>
+  </br>
+  </br>
+  <form method="POST">
+    <label asp-for="UserName">Notendanafn</label>
+    </br>
+    <input type="text" asp-for="UserName"> 
+    </br>
+    <label asp-for="Password">Lykilorð</label>
+    </br>
+    <input type="password" asp-for="Password">
+    </br>
+    <a href=# >Gleymt lykilorð?</a>
+    </br>
+    </br>
+    <input type="submit" value="Skrá inn" class="btn btn-success"> 
+    </form>
+    
+    </br>
+    </br>
+    <a href=# >Nýr meðlimur</a>
+</body>
+</html>
