@@ -13,9 +13,9 @@ namespace The_Book_Cave.Controllers
         }
         public IActionResult Index()
         {
-            var authors = _categoryService.GetAllCategories();
+            var categories = _categoryService.GetAllCategories();
 
-            return View(authors);
+            return View(categories);
         }
     }
 }
