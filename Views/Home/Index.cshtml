@@ -1,17 +1,2 @@
 ﻿@model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
-<div>
-    @foreach(var book in Model)
-    {
-        <p>@book.Title</p>
-        <p>@book.Author</p>
-        <p>@book.Category</p>
-        <p>ISBN: @book.ISBN</p>
-        <p>Publication Year: @book.PublicationYear</p>
-        <p>Publisher: @book.Publisher</p>
-        <p>Price: @book.Price</p>
-        <p>Rating: @book.Rating</p>
-        <p>Review: @book.Review</p>       
-    }
-</div>
-
