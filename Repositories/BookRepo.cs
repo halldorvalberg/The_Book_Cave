@@ -32,6 +32,8 @@ namespace The_Book_Cave.Repositories
                     Type = b.Type,
                     Language = b.Language,
                     Image = b.Image,
+                    AuthorId = b.AuthorId,
+                    CategoryId = b.CategoryId
                   }).ToList();
       
         return books;

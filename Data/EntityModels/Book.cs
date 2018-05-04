@@ -21,6 +21,10 @@ namespace The_Book_Cave.Data.EntityModels
     public string Language { get; set; }
     public int Quantity { get; set; }
     public string Image { get; set;}
+
+    public int AuthorId {get; set;}
+
+    public int CategoryId {get; set;}
    }
 
 
