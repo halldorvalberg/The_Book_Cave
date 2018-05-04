@@ -1,0 +1,40 @@
+@model The_Book_Cave.Models.InputModels.NewUserInputModel
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Innskráning</title>
+  </head>
+<body>
+  </br>
+  </br>
+  <h2>Nýr notandi</h2>
+  <h3>Innskráning</h3>
+  </br>
+  </br>
+  <form method="POST">
+    <label asp-for="UserName">Notendanafn</label></br>
+    <input type="text" asp-for="UserName">
+    </br>
+    <label asp-for="Email">Netfang</label></br>
+    <input type="email" asp-for="Email">
+    </br>
+    <label asp-for="Password">Lykilorð</label></br>
+    <input type="password" asp-for="Password">
+    </br>
+    <label asp-for="Password">Endurtaka lykilorð</label></br>
+    <input type="password" asp-for="Password">
+    </br>
+    </br>
+    <input id="termsandconditions" type="checkbox" value="agreed" checked="checked">
+    <label id="termsandconditions">Ég samþykki reglur og skilmála</label>
+    </br>
+    <input id="postlist" type="checkbox" value="agreed" checked="checked">
+    <label id="postlist">Skrá netfang á póstlista</label>
+    </br>
+    </br>
+    <input type="submit" value="Skrá inn" class="btn btn-success"> 
+    </form>
+    
+</body>
+</html>

@@ -17,6 +17,11 @@ namespace The_Book_Cave.Controllers
 
             return View();
         }
+         public IActionResult Create()
+        {
+            
 
+            return View();
+        }
     }
 }
