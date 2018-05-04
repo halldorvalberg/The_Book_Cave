@@ -21,6 +21,10 @@ namespace The_Book_Cave.Models.ViewModels
     
     public string Language { get; set; }
     public string Image { get; set;}
+
+    public int AuthorId {get; set;}
+
+    public int CategoryId {get; set;}
     public List<AuthorViewModel> Authors {get; set;}
    }
 
