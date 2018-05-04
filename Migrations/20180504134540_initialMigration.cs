@@ -15,15 +15,19 @@ namespace The_Book_Cave.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Author = table.Column<string>(nullable: true),
-                    Category = table.Column<string>(nullable: true),
                     ISBN = table.Column<int>(nullable: false),
+                    Image = table.Column<string>(nullable: true),
+                    Language = table.Column<string>(nullable: true),
+                    Pages = table.Column<int>(nullable: false),
                     Price = table.Column<int>(nullable: false),
-                    PublicationYear = table.Column<string>(nullable: true),
+                    PublicationYear = table.Column<DateTime>(nullable: false),
                     Publisher = table.Column<string>(nullable: true),
-                    Rating = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    Rating = table.Column<double>(nullable: false),
                     Review = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
+                    Summary = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

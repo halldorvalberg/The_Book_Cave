@@ -17,7 +17,7 @@ namespace The_Book_Cave
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
-            SeeData();
+         //   SeeData();
             host.Run();
         }
 
@@ -35,16 +35,19 @@ namespace The_Book_Cave
            {
            var initialBooks = new List<Book>()
            {
-                new Book {    Title = "Ég Man Þig", 
-                              Author = "Yrsa",
-                              Category = "Spennusaga", 
-                              ISBN = 1234, 
-                              PublicationYear = "2010", 
-                              Publisher = "Forlagid",
-                              Price = 5999,
-                              Rating = 0,
-                              Review = ""}
-           };
+                new Book {  Title = "Blóðengill",
+                            ISBN = 1111,
+                            Publisher = "Bjartur",
+                            PublicationYear = new DateTime(2018, 1, 1),
+                            Price = 3390,
+                            Rating = 0,
+                            Summary = "",
+                            Review = "",
+                            Pages = 0 ,
+                            Type = "Innbundin",
+                            Language = "íslenska",
+                            Image = "",}
+                        };
                 db.AddRange(initialBooks);
                 db.SaveChanges();
            }

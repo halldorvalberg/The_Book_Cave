@@ -21,14 +21,17 @@ namespace The_Book_Cave.Repositories
                   {
                     Id = b.Id,
                     Title = b.Title,
-                    Author = b.Author,
-                    Category = b.Category,
                     ISBN = b.ISBN,
-                    PublicationYear = b.PublicationYear,
                     Publisher = b.Publisher,
+                    PublicationYear = b.PublicationYear,
                     Price = b.Price,
                     Rating = b.Rating,
-                    Review = b.Review
+                    Summary = b.Summary,
+                    Review = b.Review,
+                    Pages = b.Pages,
+                    Type = b.Type,
+                    Language = b.Language,
+                    Image = b.Image,
                   }).ToList();
       
         return books;
