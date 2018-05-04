@@ -55,16 +55,13 @@
     width: 100%;
 }
 
-<<<<<<< HEAD
-}
 
 /* Þetta er footerinn */
 #testbla {
     display: inline;
     margin: 0px;
     padding: 0px;
-    overflow: hidden
-    width: 100%;
+    overflow: hidden;
     bottom: 0;
     position: fixed;
  
@@ -89,7 +86,7 @@ li a {
 
 .nav_last{
     color: black;
-=======
+}
 .book-item-thumb h3{
     font-size: 14pt;
 }
@@ -101,5 +98,4 @@ li a {
 .book-item-thumb img {
     height: 250px;
     width: 160px;
->>>>>>> de6b93698e83158d6fce87aed85b72b5fe204da3
 }
