@@ -20,7 +20,6 @@ namespace The_Book_Cave.Repositories
                             join b in _db.Books on a.BookId equals b.Id
                             select new AuthorViewModel 
                             {
-
                             Id = a.Id,
                             Name = a.Name,
                             Summary = a.Summary,
