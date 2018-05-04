@@ -50,3 +50,36 @@
     height: 20px;
 
 }
+
+/* Þetta er footerinn */
+#testbla {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+ 
+}
+
+
+/* Nota þetta til að fá inline og til að taka bulletið úr ol */
+
+.footerli {
+    float: left;
+    list-style-type: none;
+    padding-bottom: 11px;
+}
+/* notaði þetta til að fá linkanna gráa fyrir footerinn */
+li a {
+    color: gray;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.nav_last{
+    color: black;
+}
