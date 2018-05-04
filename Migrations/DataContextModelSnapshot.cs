@@ -25,23 +25,31 @@ namespace The_Book_Cave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Author");
-
-                    b.Property<string>("Category");
-
                     b.Property<int>("ISBN");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Language");
+
+                    b.Property<int>("Pages");
 
                     b.Property<int>("Price");
 
-                    b.Property<string>("PublicationYear");
+                    b.Property<DateTime>("PublicationYear");
 
                     b.Property<string>("Publisher");
 
-                    b.Property<int>("Rating");
+                    b.Property<int>("Quantity");
+
+                    b.Property<double>("Rating");
 
                     b.Property<string>("Review");
 
+                    b.Property<string>("Summary");
+
                     b.Property<string>("Title");
+
+                    b.Property<string>("Type");
 
                     b.HasKey("Id");
 

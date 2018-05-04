@@ -11,7 +11,7 @@ using The_Book_Cave.Data;
 namespace The_Book_Cave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180503233848_initialMigration")]
+    [Migration("20180504134540_initialMigration")]
     partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,23 +26,31 @@ namespace The_Book_Cave.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Author");
-
-                    b.Property<string>("Category");
-
                     b.Property<int>("ISBN");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Language");
+
+                    b.Property<int>("Pages");
 
                     b.Property<int>("Price");
 
-                    b.Property<string>("PublicationYear");
+                    b.Property<DateTime>("PublicationYear");
 
                     b.Property<string>("Publisher");
 
-                    b.Property<int>("Rating");
+                    b.Property<int>("Quantity");
+
+                    b.Property<double>("Rating");
 
                     b.Property<string>("Review");
 
+                    b.Property<string>("Summary");
+
                     b.Property<string>("Title");
+
+                    b.Property<string>("Type");
 
                     b.HasKey("Id");
 
