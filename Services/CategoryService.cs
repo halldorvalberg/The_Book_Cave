@@ -13,7 +13,6 @@ namespace The_Book_Cave.Services
             _categoryRepo = new CategoryRepo();
         }
 
-
         public List<CategoryViewModel> GetAllCategories()
         {
             var categories = _categoryRepo.GetAllCategories();

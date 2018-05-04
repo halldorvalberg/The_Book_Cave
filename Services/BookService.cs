@@ -16,8 +16,5 @@ namespace The_Book_Cave.Services
       var books = _bookRepo.GetAllBooks();
       return books;
     }
-  
   }
-
-
 }
