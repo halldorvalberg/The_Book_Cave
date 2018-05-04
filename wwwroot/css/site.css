@@ -54,3 +54,16 @@
     bottom: 0;
     width: 100%;
 }
+
+.book-item-thumb h3{
+    font-size: 14pt;
+}
+.book-item-thumb{
+    height: 350px;
+    widows: 200px;
+    border: 5px black; 
+}
+.book-item-thumb img {
+    height: 250px;
+    width: 160px;
+}
