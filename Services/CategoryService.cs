@@ -18,5 +18,11 @@ namespace The_Book_Cave.Services
             var categories = _categoryRepo.GetAllCategories();
             return categories;
         }
+
+        public List<BookListViewModel> GetBooksByCategory(int? id)
+        {
+            var categoryById = _categoryRepo.GetBooksByCategory(id);
+            return categoryById;
+        }
     }
 }

@@ -25,5 +25,32 @@ namespace The_Book_Cave.Repositories
                             }).ToList();
             return categories;
         }
+
+        public List <BookListViewModel> GetBooksByCategory(int? id)
+        {
+            var categoryById = (from c in _db.Categories
+                                join b in _db.Books on c.Id equals b.CategoryId 
+                                where c.Id == id
+                                select new BookListViewModel
+                                {
+                                Id = b.Id,
+                                Title = b.Title,
+                                ISBN = b.ISBN,
+                                Publisher = b.Publisher,
+                                PublicationYear = b.PublicationYear,
+                                Price = b.Price,
+                                Rating = b.Rating,
+                                Summary = b.Summary,
+                                Review = b.Review,
+                                Pages = b.Pages,
+                                Type = b.Type,
+                                Language = b.Language,
+                                Image = b.Image,
+                                AuthorId = b.AuthorId,
+                                CategoryId = b.CategoryId
+                                }).ToList();
+
+            return categoryById;
+        }
     }
 }

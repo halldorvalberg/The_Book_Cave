@@ -17,5 +17,17 @@ namespace The_Book_Cave.Controllers
 
             return View(categories);
         }
+
+         public IActionResult Details(int? id) 
+        {
+            if(id == null){
+                return View("NotFound");
+            }
+            var categoryById = _categoryService.GetBooksByCategory(id);
+            if(categoryById == null){
+                return View("NotFound");
+            }
+            return View(categoryById);
+        }
     }
 }
