@@ -11,10 +11,17 @@ namespace The_Book_Cave.Controllers
 {
     public class BookController : Controller
     {
-        public IActionResult Index(string search)
+        public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult Details() 
+        {
+            return View();
+        }
+           
+
         /* 
         [HttpGet]  
         public IActionResult Index(string search)
