@@ -32,6 +32,13 @@ namespace The_Book_Cave.Controllers
             }
             return View(bookById);
         }
+
+        public IActionResult BooksByOrder()
+        {
+            var booksByOrder = _bookService.GetBooksByOrder();
+
+            return View(booksByOrder);
+        }
            
 
         /* 

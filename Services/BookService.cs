@@ -23,5 +23,11 @@ namespace The_Book_Cave.Services
       return bookById;
     }
 
+    public List<BookListViewModel> GetBooksByOrder()
+    {
+      var booksByOrder = _bookRepo.GetBooksByOrder();
+      return booksByOrder;
+    }
+
   }
 }

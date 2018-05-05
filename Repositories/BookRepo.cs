@@ -64,6 +64,31 @@ namespace The_Book_Cave.Repositories
       return bookById;
     }
 
+    public List<BookListViewModel> GetBooksByOrder()
+    {
+          var bookByOrder = (from b in _db.Books
+                             orderby b.Title ascending
+                             select new BookListViewModel
+                             {
+                              Id = b.Id,
+                              Title = b.Title,
+                              ISBN = b.ISBN,
+                              Publisher = b.Publisher,
+                              PublicationYear = b.PublicationYear,
+                              Price = b.Price,
+                              Rating = b.Rating,
+                              Summary = b.Summary,
+                              Review = b.Review,
+                              Pages = b.Pages,
+                              Type = b.Type,
+                              Language = b.Language,
+                              Image = b.Image,
+                              AuthorId = b.AuthorId,
+                              CategoryId = b.CategoryId
+                            }).ToList();
+
+          return bookByOrder;
+    }
   }
 }
 

@@ -1,0 +1,12 @@
+@model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
+
+<div>
+    @foreach(var book in Model)
+    {
+        <div class="BooksByOrder">
+            <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" ><img src="@book.Image" alt="~/images/250x250image.png"></a>
+            <h3><a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">@book.Title</a></h3>
+            <p>@book.Price kr.</p>
+        </div>
+    }
+</div>

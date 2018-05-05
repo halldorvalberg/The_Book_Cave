@@ -37,19 +37,19 @@
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bókaflokkar <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Barna- og Unglingabækur</a></li>
-                <li><a href="#">Erlendar skáldsögur</a></li>
-                <li><a href="#">Íslenskar skáldsögur</a></li>
-                <li><a href="#">Matreiðslubækur</a></li>
-                <li><a href="#">Skáldævisögur</a></li>
-                 <li><a href="#">Spennusögur</a></li>
-                 <li><a href="#">Ævintýri</a></li>
+                <li><a asp-controller="Category" asp-action="Details">Barna- og Unglingabækur</a></li>
+                <li><a asp-controller="Category" asp-action="Deatails">Erlendar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Deatails">Íslenskar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Deatails">Matreiðslubækur</a></li>
+                <li><a asp-controller="Category" asp-action="Deatails">Skáldævisögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Deatails">Spennusögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Deatails">Ævintýri</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a asp-area="" asp-controller="Category" asp-action="Index">Allir Bókaflokkar</a></li>
             </ul>
             </li>
             <li><a href="#">Væntanlegar bækur</a></li>
-            <li><a href="#">Allar Bækur A-Ö</a></li>
+            <li><a asp-controller="Book" asp-action="BooksByOrder">Allar Bækur A-Ö</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">
             <form class="navbar-form">
