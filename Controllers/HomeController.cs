@@ -23,6 +23,20 @@ namespace The_Book_Cave.Controllers
 
             return View(books);
         }
-
+        public IActionResult About()
+        {
+            ViewBag.Message = "This is about page.";
+            
+            return View();
+        }
+        public IActionResult Conditions()
+        {
+             return View();
+        }
+         public IActionResult Contact()
+        {
+             return View();
+        }
+   
     }
 }
