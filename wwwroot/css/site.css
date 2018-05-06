@@ -134,6 +134,6 @@ li a {
 }
 /*Book by Order Css*/
 
-img .bookImage {
+.BooksByCategory img{
     max-height: 300px;
 }
