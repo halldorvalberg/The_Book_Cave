@@ -40,8 +40,8 @@ namespace The_Book_Cave.Controllers
             return View(booksByOrder);
         }
            
-        public IActionResult Details(string search) /*prufa setja BooksByOrder ef það matcha margar við strenginn */
-        {                                           /*eða setja þetta fall í Homecontroller */
+        /* 
+        public IActionResult Details(string search) 
             if (search != null)
             {
                 if (search == null) 
@@ -59,6 +59,7 @@ namespace The_Book_Cave.Controllers
             }
             return View("Index", "Home");
         }
+        */
 
 
         /* 
