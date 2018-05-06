@@ -131,3 +131,7 @@ li a {
     margin-bottom: 5px;
 }
 /*Book by Order Css*/
+
+.BooksByCategory img{
+    max-height: 300px;
+}
