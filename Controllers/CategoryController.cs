@@ -24,9 +24,11 @@ namespace The_Book_Cave.Controllers
                 return View("NotFound");
             }
             var categoryById = _categoryService.GetBooksByCategory(id);
+            
             if(categoryById == null){
                 return View("NotFound");
             }
+            
             return View(categoryById);
         }
     }
