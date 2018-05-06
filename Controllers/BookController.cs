@@ -40,6 +40,26 @@ namespace The_Book_Cave.Controllers
             return View(booksByOrder);
         }
            
+        public IActionResult Details(string search) /*prufa setja BooksByOrder ef það matcha margar við strenginn */
+        {                                           /*eða setja þetta fall í Homecontroller */
+            if (search != null)
+            {
+                if (search == null) 
+                {
+                    return View("NotFound");
+                }
+
+                var bookBySearch = _bookService.GetBookBySearch(search);
+
+                if (bookBySearch == null)
+                {
+                    return View("NotFound");
+                }
+                 return View(bookBySearch);
+            }
+            return View("Index", "Home");
+        }
+
 
         /* 
         [HttpGet]  

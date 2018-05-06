@@ -89,6 +89,31 @@ namespace The_Book_Cave.Repositories
 
           return bookByOrder;
     }
+
+    public BookListViewModel GetBookBySearch(string search)
+    {
+      var bookBySearch =(from b in _db.Books where b.Title.ToLower().Contains(search.ToLower())
+                        select new BookListViewModel
+                        {
+                          Id = b.Id,
+                          Title = b.Title,
+                          ISBN = b.ISBN,
+                          Publisher = b.Publisher,
+                          PublicationYear = b.PublicationYear,
+                          Price = b.Price,
+                          Rating = b.Rating,
+                          Summary = b.Summary,
+                          Review = b.Review,
+                          Pages = b.Pages,
+                          Type = b.Type,
+                          Language = b.Language,
+                          Image = b.Image,
+                          AuthorId = b.AuthorId,
+                          CategoryId = b.CategoryId 
+                        }).SingleOrDefault();
+        
+       return bookBySearch;
+    }
   }
 }
 
