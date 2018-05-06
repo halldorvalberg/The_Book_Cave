@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,19 +38,19 @@
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bókaflokkar <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a asp-controller="Category" asp-action="Details">Barna- og Unglingabækur</a></li>
-                <li><a asp-controller="Category" asp-action="Details">Erlendar skáldsögur</a></li>
-                <li><a asp-controller="Category" asp-action="Details">Íslenskar skáldsögur</a></li>
-                <li><a asp-controller="Category" asp-action="Details">Matreiðslubækur</a></li>
-                <li><a asp-controller="Category" asp-action="Details">Skáldævisögur</a></li>
-                 <li><a asp-controller="Category" asp-action="Details">Spennusögur</a></li>
-                 <li><a asp-controller="Category" asp-action="Details">Ævintýri</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="1">Barna- og Unglingabækur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="2">Erlendar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="3">Íslenskar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="4">Matreiðslubækur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="5">Skáldævisögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="7">Ævintýri</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a asp-area="" asp-controller="Category" asp-action="Index">Allir bókaflokkar</a></li>
             </ul>
             </li>
             <li><a href="#">Væntanlegar bækur</a></li>
-            <li><a asp-controller="Book" asp-action="BooksByOrder">Allar bækur A-Ö</a></li>
+            <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
             <li><a href="#">Top 10 bækur</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">

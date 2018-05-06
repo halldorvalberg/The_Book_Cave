@@ -133,3 +133,7 @@ li a {
     margin-bottom: 5px;
 }
 /*Book by Order Css*/
+
+img .bookImage {
+    max-height: 300px;
+}
