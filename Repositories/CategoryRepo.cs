@@ -17,12 +17,12 @@ namespace The_Book_Cave.Repositories
         public List<CategoryViewModel> GetAllCategories()
         {
             var categories =(from c in _db.Categories
-                         //   join b in _db.Books on c.Id equals b.CategoryId
                             select new CategoryViewModel 
                             {
-                              Id = c.Id,
-                              Name = c.Name,
+                             Id = c.Id,
+                             Name = c.Name,
                             }).ToList();
+                            
             return categories;
         }
 
