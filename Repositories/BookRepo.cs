@@ -17,6 +17,7 @@ namespace The_Book_Cave.Repositories
     public List<BookListViewModel> GetAllBooks()
     {
       var books = (from b in _db.Books
+                  where b.InStock == 1
                   select new BookListViewModel
                   {
                     Id = b.Id,
@@ -71,6 +72,7 @@ namespace The_Book_Cave.Repositories
     public List<BookListViewModel> GetBooksByOrder()
     {
           var bookByOrder = (from b in _db.Books
+                             where b.InStock == 1
                              orderby b.Title ascending
                              select new BookListViewModel
                              {
@@ -98,6 +100,7 @@ namespace The_Book_Cave.Repositories
     {
       
       var bookBySearch =(from b in _db.Books where b.Title.ToLower().Contains(search.ToLower())
+                        where b.InStock == 1
                         select new BookListViewModel
                         {
                           Id = b.Id,

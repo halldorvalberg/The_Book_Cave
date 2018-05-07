@@ -43,6 +43,7 @@ namespace The_Book_Cave.Repositories
         {
             var categoryById = (from b in _db.Books 
                                 where b.CategoryId == id
+                                where b.InStock == 1
                                 select new BookListViewModel
                                 {
                                 Id = b.Id,
@@ -63,6 +64,31 @@ namespace The_Book_Cave.Repositories
                                 }).ToList();
 
             return categoryById;
+        }
+
+        public List<BookListViewModel> GetBooksComingSoon()
+        {
+            var booksComingSoon = (from b in _db.Books
+                                   where b.InStock == 0
+                                   select new BookListViewModel {
+                                   Id = b.Id,
+                                   Title = b.Title,
+                                   ISBN = b.ISBN,
+                                   Publisher = b.Publisher,
+                                   PublicationYear = b.PublicationYear,
+                                   Price = b.Price,
+                                   Rating = b.Rating,
+                                   Summary = b.Summary,
+                                   Review = b.Review,
+                                   Pages = b.Pages,
+                                   Type = b.Type,
+                                   Language = b.Language,
+                                   Image = b.Image,
+                                   AuthorId = b.AuthorId,
+                                   CategoryId = b.CategoryId
+                                   }).ToList();
+                                   
+            return booksComingSoon; 
         }
     }
 }

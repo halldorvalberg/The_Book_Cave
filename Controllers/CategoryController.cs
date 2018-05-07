@@ -31,5 +31,11 @@ namespace The_Book_Cave.Controllers
             
             return View(categoryById);
         }
+
+        public IActionResult ComingSoon()
+        {
+            var booksComingSoon = _categoryService.GetBooksComingSoon();
+            return View (booksComingSoon);
+        }
     }
 }
