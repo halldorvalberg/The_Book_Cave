@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using The_Book_Cave.Data.EntityModels;
 
-namespace The_Book_Cave.Data.EntityModels
+namespace The_Book_Cave.Models.ViewModels
 {
     public class Cart
     {

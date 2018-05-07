@@ -9,7 +9,7 @@ namespace The_Book_Cave.Data.EntityModels
     public int ISBN { get; set; }
     public string Publisher { get; set; }
     public DateTime PublicationYear { get; set; }
-    
+
     public int Price { get; set; }
   
     public double Rating { get; set; }
