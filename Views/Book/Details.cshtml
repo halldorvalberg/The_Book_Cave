@@ -14,6 +14,9 @@
             <p>Höfundur:<a asp-controller="Author" asp-action="Index">@Model.Author</p></a>
             </br>
             <p>@Model.Summary</p>
+            </br>
+            </br>
+            <p>Flokkur:<a asp-controller="Category" asp-action="Details" asp-route-id="@Model.CategoryId">@Model.Category</a></p>
         </div>
     </div>
     <div class="detail-aside">
@@ -21,7 +24,7 @@
             <h2>@Model.Price kr. </h2>
         </div>
         <div class="detail-ship">
-            <p>[Upplýsingar um sendingu og hvað er til á lager]</p>
+            <p>FRÍ HEIMSENDING UM ALLAN HEIM!</p>
         </div>
         <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@Model.Id" class="detail-buy">
             <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
