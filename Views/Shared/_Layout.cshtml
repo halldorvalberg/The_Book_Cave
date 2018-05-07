@@ -29,7 +29,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img id="brand-image" src="logologo.png" alt="Brand"></a>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img id="brand-image" src="~/images/logologo.png" alt="Brand"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -70,6 +70,7 @@
             <li><a href="#">Óskalisti</a></li>
             <li><a asp-controller="ShoppingCart" asp-action="Index">Karfa</a></li>
         </ul>
+        @await Html.PartialAsync("_LoginPartial")
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
     </nav>
