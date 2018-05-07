@@ -40,5 +40,14 @@ namespace The_Book_Cave.Services
       var top10Books = _bookRepo.GetTop10Books();
       return top10Books;
     }
+
+    public List<BookListViewModel> AddToCart(int? id)
+    {
+      var shoppingItem = _bookRepo.AddToCart(id);
+      
+      return shoppingItem; 
+    }
   }
 }
+
+ 

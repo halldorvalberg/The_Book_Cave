@@ -143,6 +143,32 @@ namespace The_Book_Cave.Repositories
 
       return top10Books; 
     }
+
+      public List<BookListViewModel> AddToCart(int? id)
+    {
+      var shoppingItem = (from b in _db.Books 
+                      where b.Id == id
+                      select new BookListViewModel
+                      {
+                        Id = b.Id,
+                        Title = b.Title,
+                        ISBN = b.ISBN,
+                        Publisher = b.Publisher,
+                        PublicationYear = b.PublicationYear,
+                        Price = b.Price,
+                        Rating = b.Rating,
+                        Summary = b.Summary,
+                        Review = b.Review,
+                        Pages = b.Pages,
+                        Type = b.Type,
+                        Language = b.Language,
+                        Image = b.Image,
+                        AuthorId = b.AuthorId,
+                        CategoryId = b.CategoryId
+                      }).ToList();
+
+      return shoppingItem;
+    }
   }
 }
 
