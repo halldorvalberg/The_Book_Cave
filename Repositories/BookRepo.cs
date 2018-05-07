@@ -114,6 +114,34 @@ namespace The_Book_Cave.Repositories
         
        return bookBySearch;
     }
+
+    public List<BookListViewModel> GetTop10Books()
+    {
+      var books =(from b in _db.Books
+                  select new BookListViewModel {
+                  Id = b.Id,
+                  Title = b.Title,
+                  ISBN = b.ISBN,
+                  Publisher = b.Publisher,
+                  PublicationYear = b.PublicationYear,
+                  Price = b.Price,
+                  Rating = b.Rating,
+                  Summary = b.Summary,
+                  Review = b.Review,
+                  Pages = b.Pages,
+                  Type = b.Type,
+                  Language = b.Language,
+                  Image = b.Image,
+                  AuthorId = b.AuthorId,
+                  CategoryId = b.CategoryId 
+                  }).ToList();
+
+      var top10Books = (from b in books
+                        orderby b.Rating descending
+                        select b).Take(10).ToList();
+
+      return top10Books; 
+    }
   }
 }
 
