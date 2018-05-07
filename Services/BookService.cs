@@ -29,5 +29,17 @@ namespace The_Book_Cave.Services
       return booksByOrder;
     }
 
+    public BookListViewModel GetBookBySearch(string search)
+    {
+      var bookBySearch = _bookRepo.GetBookBySearch(search);
+      return bookBySearch;
+    }
+
+    public List<BookListViewModel> GetTop10Books()
+    {
+      var top10Books = _bookRepo.GetTop10Books();
+      return top10Books;
+    }
+
   }
 }
