@@ -1,44 +1,58 @@
 @model The_Book_Cave.Models.ViewModels.BookListViewModel
 
-<div class="item-container">
-    <div class="item-image">
-        <img src="@Model.Image" alt="@Model.Title">
-    </div>
-    <div class="item-info">
-        <h1>@Model.Title</h1>
-        <p>[Review Stjörnur koma hingað]</p>
-        <p>[Höfundur og hlekkur kemur hingað]</p>
-        <p>@Model.Summary</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, praesentium reiciendis. Magni illum nisi in dolores alias repellendus, quod eaque maiores labore libero ut adipisci autem eum corporis deleniti sunt. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae magnam consectetur tempore enim sequi maiores? Molestiae repellat natus similique, nam est animi voluptates ipsum error commodi placeat iusto pariatur reiciendis?
+<div class="detail-body">
+    <div class="detail-header">
+        <p>Hingað koma einhverjar djússí upplýsingar eins og allir bókaflokkarnir sem þessi bók er í og hlekkir á þær síður
         </p>
     </div>
-
-    <div class="item-action">
-        <h2>@Model.Price kr.</h2>
-        
+    <div class="detail-main">
+        <div class="detail-image">
+            <img src="@Model.Image" alt="@Model.Title">
+        </div>
+        <div class="detail-info">
+            <h1>@Model.Title</h1>
+            <p>Meira djússí infó um þúst höfund og eitthvað</p>
+            <p>@Model.Summary</p>
+        </div>
     </div>
-
-    <div class="item-table">
-        <table>
-            <thead>
-                <tr>
-                    <th>Gerð</th>
-                    <th>Síður</th>
-                    <th>Útgáfuár</th>
-                    <th>Verð</th>
-                    <th>Magn</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>@Model.Type</td>
-                    <td>@Model.Pages</td>
-                    <td>@Model.PublicationYear</td>
-                    <td>@Model.Price</td>
-                    <td>vantar box</td>
-                    <td><input type="button" value="Setja í körfu" class="btn-btn-Success"></td>
-                </tr>
-            </tbody>
-    </table>
+    <div class="detail-aside">
+        <div class="detail-price">
+            <h2>@Model.Price kr. </h2>
+        </div>
+        <div class="detail-ship">
+            <p>[Upplýsingar um sendingu og hvað er til á lager]</p>
+        </div>
+        <div class="detail-buy"><button type="button" class="btn btn-primary">Bæta í Körfu</button></div>
     </div>
+    <div class="detail-more" id="detail-prodinfo">
+        <div class="detail-prodinfo">
+            <h2>Upplýsingar um vöru</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                        <label for="isbnNumber">ISBN:</label>
+                        <Span id="isbNumber">@Model.ISBN</Span>
+                </li>
+                <li class="list-group-item">
+                    <label for="language">Tungumál:</label>
+                    <span id="language">@Model.Language</span>
+                </li>
+                <li class="list-group-item">
+                    <label for="numberOfPages">Blaðsíðufjöldi:</label>
+                    <span id="numberOfPages">@Model.Pages</span>
+                </li>
+                <li class="list-group-item">
+                    <label for="publication">Published:</label>
+                    <span id="publication">@Model.PublicationYear</span>
+                </li>
+                <li class="list-group-item">
+                    <label for="publisher">Publisher:</label>
+                    <span id="publisher">@Model.Publisher</span>
+                </li>
+                <li class="list-group-item">
+                    <label for="type">Type</label>
+                    <span id="type">@Model.Type</span>
+                </li>
+            </ul>
+        </div>
     </div>
+</div>
