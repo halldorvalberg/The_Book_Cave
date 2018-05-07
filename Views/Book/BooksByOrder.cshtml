@@ -16,7 +16,9 @@
                 <p>@book.Price kr.</p>
             </div>
             <div class="book-item-action">
-                <button type="button" class="btn btn-primary">Bæta í körfu</button>
+                <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
+                    <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
+                </form>
             </div>
         </div>
     }
