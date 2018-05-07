@@ -1,12 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
+using The_Book_Cave.Services;
 
 namespace The_Book_Cave.Controllers
 {
     public class ShoppingCartController: Controller
     {
-        public IActionResult Index()
+        private BookService _bookService;
+         public ShoppingCartController()
         {
-            return View();
+            _bookService = new BookService();
+        }
+        public IActionResult Index(int id)
+        {
+            var shoppingItem = _bookService.GetBookById(id);
+            return View(shoppingItem);
         }
     }
 }
