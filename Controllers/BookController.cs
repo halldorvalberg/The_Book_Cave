@@ -45,8 +45,9 @@ namespace The_Book_Cave.Controllers
             return View(top10Books);
         }
 
-        /* 
-        public IActionResult Details(string search)  ekki hafa details
+
+        public IActionResult BooksBySearch(string search)  
+        {
             if (search != null)
             {
                 if (search == null) 
@@ -64,7 +65,6 @@ namespace The_Book_Cave.Controllers
             }
             return View("Index", "Home");
         }
-        */
 
 
         /* 
