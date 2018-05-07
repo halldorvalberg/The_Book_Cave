@@ -49,3 +49,89 @@
     margin: 0;
     height: 20px;
 }
+
+.Bottom-footer {
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* Þetta er footerinn */
+#testbla {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    bottom: 0;
+}
+
+
+/* Nota þetta til að fá inline og til að taka bulletið úr ol */
+
+.footerli {
+    float: left;
+    list-style-type: none;
+    padding-bottom: 11px;
+}
+/* notaði þetta til að fá linkanna gráa fyrir footerinn */
+li a {
+    color: gray;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.nav_last{
+    color: black;
+}
+
+
+/*Book by Order Css*/
+.book-items {
+    padding: 4px;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap:wrap;
+    align-items: stretch;
+    align-content: space-between;
+    justify-content: center;
+    border: 1px ;
+}
+.book-item-thumb {
+    width: 160px;
+    margin-bottom: 10px;
+    margin-right: 10px; 
+    box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1)
+}
+.book-item-image img {
+    width: 150px;
+    height: 220px;
+    display:block;
+    margin: auto;
+}
+.book-item-info {
+    text-align: center;
+    vertical-align: middle;
+    height: 64px;
+    margin-bottom: 5px;
+}
+.book-item-info h3 {
+    font-size: 14px;
+    margin: 5px, 4px, 5px, 4px;
+    height: 50%;
+    
+}
+
+.book-item-action button {
+    display:block;
+    margin: auto;
+    margin-bottom: 5px;
+}
+/*Book by Order Css*/
+
+.BooksByCategory img{
+    max-height: 300px;
+}

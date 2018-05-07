@@ -1,0 +1,28 @@
+using System.Collections.Generic;
+using The_Book_Cave.Models.ViewModels;
+using The_Book_Cave.Repositories;
+
+namespace The_Book_Cave.Services
+{
+    public class CategoryService
+    {
+        private CategoryRepo _categoryRepo;
+
+        public CategoryService()
+        {
+            _categoryRepo = new CategoryRepo();
+        }
+
+        public List<CategoryViewModel> GetAllCategories()
+        {
+            var categories = _categoryRepo.GetAllCategories();
+            return categories;
+        }
+
+        public List<BookListViewModel> GetBooksByCategory(int? id)
+        {
+            var categoryById = _categoryRepo.GetBooksByCategory(id);
+            return categoryById;
+        }
+    }
+}

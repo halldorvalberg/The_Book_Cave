@@ -11,10 +11,36 @@ namespace The_Book_Cave.Controllers
 {
     public class BookController : Controller
     {
-        public IActionResult Index(string search)
+        private BookService _bookService;
+         public BookController()
+        {
+            _bookService = new BookService();
+        }
+        public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult Details(int? id) 
+        {
+            if(id == null){
+                return View("NotFound");
+            }
+            var bookById = _bookService.GetBookById(id);
+            if(bookById == null){
+                return View("NotFound");
+            }
+            return View(bookById);
+        }
+
+        public IActionResult BooksByOrder()
+        {
+            var booksByOrder = _bookService.GetBooksByOrder();
+
+            return View(booksByOrder);
+        }
+           
+
         /* 
         [HttpGet]  
         public IActionResult Index(string search)

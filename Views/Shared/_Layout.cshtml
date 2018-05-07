@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -37,15 +38,20 @@
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bókaflokkar <span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Flokkur 1</a></li>
-                <li><a href="#">Flokkur 2</a></li>
-                <li><a href="#">Flokkur 3</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="1">Barna- og Unglingabækur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="2">Erlendar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="3">Íslenskar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="4">Matreiðslubækur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="5">Skáldævisögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="7">Ævintýri</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Allir Bókaflokkar</a></li>
+                <li><a asp-area="" asp-controller="Category" asp-action="Index">Allir bókaflokkar</a></li>
             </ul>
             </li>
             <li><a href="#">Væntanlegar bækur</a></li>
-            <li><a href="#">Allar Bækur A-Ö</a></li>
+            <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
+            <li><a href="#">Top 10 bækur</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">
             <form class="navbar-form">
@@ -57,9 +63,9 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#">English</a></li>
-            <li><a asp-area="" asp-controller="User" asp-action="Index">Innskráning</a></li>
+            <li><a asp-area="" asp-controller="Account" asp-action="Login">Innskráning</a></li>
             <li><a href="#">Óskalisti</a></li>
-            <li><a href="#">Karfa</a></li>
+            <li><a asp-controller="ShoppingCart" asp-action="Index">Karfa</a></li>
         </ul>
         @await Html.PartialAsync("_LoginPartial")
         </div><!-- /.navbar-collapse -->
@@ -69,9 +75,22 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer class="Bottom-footer">
-            <p>&copy; 2018 - The_Book_Cave</p>
+       
+         <footer  id="testbla"> 
+        
+<ul>
+
+ <li class="footerli"><a asp-controller="Home" asp-action="About">Um okkur</a></li>
+
+
+<li class="footerli"><a asp-controller="Home" asp-action="Conditions">Skilmálar</a></li>
+
+<li class="footerli"><a href="/interestbasedads/ref=footer_iba" class="nav_a">Samfélagsmiðlar</a></li>
+
+<li class="footerli"><a asp-controller="Home" asp-action="Contact">Hafa samband</a></li>
+
+<li class="nav_last footerli">© 2018, Book-Cave, Inc.</li></ul>
+  
         </footer>
     </div>
 

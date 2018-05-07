@@ -1,0 +1,10 @@
+@model List<The_Book_Cave.Models.ViewModels.CategoryViewModel>
+
+<h2>Allir Bókaflokkar</h2>
+
+<div>
+    @foreach(var category in Model)
+    {
+        <p>@category.Name</p>
+    }
+</div>

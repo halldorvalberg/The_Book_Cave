@@ -1,0 +1,35 @@
+@model The_Book_Cave.Models.ViewModels.BookListViewModel
+
+    <div class="bookContainer"></div>
+    <p id="bookImage"><img src="@Model.Image"></p>
+    <div class="bookSummary">
+    <p>Title: @Model.Title</p>
+    <p>Publisher: @Model.Publisher</p>
+    <p>Summary: @Model.Summary</p>
+    <p>Review: @Model.Review</p>
+    </div>
+
+    <div class="table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Gerð</th>
+                    <th>Síður</th>
+                    <th>Útgáfuár</th>
+                    <th>Verð</th>
+                    <th>Magn</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Type</td>
+                    <td>@Model.Pages</td>
+                    <td>@Model.PublicationYear</td>
+                    <td>@Model.Price</td>
+                    <td>vantar box</td>
+                    <td><input type="button" value="Setja í körfu" class="btn-btn-Success"></td>
+                </tr>
+            </tbody>
+    </table>
+    </div>
+    </div>

@@ -1,0 +1,7 @@
+@model List<The_Book_Cave.Models.AuthorViewModel>
+    <di>
+        @foreach (var author in @Model)
+        {
+            <p>@author.Name</p>
+        }
+    </di>
