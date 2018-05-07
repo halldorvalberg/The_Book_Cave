@@ -45,9 +45,14 @@ namespace The_Book_Cave.Controllers
             return View(top10Books);
         }
 
+<<<<<<< HEAD
 
         public IActionResult BooksBySearch(string search)  
         {
+=======
+        /* 
+        public IActionResult Details(string search)  
+>>>>>>> a0c331b1c390fc9d6c0e00c65dcceaabc14804bc
             if (search != null)
             {
                 if (search == null) 
