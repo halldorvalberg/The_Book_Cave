@@ -40,6 +40,5 @@ namespace The_Book_Cave.Services
       var top10Books = _bookRepo.GetTop10Books();
       return top10Books;
     }
-
   }
 }

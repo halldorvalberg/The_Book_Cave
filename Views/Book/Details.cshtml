@@ -22,7 +22,9 @@
         <div class="detail-ship">
             <p>[Upplýsingar um sendingu og hvað er til á lager]</p>
         </div>
-        <div class="detail-buy"><button type="button" class="btn btn-primary">Bæta í Körfu</button></div>
+        <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@Model.Id" class="detail-buy">
+            <button type="button" class="btn btn-primary">Bæta í Körfu</button>
+            </form>
     </div>
     <div class="detail-more" id="detail-prodinfo">
         <div class="detail-prodinfo">
