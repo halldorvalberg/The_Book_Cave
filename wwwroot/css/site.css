@@ -6,8 +6,8 @@
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Carousel */
@@ -93,7 +93,7 @@ li a {
     margin: 0;
 
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap:wrap;
     align-items: stretch;
     align-content: space-between;
@@ -132,6 +132,26 @@ li a {
 }
 /*Book by Order Css*/
 
-.BooksByCategory img{
-    max-height: 300px;
+/*BookDetail CSS Begin*/
+.item-container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-gap: 1em;
 }
+.item-image img {
+    width: 100%;
+    box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1)
+
+}
+
+.item-info {
+    padding: 0.5em;
+
+}
+.item-action {
+    box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1);
+    text-align: center;
+
+}
+/*BooDetail CSS End*/
