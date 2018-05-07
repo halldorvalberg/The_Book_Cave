@@ -49,11 +49,11 @@
                  <li><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></li>
                  <li><a asp-controller="Category" asp-action="Details" asp-route-id="7">Ævintýri</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a asp-area="" asp-controller="Category" asp-action="Index">Allir bókaflokkar</a></li>
+                <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
             </ul>
             </li>
             <li><a href="#">Væntanlegar bækur</a></li>
-            <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
+            
             <li><a asp-controller="Book" asp-action="Top10Books">Top 10 bækur</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">
@@ -65,7 +65,6 @@
             </form>    
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">English</a></li>
             <li><a href="#">Óskalisti</a></li>
             <li><a asp-controller="ShoppingCart" asp-action="Index">Karfa</a></li>
         </ul>
