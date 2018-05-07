@@ -90,8 +90,9 @@ namespace The_Book_Cave.Repositories
           return bookByOrder;
     }
 
-    public BookListViewModel GetBookBySearch(string search)
+    public List<BookListViewModel> GetBookBySearch(string search)
     {
+      
       var bookBySearch =(from b in _db.Books where b.Title.ToLower().Contains(search.ToLower())
                         select new BookListViewModel
                         {
@@ -110,7 +111,7 @@ namespace The_Book_Cave.Repositories
                           Image = b.Image,
                           AuthorId = b.AuthorId,
                           CategoryId = b.CategoryId 
-                        }).SingleOrDefault();
+                        }).ToList();
         
        return bookBySearch;
     }

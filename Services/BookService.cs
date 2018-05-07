@@ -29,7 +29,7 @@ namespace The_Book_Cave.Services
       return booksByOrder;
     }
 
-    public BookListViewModel GetBookBySearch(string search)
+    public List<BookListViewModel> GetBookBySearch(string search)
     {
       var bookBySearch = _bookRepo.GetBookBySearch(search);
       return bookBySearch;
