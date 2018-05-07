@@ -29,7 +29,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img id="brand-image" src="logologo.png" alt="Brand"></a>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img id="brand-image" src="~/images/logologo.png" alt="Brand"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -40,7 +40,9 @@
             <ul class="dropdown-menu">
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="1">Barna- og Unglingabækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="2">Erlendar skáldsögur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="8">Erlendar bækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="3">Íslenskar skáldsögur</a></li>
+                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="9">Kennslubækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="4">Matreiðslubækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="5">Skáldævisögur</a></li>
                  <li><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></li>
@@ -51,7 +53,7 @@
             </li>
             <li><a href="#">Væntanlegar bækur</a></li>
             <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
-            <li><a href="#">Top 10 bækur</a></li>
+            <li><a asp-controller="Book" asp-action="Top10Books">Top 10 bækur</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">
             <form class="navbar-form">

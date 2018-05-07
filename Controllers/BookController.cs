@@ -36,10 +36,36 @@ namespace The_Book_Cave.Controllers
         public IActionResult BooksByOrder()
         {
             var booksByOrder = _bookService.GetBooksByOrder();
-
             return View(booksByOrder);
         }
-           
+        
+        public IActionResult Top10Books()
+        {
+            var top10Books = _bookService.GetTop10Books();
+            return View(top10Books);
+        }
+
+        /* 
+        public IActionResult Details(string search)  ekki hafa details
+            if (search != null)
+            {
+                if (search == null) 
+                {
+                    return View("NotFound");
+                }
+
+                var bookBySearch = _bookService.GetBookBySearch(search);
+
+                if (bookBySearch == null)
+                {
+                    return View("NotFound");
+                }
+                 return View(bookBySearch);
+            }
+            return View("Index", "Home");
+        }
+        */
+
 
         /* 
         [HttpGet]  
