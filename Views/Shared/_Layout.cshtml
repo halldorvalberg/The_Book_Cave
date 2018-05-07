@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -75,26 +75,19 @@
     </nav>
 
 
-    <div class="container body-content">
-        @RenderBody()
-       
-         <footer  id="testbla"> 
-        
-<ul>
-
- <li class="footerli"><a asp-controller="Home" asp-action="About">Um okkur</a></li>
-
-
-<li class="footerli"><a asp-controller="Home" asp-action="Conditions">Skilmálar</a></li>
-
-<li class="footerli"><a href="/interestbasedads/ref=footer_iba" class="nav_a">Samfélagsmiðlar</a></li>
-
-<li class="footerli"><a asp-controller="Home" asp-action="Contact">Hafa samband</a></li>
-
-<li class="nav_last footerli">© 2018, Book-Cave, Inc.</li></ul>
-  
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+    
+    <footer  id="testbla"> 
+        <ul>
+            <li class="footerli"><a asp-controller="Home" asp-action="About">Um okkur</a></li>
+            <li class="footerli"><a asp-controller="Home" asp-action="Conditions">Skilmálar</a></li>
+            <li class="footerli"><a href="/interestbasedads/ref=footer_iba" class="nav_a">Samfélagsmiðlar</a></li>
+            <li class="footerli"><a asp-controller="Home" asp-action="Contact">Hafa samband</a></li>
+            <li class="nav_last footerli">© 2018, Book-Cave, Inc.</li>
+        </ul>
+    </footer>
+</div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
