@@ -11,7 +11,8 @@
         </div>
         <div class="detail-info">
             <h1>@Model.Title</h1>
-            <p>Meira djússí infó um þúst höfund og eitthvað</p>
+            <p>Höfundur:<a asp-controller="Author" asp-action="Index">@Model.Author</p></a>
+            </br>
             <p>@Model.Summary</p>
         </div>
     </div>
@@ -31,23 +32,23 @@
             <h2>Upplýsingar um vöru</h2>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                        <label for="isbnNumber">ISBN:</label>
+                        <label for="isbnNumber">ISBN</label>
                         <Span id="isbNumber">@Model.ISBN</Span>
                 </li>
                 <li class="list-group-item">
-                    <label for="language">Tungumál:</label>
+                    <label for="language">Tungumál</label>
                     <span id="language">@Model.Language</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="numberOfPages">Blaðsíðufjöldi:</label>
+                    <label for="numberOfPages">Blaðsíðufjöldi</label>
                     <span id="numberOfPages">@Model.Pages</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="publication">Útgáfuár:</label>
+                    <label for="publication">Útgáfuár</label>
                     <span id="publication">@Model.PublicationYear</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="publisher">Útgefandi:</label>
+                    <label for="publisher">Útgefandi</label>
                     <span id="publisher">@Model.Publisher</span>
                 </li>
                 <li class="list-group-item">

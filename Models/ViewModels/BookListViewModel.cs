@@ -24,7 +24,11 @@ namespace The_Book_Cave.Models.ViewModels
 
     public int AuthorId {get; set;}
 
+    public string Author {get; set;}
+
     public int CategoryId {get; set;}
+
+    public int InStock {get; set;}
     public List<AuthorViewModel> Authors {get; set;}
    }
 

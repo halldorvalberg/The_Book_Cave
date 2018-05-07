@@ -41,6 +41,7 @@ namespace The_Book_Cave.Repositories
     public BookListViewModel GetBookById(int? id)
     {
       var bookById = (from b in _db.Books 
+                      join a in _db.Authors on b.AuthorId equals a.Id
                       where b.Id == id
                       select new BookListViewModel
                       {
@@ -57,7 +58,8 @@ namespace The_Book_Cave.Repositories
                         Type = b.Type,
                         Language = b.Language,
                         Image = b.Image,
-                        AuthorId = b.AuthorId,
+                        AuthorId = a.Id,
+                        Author = a.Name,
                         CategoryId = b.CategoryId
                       }).SingleOrDefault();
 

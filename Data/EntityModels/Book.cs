@@ -25,6 +25,8 @@ namespace The_Book_Cave.Data.EntityModels
     public int AuthorId {get; set;}
 
     public int CategoryId {get; set;}
+
+    public int InStock {get; set;}
    }
 
 
