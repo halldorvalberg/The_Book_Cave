@@ -13,7 +13,7 @@ namespace The_Book_Cave.Controllers
         }
         public IActionResult Index()
         {
-            var categories = _categoryService.GetAllCategories();
+            var categories = _categoryService.GetAllCategoriesbyOrder();
 
             return View(categories);
         }

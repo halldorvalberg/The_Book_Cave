@@ -26,6 +26,19 @@ namespace The_Book_Cave.Repositories
             return categories;
         }
 
+        public List<CategoryViewModel> GetAllCategoriesbyOrder()
+        {
+            var categoriesInOrder =(from c in _db.Categories
+                            orderby c.Name ascending
+                            select new CategoryViewModel 
+                            {
+                             Id = c.Id,
+                             Name = c.Name,
+                            }).ToList();
+                            
+            return categoriesInOrder;
+        }
+
         public List <BookListViewModel> GetBooksByCategory(int? id)
         {
             var categoryById = (from b in _db.Books 

@@ -19,6 +19,12 @@ namespace The_Book_Cave.Services
             return categories;
         }
 
+        public List<CategoryViewModel> GetAllCategoriesbyOrder()
+        {
+            var categoriesInOrder = _categoryRepo.GetAllCategoriesbyOrder();
+            return categoriesInOrder;
+        }
+
         public List<BookListViewModel> GetBooksByCategory(int? id)
         {
             var categoryById = _categoryRepo.GetBooksByCategory(id);
