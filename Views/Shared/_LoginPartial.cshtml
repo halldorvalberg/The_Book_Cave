@@ -13,10 +13,10 @@
     <form asp-action="LogOut" asp-controller="Account" method="POST">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <button class="btn btn-link navbar-btn navbar-link">@claim</button> 
+                <button class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  @claim</button> 
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning</button> 
+                <button type="submit" class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-ejec" aria-hidden="true"></span>Útskráning</button> 
             </li>
         </ul>
     </form>
@@ -25,10 +25,7 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a asp-area="" asp-controller="Account" asp-action="Register">Nýr meðlimur</a>
-        </li>
-        <li>
-            <a asp-area="" asp-controller="Account" asp-action="Login">Innskráning</a>
+            <a asp-area="" asp-controller="Account" asp-action="Login"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Innskráning</a>
         </li>
     </ul>
 }

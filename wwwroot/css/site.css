@@ -227,3 +227,14 @@ li a {
 }
 
 /*BooDetail CSS End*/
+
+.login-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.login-buttons div input, .login-buttons div a button  {
+    margin: 1em;
+}
