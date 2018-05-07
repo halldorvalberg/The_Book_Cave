@@ -46,7 +46,7 @@ namespace The_Book_Cave.Controllers
         }
 
         /* 
-        public IActionResult Details(string search)  ekki hafa details
+        public IActionResult Details(string search)  
             if (search != null)
             {
                 if (search == null) 
