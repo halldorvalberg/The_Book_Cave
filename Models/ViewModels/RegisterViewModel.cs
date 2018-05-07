@@ -11,7 +11,7 @@ namespace The_Book_Cave.Models.ViewModels
         [Required]
         public string FirstName { get; set; }
 
-        [Required]  
+        [Required]
         public string LastName { get; set; }
 
         [Required]

@@ -2,7 +2,7 @@ using The_Book_Cave.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace authentication_repo.Data
+namespace The_Book_Cave.Data
 {
     public class AuthenticationDbContext : IdentityDbContext<ApplicationUser>
     {

@@ -4,7 +4,7 @@ namespace The_Book_Cave.Models.ViewModels
 {
     public class LoginViewModel
     {
-
+        
         [EmailAddress]
         public string Email { get; set; }
 

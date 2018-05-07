@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using The_Book_Cave.Models;
+using The_Book_Cave.Services;
 using The_Book_Cave.Models.ViewModels;
+using System;
 
 namespace The_Book_Cave.Controllers
 {
@@ -29,6 +31,7 @@ namespace The_Book_Cave.Controllers
             if(!ModelState.IsValid)
             {
                 return View();
+                ///hér væri gott að hafa client side validation (error handling )
             }
 
             var user = new ApplicationUser 

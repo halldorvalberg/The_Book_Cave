@@ -16,19 +16,19 @@
                 <button class="btn btn-link navbar-btn navbar-link">@claim</button> 
             </li>
             <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button> 
+                <button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning</button> 
             </li>
         </ul>
     </form>
 }
 else
 {
-    <ui class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right">
         <li>
-            <a asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+            <a asp-area="" asp-controller="Account" asp-action="Register">Nýr meðlimur</a>
         </li>
         <li>
-            <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+            <a asp-area="" asp-controller="Account" asp-action="Login">Innskráning</a>
         </li>
-    </ui>
+    </ul>
 }
