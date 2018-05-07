@@ -2,6 +2,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     background-color: #F0F0F0;
+    padding: 0;
 }
 
 /* Wrapping element */
@@ -226,3 +227,14 @@ li a {
 }
 
 /*BooDetail CSS End*/
+
+.login-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+.login-buttons div input, .login-buttons div a button  {
+    margin: 1em;
+}

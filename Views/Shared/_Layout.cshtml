@@ -19,7 +19,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -43,17 +43,17 @@
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="8">Erlendar bækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="10">Ferðabækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="3">Íslenskar skáldsögur</a></li>
-                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="9">Kennslubækur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="9">Kennslubækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="4">Matreiðslubækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="5">Skáldævisögur</a></li>
-                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></li>
-                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="7">Ævintýri</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="7">Ævintýri</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a asp-area="" asp-controller="Category" asp-action="Index">Allir bókaflokkar</a></li>
+                <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
             </ul>
             </li>
             <li><a href="#">Væntanlegar bækur</a></li>
-            <li><a asp-controller="Book" asp-action="BooksByOrder" >Allar bækur A-Ö</a></li>
+            
             <li><a asp-controller="Book" asp-action="Top10Books">Top 10 bækur</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">
@@ -65,8 +65,7 @@
             </form>    
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">English</a></li>
-            <li><a href="#">Óskalisti</a></li>
+            <li><a asp-controller="Account" asp-action="Login">Óskalisti</a></li>
             <li><a asp-controller="ShoppingCart" asp-action="Index">Karfa</a></li>
         </ul>
         @await Html.PartialAsync("_LoginPartial")
@@ -75,26 +74,19 @@
     </nav>
 
 
-    <div class="container body-content">
-        @RenderBody()
-       
-         <footer  id="testbla"> 
-        
-<ul>
-
- <li class="footerli"><a asp-controller="Home" asp-action="About">Um okkur</a></li>
-
-
-<li class="footerli"><a asp-controller="Home" asp-action="Conditions">Skilmálar</a></li>
-
-<li class="footerli"><a href="/interestbasedads/ref=footer_iba" class="nav_a">Samfélagsmiðlar</a></li>
-
-<li class="footerli"><a asp-controller="Home" asp-action="Contact">Hafa samband</a></li>
-
-<li class="nav_last footerli">© 2018, Book-Cave, Inc.</li></ul>
-  
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+    
+    <footer  id="testbla"> 
+        <ul>
+            <li class="footerli"><a asp-controller="Home" asp-action="About">Um okkur</a></li>
+            <li class="footerli"><a asp-controller="Home" asp-action="Conditions">Skilmálar</a></li>
+            <li class="footerli"><a href="/interestbasedads/ref=footer_iba" class="nav_a">Samfélagsmiðlar</a></li>
+            <li class="footerli"><a asp-controller="Home" asp-action="Contact">Hafa samband</a></li>
+            <li class="nav_last footerli">© 2018, Book-Cave, Inc.</li>
+        </ul>
+    </footer>
+</div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
