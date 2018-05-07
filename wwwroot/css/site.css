@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #F0F0F0;
 }
 
 /* Wrapping element */
@@ -133,25 +134,95 @@ li a {
 /*Book by Order Css*/
 
 /*BookDetail CSS Begin*/
-.item-container {
-    margin-top: 30px;
+.detail-body {
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
     grid-gap: 1em;
 }
-.item-image img {
-    width: 100%;
-    box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1)
 
+.detail-header,
+.detail-more {
+    grid-column: 1 / span 5;
 }
 
-.item-info {
+  .detail-main {
+    grid-column: 1 / span 3;
+}
+  
+.detail-aside {
+    grid-column: span 2;
+}
+  
+@media (max-width: 700px) {
+    
+    .detail-main,
+    .detail-aside {
+      grid-column: 1 / span 5;
+    }  
+}
+  
+.detail-header,
+.detail-main,
+.detail-aside,
+.detail-more {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1)
+
+}
+  
+.detail-header,{
+    height: 10vw;
+}
+.detail-more {
+    height: auto;
+}
+.detail-main {
+    display: grid;
+    grid-template-columns: 40% 60%; 
+    grid-gap: 1em;     
+}
+
+.detail-info {
     padding: 0.5em;
-
 }
-.item-action {
-    box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1);
+
+.detail-image img {
+    width: 100%;
+    padding: 0.5em;
+}
+
+.detail-aside {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.detail-price, .detail-ship, .detail-buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-
 }
+
+.detail-prodinfo {
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+#detail-prodinfo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1em;
+}
+
+.detail-prodinfo > ul {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
 /*BooDetail CSS End*/

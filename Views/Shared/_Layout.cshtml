@@ -41,6 +41,7 @@
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="1">Barna- og Unglingabækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="2">Erlendar skáldsögur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="8">Erlendar bækur</a></li>
+                <li><a asp-controller="Category" asp-action="Details" asp-route-id="10">Ferðabækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="3">Íslenskar skáldsögur</a></li>
                  <li><a asp-controller="Category" asp-action="Details" asp-route-id="9">Kennslubækur</a></li>
                 <li><a asp-controller="Category" asp-action="Details" asp-route-id="4">Matreiðslubækur</a></li>
@@ -56,9 +57,9 @@
             <li><a asp-controller="Book" asp-action="Top10Books">Top 10 bækur</a></li>
         </ul>
         <div class="nav navbar-nav navbarcenter">
-            <form class="navbar-form">
+            <form class="navbar-form" asp-controller="Home" asp-action="Index">
                 <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Search" name="Search">
                 </div>
                 <button type="submit" class="btn btn-default"><img id="search-icon" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-256.png" alt="search"></button>
             </form>    

@@ -17,8 +17,24 @@ namespace The_Book_Cave.Controllers
         {
             _bookService = new BookService();
         }
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
+            if(search != null)
+            {
+            if (search == null) 
+                {
+                    return View("NotFound");
+                }
+
+                var bookBySearch = _bookService.GetBookBySearch(search);
+
+                if (bookBySearch == null)
+                {
+                    return View("NotFound");
+                }
+                return View(bookBySearch);
+            }
+
             var books = _bookService.GetAllBooks();
 
             return View(books);
