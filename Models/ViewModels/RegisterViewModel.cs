@@ -4,17 +4,17 @@ namespace The_Book_Cave.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Email is required")]
+        [Required(ErrorMessage = "Vinsamlegast fylltu inn netfang")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "First name is required")]
+        [Required(ErrorMessage = "Vinsamlegast fylltu inn fornafn")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last name is required")]
+        [Required(ErrorMessage = "Vinsamlegast fylltu inn eftirnafn")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
+        [Required(ErrorMessage = "Vinsamlegast fylltu inn lykilorð")]
         public string Password { get; set; }
     }
 }

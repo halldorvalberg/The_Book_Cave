@@ -30,8 +30,8 @@ namespace The_Book_Cave.Controllers
         {
             if(!ModelState.IsValid)
             {
+                ViewData["ErrorMessage"] = "Vinsamlegast fylltu inn í viðeigandi reiti";
                 return View();
-                ///hér væri gott að hafa client side validation (error handling )
             }
 
             var user = new ApplicationUser 
@@ -81,6 +81,7 @@ namespace The_Book_Cave.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
+    
             return RedirectToAction("Login", "Account");
         }
 
