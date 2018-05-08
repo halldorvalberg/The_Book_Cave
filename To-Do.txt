@@ -5,3 +5,5 @@
 * Öll starfsmanna virkni
 
 * Accaount Síður
+
+* Laga Navbarinn (Ekki mjög mikilvægt)

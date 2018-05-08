@@ -1,5 +1,11 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
+
+<a asp-controller="Home" asp-action="Index"><< Fara tilbaka</a>
+<h3>Karfan þín</h3>
+
+<h5 class="Total">Verð samtals:<span><button type="button">Kaupa</button></span> </h5>
+
 <div class="book-items">
     @foreach(var book in Model)
     {
