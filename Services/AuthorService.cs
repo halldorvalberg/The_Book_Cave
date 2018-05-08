@@ -19,9 +19,9 @@ namespace The_Book_Cave.Services
            return authors;
        }
 
-       public List<AuthorViewModel> GetAllBooksByAuthor()
+       public List<BookListViewModel> GetAllBooksByAuthor(int? id)
        {
-           var booksByAuthor = _authorRepo.GetAllBooksByAuthor();
+           var booksByAuthor = _authorRepo.GetAllBooksByAuthor(id);
            return booksByAuthor;
        }
    }

@@ -1,4 +1,26 @@
-@model List<The_Book_Cave.Models.ViewModels.AuthorViewModel>
+@model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
-<h2>@Model.Name</h2>
-<p>@Model.Book</p>
+<h3>Bækur eftir</h3>
+<div class="book-items">
+    @foreach(var book in Model)
+    {
+        <div class="BooksByOrder book-item-thumb">
+            <div class="book-item-image">
+                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" >
+                    <img src="@book.Image" alt="~/images/250x250image.png">
+                </a>
+            </div>
+            <div class="book-item-info">
+                <h3>
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><span style="font-weight:bold">@book.Title</span></a>
+                </h3>
+                <p>@book.Price kr.</p>
+            </div>
+            <div class="book-item-action">
+                <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
+                    <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
+                </form>
+            </div>
+        </div>
+    }
+</div>

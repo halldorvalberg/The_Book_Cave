@@ -24,9 +24,18 @@ namespace The_Book_Cave.Controllers
             return View(authors);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int? id)
         {
-            var booksByAuthor = _authorService.GetAllBooksByAuthor();
+             if(id == null)
+             {
+                return View("NotFound");
+             }
+
+            var booksByAuthor = _authorService.GetAllBooksByAuthor(id);
+             if(booksByAuthor == null)
+             {
+                return View("NotFound");
+             }
             return View (booksByAuthor);
         }
     }

@@ -11,7 +11,7 @@
         </div>
         <div class="detail-info">
             <h1>@Model.Title</h1>
-            <p>Höfundur:<a asp-controller="Author" asp-action="Details">@Model.Author</p></a>
+            <p>Höfundur:<a asp-controller="Author" asp-action="Details" asp-route-id="@Model.AuthorId" >@Model.Author</p></a>
             </br>
             <p>@Model.Summary</p>
             </br>

@@ -30,19 +30,29 @@ namespace The_Book_Cave.Repositories
             return authors;
         }
 
-            /*Ekki rétt þarf að skila lista af bókum */
-        public List<AuthorViewModel> GetAllBooksByAuthor()
+        public List<BookListViewModel> GetAllBooksByAuthor(int? id)
         {
-            var booksByAuthor =(from a in _db.Authors
-                                join b in _db.Books on a.Id equals b.AuthorId
+            var booksByAuthor =(from b in _db.Books
+                                join a in _db.Authors on b.AuthorId equals a.Id
+                                where b.AuthorId == id
                                 where b.InStock == 1
-                                select new AuthorViewModel{
-                                Id = a.Id,
-                                Name = a.Name,
-                                Summary = a.Summary,
-                                Image = a.Image,
-                                BookId = b.Id,
-                                Book = b.Title
+                                select new BookListViewModel{
+                                Id = b.Id,
+                                Title = b.Title,
+                                ISBN = b.ISBN,
+                                Publisher = b.Publisher,
+                                PublicationYear = b.PublicationYear,
+                                Price = b.Price,
+                                Rating = b.Rating,
+                                Summary = b.Summary,
+                                Review = b.Review,
+                                Pages = b.Pages,
+                                Type = b.Type,
+                                Language = b.Language,
+                                Image = b.Image,
+                                AuthorId = a.Id,
+                                Author = a.Name,
+                                CategoryId = b.CategoryId
                                 }).ToList();
             return booksByAuthor;
         }
