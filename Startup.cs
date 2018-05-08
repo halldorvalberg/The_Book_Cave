@@ -33,11 +33,12 @@ namespace The_Book_Cave
             
             services.Configure<IdentityOptions>(config => {
                 config.User.RequireUniqueEmail = true;
-
+                
                 config.Password.RequiredLength = 8;
             });
 
             services.ConfigureApplicationCookie(options => {
+                //Cookie settings
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromHours(3);
 

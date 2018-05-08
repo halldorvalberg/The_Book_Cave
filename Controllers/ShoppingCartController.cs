@@ -14,7 +14,7 @@ namespace The_Book_Cave.Controllers
             _bookService = new BookService();
         }
 
-        [Authorize]
+        [Authorize(Roles="User")]
         public IActionResult Index(int? id)
         {
             var shoppingItem = _bookService.AddToCart(id);
