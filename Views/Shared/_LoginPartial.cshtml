@@ -12,11 +12,13 @@
 {
     <form asp-action="LogOut" asp-controller="Account" method="POST">
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                <button class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  @claim</button> 
-            </li>
-            <li>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link"><span class="glyphicon glyphicon-ejec" aria-hidden="true"></span>Útskráning</button> 
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>  @claim <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="https://www.ikea.is/">Mínar síður</a></li>
+                <li role="separator" class="divider"></li>
+                <li><button type="submit" class="btn btn-link navbar-btn navbar-link">Útskráning</button></li>
+            </ul>
             </li>
         </ul>
     </form>
