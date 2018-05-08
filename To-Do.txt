@@ -1,3 +1,9 @@
 * Sjá til þess að ekki sé hægt að bæta væntanlegri bók í körfu
 
 * Fá körfuna til að virka
+
+* Öll starfsmanna virkni
+
+* Accaount Síður
+
+* Laga Navbarinn (Ekki mjög mikilvægt)
