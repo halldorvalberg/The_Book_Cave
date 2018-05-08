@@ -10,6 +10,8 @@ namespace The_Book_Cave.Models.ViewModels
     public string Image { get; set; }
 
     public int BookId {get; set;}
+
+    public string Book {get; set;}
     
     public  List<BookListViewModel> Books { get; set; }
   }

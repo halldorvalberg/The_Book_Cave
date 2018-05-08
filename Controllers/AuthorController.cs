@@ -23,5 +23,11 @@ namespace The_Book_Cave.Controllers
 
             return View(authors);
         }
+
+        public IActionResult Details()
+        {
+            var booksByAuthor = _authorService.GetAllBooksByAuthor();
+            return View (booksByAuthor);
+        }
     }
 }
