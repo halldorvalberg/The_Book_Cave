@@ -1,0 +1,3 @@
+* Sjá til þess að ekki sé hægt að bæta væntanlegri bók í körfu
+
+* Fá körfuna til að virka
