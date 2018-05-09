@@ -13,10 +13,13 @@ namespace The_Book_Cave.Controllers
     {
         private BookService _bookService;
         private CategoryService _categoryService;
+
+        private AuthorService _authorService;
         public HomeController()
         {
             _categoryService = new CategoryService();
             _bookService = new BookService();
+            _authorService = new AuthorService();
         }
         public IActionResult Index()
         {
@@ -39,11 +42,11 @@ namespace The_Book_Cave.Controllers
                     return View("NotFound");
                 }
                 var bookBySearch = _bookService.GetBookBySearch(search);
+                ViewBag.Author = _authorService.GetAuthorByName(search);
                 if (bookBySearch == null)
                 {
                     return View("NotFound");
                 }
-
                 return View(bookBySearch);
            
         }
