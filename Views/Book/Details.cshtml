@@ -11,12 +11,12 @@
         </div>
         <div class="detail-info">
             <h1>@Model.Title</h1>
-            <p>Höfundur:<a asp-controller="Author" asp-action="Details" asp-route-id="@Model.AuthorId" >@Model.Author</p></a>
+            <p>Höfundur: <a asp-controller="Author" asp-action="Details" asp-route-id="@Model.AuthorId" >@Model.Author</p></a>
             </br>
             <p>@Model.Summary</p>
             </br>
             </br>
-            <p>Flokkur:<a asp-controller="Category" asp-action="Details" asp-route-id="@Model.CategoryId">@Model.Category</a></p>
+            <p>Flokkur: <a asp-controller="Category" asp-action="Details" asp-route-id="@Model.CategoryId">@Model.Category</a></p>
         </div>
     </div>
     <div class="detail-aside">
@@ -35,27 +35,27 @@
             <h2>Upplýsingar um vöru</h2>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                        <label for="isbnNumber">ISBN</label>
+                        <label for="isbnNumber">ISBN: </label>
                         <Span id="isbNumber">@Model.ISBN</Span>
                 </li>
                 <li class="list-group-item">
-                    <label for="language">Tungumál</label>
+                    <label for="language">Tungumál: </label>
                     <span id="language">@Model.Language</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="numberOfPages">Blaðsíðufjöldi</label>
+                    <label for="numberOfPages">Blaðsíðufjöldi: </label>
                     <span id="numberOfPages">@Model.Pages</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="publication">Útgáfuár</label>
+                    <label for="publication">Útgáfuár: </label>
                     <span id="publication">@Model.PublicationYear</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="publisher">Útgefandi</label>
+                    <label for="publisher">Útgefandi: </label>
                     <span id="publisher">@Model.Publisher</span>
                 </li>
                 <li class="list-group-item">
-                    <label for="type">Gerð</label>
+                    <label for="type">Gerð: </label>
                     <span id="type">@Model.Type</span>
                 </li>
             </ul>
