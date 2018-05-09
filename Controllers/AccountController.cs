@@ -55,6 +55,7 @@ namespace The_Book_Cave.Controllers
 
             return View();
         }
+
         [Authorize]
         public async Task <IActionResult> MyProfile()
         {   
@@ -70,9 +71,25 @@ namespace The_Book_Cave.Controllers
         }
 
         [Authorize]
+        [HttpGet]
+       public async Task <IActionResult> EditProfile()
+        {   
+           var user = await _userManager.GetUserAsync(User);
+
+          return View(new ProfileViewModel {
+              FirstName = user.FirstName,
+              LastName = user.LastName,
+              Image = user.Image,
+              FavoriteBook = user.FavoriteBook,
+              Address = user.Address
+          });
+        } 
+
+        [Authorize]
         [HttpPost]
        public async Task <IActionResult> EditProfile(ProfileViewModel model)
         {   
+
              var user = await _userManager.GetUserAsync(User);
 
               user.FirstName = model.FirstName;
@@ -83,7 +100,7 @@ namespace The_Book_Cave.Controllers
 
               await _userManager.UpdateAsync(user);
           
-          return View(model);
+            return RedirectToAction("MyProfile");
         }
 
         public IActionResult Login()
