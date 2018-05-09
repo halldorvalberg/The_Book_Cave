@@ -58,15 +58,14 @@
 }
 
 
-/* Þetta er footerinn */
-#testbla {
-    display: inline;
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
-    bottom: 0;
-}
+/* Footer begin */
 
+.footer-style {
+    position: relative;
+    text-align: center;
+    padding: 50px;
+    margin-left: 145px;
+}
 
 /* Nota þetta til að fá inline og til að taka bulletið úr ol */
 .footerli {
@@ -86,6 +85,8 @@ li a {
 .nav_last{
     color: black;
 }
+
+/*Footer end*/
 
 /*Forsíða Begin*/
 #slideshow { 
@@ -197,7 +198,11 @@ li a {
     margin: auto;
     margin-bottom: 5px;
 }
-/*Book by Order Css*/
+
+#booksbyOrder-h3{
+    text-align: center;
+}
+/*Book by Order Css end*/
 
 /*BookDetail CSS Begin*/
 .detail-body {
@@ -291,7 +296,7 @@ li a {
     grid-template-rows: 1fr 1fr;
 }
 
-/*BooDetail CSS End*/
+/*BookDetail CSS End*/
 
 .login-buttons{
     display: flex;

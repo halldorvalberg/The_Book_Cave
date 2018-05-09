@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <div class="book-showbox-info">
-                    <h1>@book.Title</h1>
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><h1>@book.Title</h1></a>
                 </div>
                 <div class="book-showbox-aciton">
                     <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
