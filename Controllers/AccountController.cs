@@ -47,7 +47,7 @@ namespace The_Book_Cave.Controllers
             {
                 //The user is successfully registered
                 //add the concatenated first and last name as fullname in claims
-                await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName} {model.Address} {model.Book} {model.Image}"));
+                await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
 
                 return RedirectToAction("Index", "Home");
@@ -99,8 +99,9 @@ namespace The_Book_Cave.Controllers
               user.Address = model.Address;
 
               await _userManager.UpdateAsync(user);
-          
-            return RedirectToAction("MyProfile");
+              await _userManager.AddUpdateClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+    
+            return View(model);
         }
 
         public IActionResult Login()
