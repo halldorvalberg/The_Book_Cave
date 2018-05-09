@@ -62,3 +62,28 @@
         </div>
     </div>
 </div>
+<div class="white-tab">
+    <h1>Bækur eftir sama höfund</h1>
+    <div class="book-showbox-wrapper">
+        @foreach (var book in ViewBag.BooksByAuthor) 
+        {
+            <div class="book-showbox">
+                <div class="book-showbox-image">
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
+                        <img src="@book.Image" alt="@book.Title">
+                    </a>
+                </div>
+                <div class="book-showbox-info">
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
+                        <h1>@book.Title</h1>
+                    </a>
+                </div>
+                <div class="book-showbox-aciton">
+                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
+                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
