@@ -1,9 +1,10 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
-<h3>Bækur eftir</h3>
+<h3>Bækur eftir </h3>
 <div class="book-items">
     @foreach(var book in Model)
     {
+        <span>@book.Author</span>
         <div class="BooksByOrder book-item-thumb">
             <div class="book-item-image">
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" >

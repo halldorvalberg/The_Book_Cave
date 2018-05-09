@@ -44,7 +44,5 @@ namespace The_Book_Cave.Controllers
             var top10Books = _bookService.GetTop10Books();
             return View(top10Books);
         }
-
-
     }
 }
