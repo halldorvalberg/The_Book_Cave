@@ -116,7 +116,6 @@ li a {
 }
 .white-tab{
     background-color: white;
-
     border-radius: 5px;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1);
     height: 300px;
@@ -158,8 +157,6 @@ li a {
 /*Book by Order Css*/
 .book-items {
     padding: 4px;
-    margin: 80px;
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
