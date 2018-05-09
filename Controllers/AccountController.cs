@@ -99,7 +99,7 @@ namespace The_Book_Cave.Controllers
               user.Address = model.Address;
 
               await _userManager.UpdateAsync(user);
-              await _userManager.AddUpdateClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
+              
     
             return View(model);
         }
