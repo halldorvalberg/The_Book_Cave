@@ -1,4 +1,8 @@
+@using Microsoft.AspNetCore.Identity 
+@using System.Security.Claims 
 @model The_Book_Cave.Models.ViewModels.BookListViewModel
+
+@inject SignInManager<ApplicationUser> SignInManager
 
 <div class="detail-body">
     <div class="detail-header">
@@ -59,10 +63,11 @@
                     <span id="type">@Model.Type</span>
                 </li>
             </ul>
-
+@if (SignInManager.IsSignedIn(User))
+{
             <form action="">
                 <label for="einkun">Gefa bók einkun 1-5</label>
-                    <select id="einkun">
+                    <select id="einkun" name="einkunn">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -71,6 +76,11 @@
                     </select>
                      <input type="submit" value="Submit">
             </form>
+            <form>
+                <label for="umsögn">Gefa bók umsögn</label>
+                <textarea id="umsögn" name="umsögn">Your text here...</textarea>
+            </form>
+}
         </div>
     </div>
 </div>

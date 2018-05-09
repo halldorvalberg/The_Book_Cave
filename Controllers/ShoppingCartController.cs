@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using The_Book_Cave.Data.EntityModels;
 using The_Book_Cave.Services;
 
+
 namespace The_Book_Cave.Controllers
 {
     public class ShoppingCartController: Controller
@@ -14,7 +15,6 @@ namespace The_Book_Cave.Controllers
             _bookService = new BookService();
         }
 
-        [Authorize(Roles="User")]
         public IActionResult Index(int? id)
         {
             var shoppingItem = _bookService.AddToCart(id);
