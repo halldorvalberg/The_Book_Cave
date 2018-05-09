@@ -1,15 +1,12 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
-    <h3>Væntanlegar bækur (kannski setja í miðjuna)</h3>
-    <p>Taka af að það sé hægt að klikka á myndina og fara í details því má ekki kaupa hana...eða taka takkan af í details</p>
+    <h3 id="comingsoon-h3">Væntanlegar bækur</h3>
     <div class="book-items">
     @foreach(var book in Model)
     {
          <div class="BooksByOrder book-item-thumb">
             <div class="book-item-image">
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" >
                     <img src="@book.Image" alt="~/images/250x250image.png">
-                </a>
             </div>
             <div class="book-item-info">
                 <h3>
