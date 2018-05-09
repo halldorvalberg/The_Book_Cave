@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
-namespace The_Book_Cave.Models
+namespace The_Book_Cave.Models.ViewModels
 {
-    public class ApplicationUser : IdentityUser
+    public class ProfileViewModel
     {
-
         public string FirstName { get; set; }
-
         public string LastName { get; set; }
 
         public string Image { get; set; }
