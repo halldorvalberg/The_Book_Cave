@@ -11,6 +11,7 @@ namespace The_Book_Cave.Data.EntityModels
     public DateTime PublicationYear { get; set; }
     public int Price { get; set; }
     public double Rating { get; set; }
+    public int RatingCount {get; set; }
     public string Summary { get; set; }
     public string Review { get; set; }
     public int Pages { get; set; }
