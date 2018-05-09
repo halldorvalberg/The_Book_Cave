@@ -30,5 +30,12 @@ namespace The_Book_Cave.Services
            var booksByAuthor = _authorRepo.GetAllBooksByAuthor(id);
            return booksByAuthor;
        }
+
+       public List<AuthorViewModel> GetAuthorByName(string search)
+       {
+           var authorByName = _authorRepo.GetAuthorByName(search);
+           return authorByName; 
+       }
+
    }
 }

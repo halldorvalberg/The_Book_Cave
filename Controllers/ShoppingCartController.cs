@@ -21,5 +21,10 @@ namespace The_Book_Cave.Controllers
 
             return View(shoppingItem);
         }
+
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
     }
 }
