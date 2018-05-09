@@ -12,9 +12,11 @@ namespace The_Book_Cave.Controllers
     public class BookController : Controller
     {
         private BookService _bookService;
+        private AuthorService _authorService;
          public BookController()
         {
             _bookService = new BookService();
+            _authorService = new AuthorService();
         }
         public IActionResult Index()
         {
@@ -30,6 +32,7 @@ namespace The_Book_Cave.Controllers
             if(bookById == null){
                 return View("NotFound");
             }
+            ViewBag.BooksByAuthor = _authorService.GetAllBooksByAuthor(bookById.AuthorId);
             return View(bookById);
         }
 

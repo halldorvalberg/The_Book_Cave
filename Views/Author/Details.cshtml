@@ -1,26 +1,43 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
-
-<h3>Bækur eftir</h3>
-<div class="book-items">
-    @foreach(var book in Model)
-    {
-        <div class="BooksByOrder book-item-thumb">
-            <div class="book-item-image">
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" >
-                    <img src="@book.Image" alt="~/images/250x250image.png">
-                </a>
-            </div>
-            <div class="book-item-info">
-                <h3>
-                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><span style="font-weight:bold">@book.Title</span></a>
-                </h3>
-                <p>@book.Price kr.</p>
-            </div>
-            <div class="book-item-action">
-                <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                    <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                </form>
+<div class="author-wrapper">
+        <div class="author-white-tab author-white-tab-info">
+            <div class="author-info">
+                <div class="author-info-img">
+                    <img src="@ViewBag.Author.Image" alt="@ViewBag.Author.Name">
+                </div>
+                <div class="author-info-name">
+                    <h1>@ViewBag.Author.Name</h1>
+                </div>
+                <div class="author-info-summary">
+                    <p>@ViewBag.Author.Summary</p>
+                </div>
             </div>
         </div>
-    }
+    <div class="author-white-tab author-white-tab-books">
+        <div class="author-item">
+            @foreach(var book in Model)
+            {
+                <div class="author-item-thumb">
+                    <div class="author-item-image">
+                        <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id" >
+                            <img src="@book.Image" alt="~/images/250x250image.png">
+                        </a>
+                    </div>
+                    <div class="author-item-info">
+                        <h3>
+                            <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><span style="font-weight:bold">@book.Title</span></a>
+                        </h3>
+                        <p>@book.Price kr.</p>
+                    </div>
+                    <div class="author-item-action">
+                        <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
+                            <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
 </div>

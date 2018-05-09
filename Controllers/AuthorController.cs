@@ -32,10 +32,11 @@ namespace The_Book_Cave.Controllers
              }
 
             var booksByAuthor = _authorService.GetAllBooksByAuthor(id);
-             if(booksByAuthor == null)
-             {
+            if(booksByAuthor == null)
+            {
                 return View("NotFound");
-             }
+            }
+            ViewBag.Author = _authorService.GetAuthorById(id);
             return View (booksByAuthor);
         }
     }
