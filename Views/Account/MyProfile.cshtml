@@ -1,0 +1,17 @@
+@model The_Book_Cave.Models.ViewModels.ProfileViewModel 
+
+<h1>Mínar síður</h1>
+
+<div class="detail-main">
+    <div class="detail-image">
+        <img src="@Model.Image" alt="">
+    </div>
+    <div class="detail-info">
+        <p>Nafn: @Model.FirstName @Model.LastName</p>
+        <p>Heimilisfang: @Model.Address</p>
+        <p>Uppáhalds bók: @Model.FavoriteBook</p>
+    </div>
+</div>
+
+
+
