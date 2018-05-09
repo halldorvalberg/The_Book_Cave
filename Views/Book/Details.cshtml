@@ -66,19 +66,20 @@
 @if (SignInManager.IsSignedIn(User))
 {
             <form action="">
-                <label for="einkun">Gefa bók einkun 1-5</label>
-                    <select id="einkun" name="einkunn">
+                <label for="einkunn">Gefa bók einkunn 1-5</label>
+                    <select id="einkunn" name="einkunn">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                     <input type="submit" value="Submit">
+                     <input type="submit" value="Staðfesta">
             </form>
-            <form>
+            <form asp-action="Book" asp-action="Review" method="Post">
                 <label for="umsögn">Gefa bók umsögn</label>
-                <textarea id="umsögn" name="umsögn">Your text here...</textarea>
+                <textarea asp-for="Review" id="umsögn" name="umsögn" value="@Model.Review">Your text here...</textarea>
+                <input type="submit" value="Staðfesta">
             </form>
 }
         </div>

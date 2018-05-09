@@ -73,5 +73,21 @@ namespace The_Book_Cave.Repositories
                                 }).ToList();
             return booksByAuthor;
         }
+
+        public List<AuthorViewModel> GetAuthorByName(string search)
+        {
+            var authorByName =(from a in _db.Authors
+                                join b in _db.Books on a.BookId equals b.Id
+                                where a.Name == search
+                                select new AuthorViewModel 
+                                {
+                                Id = a.Id,
+                                Name = a.Name,
+                                Summary = a.Summary,
+                                Image = a.Image,
+                                BookId = b.Id
+                                }).ToList();
+            return authorByName; 
+        }
     }
 }

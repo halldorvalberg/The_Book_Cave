@@ -39,6 +39,7 @@ namespace The_Book_Cave.Controllers
             return RedirectToAction("Index");
         }
 
+<<<<<<< HEAD
         public RedirectToActionResult RemoveFromShoppingCart(int bookid)
         {
             var selectedBook = _bookService.GetBookBookById(bookid);
@@ -49,5 +50,11 @@ namespace The_Book_Cave.Controllers
             return RedirectToAction("Index");
         }
 
+=======
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
+>>>>>>> f00584a4fda7bde39cadfea6c68f394b2b900b9e
     }
 }
