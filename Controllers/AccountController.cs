@@ -6,6 +6,7 @@ using The_Book_Cave.Models;
 using The_Book_Cave.Services;
 using The_Book_Cave.Models.ViewModels;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace The_Book_Cave.Controllers
 {
@@ -55,33 +56,51 @@ namespace The_Book_Cave.Controllers
             return View();
         }
 
-         [HttpPost]
-        public async Task <IActionResult> EditProfile(ApplicationUser userdetails)
+        [Authorize]
+        public async Task <IActionResult> MyProfile()
         {   
-          IdentityResult x = await _userManager.UpdateAsync(userdetails);
-          
-          if(x.Succeeded)
-          {
-              return RedirectToAction("Profile");
-          }
+          var user = await _userManager.GetUserAsync(User);
 
-          return View(userdetails);
+          return View(new ProfileViewModel {
+              FirstName = user.FirstName,
+              LastName = user.LastName,
+              Image = user.Image,
+              FavoriteBook = user.FavoriteBook,
+              Address = user.Address
+          });
         }
 
+        [Authorize]
         [HttpGet]
-        public IActionResult Profile()
+       public async Task <IActionResult> EditProfile()
         {   
-          var userid = _userManager.GetUserId(HttpContext.User);
+           var user = await _userManager.GetUserAsync(User);
+
+          return View(new ProfileViewModel {
+              FirstName = user.FirstName,
+              LastName = user.LastName,
+              Image = user.Image,
+              FavoriteBook = user.FavoriteBook,
+              Address = user.Address
+          });
+        } 
+
+        [Authorize]
+        [HttpPost]
+       public async Task <IActionResult> EditProfile(ProfileViewModel model)
+        {   
+
+             var user = await _userManager.GetUserAsync(User);
+
+              user.FirstName = model.FirstName;
+              user.LastName = model.LastName;
+              user.Image = model.Image;
+              user.FavoriteBook = model.FavoriteBook;
+              user.Address = model.Address;
+
+              await _userManager.UpdateAsync(user);
           
-          if(userid==null)
-          {
-              return RedirectToAction("Login");
-          }
-          else
-          {
-              ApplicationUser user = _userManager.FindByIdAsync(userid).Result;
-              return View(user);
-          }
+            return RedirectToAction("MyProfile");
         }
 
         public IActionResult Login()
