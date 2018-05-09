@@ -13,14 +13,6 @@
    </div>
 </div>
 
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
-
-
 <div class="white-tab">
     <h1>Barna- og Unglingabækur</h1>
     <div class="book-showbox-wrapper">
@@ -38,9 +30,9 @@
                     </a>
                 </div>
                 <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-bookid="@book.Id">
+                        Add to cart
+                    </a>
                 </div>
             </div>
         }
