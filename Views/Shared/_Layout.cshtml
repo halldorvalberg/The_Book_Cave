@@ -69,6 +69,12 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a asp-controller="Book" asp-action="WishList">Óskalisti</a></li>
+            
+           <!-- @{
+                var bla = new ShoppingCartController;
+
+            } -->
+            
             <li><a asp-controller="ShoppingCart" asp-action="Index"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
         </ul>
         @await Html.PartialAsync("_LoginPartial")

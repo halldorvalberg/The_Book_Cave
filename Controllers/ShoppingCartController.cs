@@ -222,4 +222,14 @@ namespace The_Book_Cave.Controllers
             return View("Confirmation");
         }
 
+        [HttpGet]
+        public int GetCartCount()
+        {
+            var cart = CartService.GetCart(this.HttpContext);
+            var cartId = cart.ShoppingCartId;
+            return _cartService.GetCartItems(cartId).Count;
+            
+        }
+
     }
+}
