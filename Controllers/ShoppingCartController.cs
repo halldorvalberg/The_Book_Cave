@@ -1,60 +1,221 @@
-using System;
+using System.Dynamic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using The_Book_Cave.Data.EntityModels;
-using The_Book_Cave.Models.ViewModels;
+using The_Book_Cave.Data;
 using The_Book_Cave.Services;
+using The_Book_Cave.Models.ViewModels;
+using System.Linq;
 
 namespace The_Book_Cave.Controllers
 {
+    [Authorize]
     public class ShoppingCartController : Controller
     {
-         private BookService _bookService;
-        private readonly ShoppingCart _shoppingCart;
+        private UserService _userService;
+        private CartService _cartService;
 
-        public ShoppingCartController(BookService bookService, ShoppingCart shoppingCart)
+        private BookService _bookService;
+        private DataContext _db = new DataContext();
+
+        public ShoppingCartController()
         {
-            _bookService = bookService;
-            _shoppingCart = shoppingCart;
+            _cartService = new CartService();
+            _bookService = new BookService();
+            _userService = new UserService();
+            
+        }
+
+        public IActionResult Index()
+        {
+            var cart = CartService.GetCart(this.HttpContext);
+
+            var cartId = cart.ShoppingCartId;
+
+            dynamic myModel = new ExpandoObject();
+            
+            var cartModel = new ShoppingCartViewModel
+            {
+                CartItems = _cartService.GetCartItems(cartId),
+                CartTotal = _cartService.GetTotal(cartId)
+            };
+
+            var accountModel = _userService.GetAllUsers();
+
+            var books = (from b in _db.Books
+                        join c in _db.Carts on b.Id equals c.BookId
+                        where c.CartId == cartId
+                        select new BookListViewModel
+                        {
+                            Id = b.Id,
+                            Title = b.Title,
+                            ISBN = b.ISBN,
+                            Publisher = b.Publisher,
+                            PublicationYear = b.PublicationYear,
+                            Price = b.Price,
+                            Rating = b.Rating,
+                            RatingCount = b.RatingCount,
+                            Summary = b.Summary,
+                            Review = b.Review,
+                            Image = b.Image,
+                            Pages = b.Pages,
+                            Type = b.Type,
+                            Language = b.Language,
+                            AuthorId = b.AuthorId,
+                            Quantity = c.Quantity,
+                        }).ToList();
+
+            myModel.cartItems = cartModel;
+            myModel.bookItems = books;
+            myModel.account = accountModel;
+            
+            return View(myModel);
         }
 
         [Authorize]
-        public ViewResult Index()
+        public IActionResult AddToCart(int bookId)
         {
-            Console.Write("CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
-            var items = _shoppingCart.GetShoppingCartItems();
-            return View(items);
+            var books = _bookService.GetAllBooks();
+
+            var bookAdded = (from book in books
+                            where book.Id == bookId
+                            select book).SingleOrDefault();
+
+            var cart = CartService.GetCart(this.HttpContext);
+
+
+            _cartService.AddToCart(bookAdded, this.HttpContext);
+
+            return RedirectToAction("Index", "Home");
         }
 
-        [Authorize]
-        public RedirectToActionResult AddToShoppingCart(int bookid)
-        {   
-            Console.Write("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            var selectedBook = _bookService.GetBookBookById(bookid);
-            if (selectedBook != null)
-            {
-                _shoppingCart.AddToCart(selectedBook, 1);
-            }
-            Console.Write("BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB");
+        public IActionResult RemoveFromCart(int bookId)
+        {
+            var books = _bookService.GetAllBooks();
+
+            var bookAdded = (from book in books
+                            where book.Id == bookId
+                            select book).SingleOrDefault();
+
+            var cart = CartService.GetCart(this.HttpContext);
+
+            _cartService.RemoveFromCart(bookAdded, this.HttpContext);
+
             return RedirectToAction("Index");
         }
-
-<<<<<<< HEAD
-        public RedirectToActionResult RemoveFromShoppingCart(int bookid)
+        /*
+        [HttpGet]
+        public IActionResult Checkout(string email)
         {
-            var selectedBook = _bookService.GetBookBookById(bookid);
-            if (selectedBook != null)
+            var accounts = _accountService.GetAllAccounts();
+
+            var account = (from a in accounts
+                         where a.Email == email
+                         select a).SingleOrDefault();
+            return View(account);
+        }
+        
+        [HttpPost]
+        public IActionResult Checkout(AccountInputModel updatedAccount)
+        {
+            if(!ModelState.IsValid)
             {
-                _shoppingCart.RemoveFromCart(selectedBook);
+                return View();
             }
-            return RedirectToAction("Index");
-        }
 
-=======
-        public IActionResult CheckOut()
-        {
-            return View();
+            _accountService.ProcessAccount(updatedAccount);
+            
+            using (var db = new DataContext())
+            {
+                var account = (from a in db.Accounts
+                            where a.Email == updatedAccount.Email
+                            select a).FirstOrDefault();
+
+                account.FirstName = updatedAccount.FirstName;
+                account.LastName = updatedAccount.LastName;
+                account.Email = updatedAccount.Email;
+                account.BillingAddressStreet = updatedAccount.BillingAddressStreet;
+                account.BillingAddressHouseNumber = updatedAccount.BillingAddressHouseNumber;
+                account.BillingAddressLine2 = updatedAccount.BillingAddressLine2;
+                account.BillingAddressCity = updatedAccount.BillingAddressCity;
+                account.BillingAddressCountry = updatedAccount.BillingAddressCountry;
+                account.BillingAddressZipCode = updatedAccount.BillingAddressZipCode;
+                account.DeliveryAddressStreet = updatedAccount.DeliveryAddressStreet;
+                account.DeliveryAddressHouseNumber = updatedAccount.DeliveryAddressHouseNumber;
+                account.DeliveryAddressLine2 = updatedAccount.DeliveryAddressLine2;
+                account.DeliveryAddressCity = updatedAccount.DeliveryAddressCity;
+                account.DeliveryAddressCountry = updatedAccount.DeliveryAddressCountry;
+                account.DeliveryAddressZipCode = updatedAccount.DeliveryAddressZipCode;
+               
+
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("ReviewStep");
+
         }
->>>>>>> f00584a4fda7bde39cadfea6c68f394b2b900b9e
+        
+        [HttpGet]
+        public IActionResult ReviewStep()
+        {
+            var user = HttpContext.User.Identity.Name;
+
+            var cart = CartService.GetCart(this.HttpContext);
+
+            var cartId = cart.ShoppingCartId;
+
+            dynamic myModel = new ExpandoObject();
+            
+            var cartModel = new ShoppingCartViewModel
+            {
+                CartItems = _cartService.GetCartItems(cartId),
+                CartTotal = _cartService.GetTotal(cartId)
+            };
+
+            var accounts = _userService.GetAllAccounts();
+
+            var accountmodel = (from a in accounts
+                         where a.Email == user
+                         select a).SingleOrDefault();
+
+            myModel.cartItems = cartModel;
+            myModel.account = accountmodel;
+
+            return View(myModel);
+        }
+        
+        public IActionResult ConfirmationStep()
+        {
+            var user = HttpContext.User.Identity.Name;
+            var cart = CartService.GetCart(this.HttpContext);
+            var cartId = cart.ShoppingCartId;
+
+            dynamic myModel = new ExpandoObject();
+            
+            var cartItems = _cartService.GetCartItems(cartId);
+            
+            foreach (var item in cartItems)
+            {
+                var cartItem = new Purchased()
+                {
+                    CartId = item.CartId,
+                    BookId = item.BookId,
+                    Quantity = item.Quantity,
+                    DateCreated = item.DateCreated,
+                    Book = item.Book
+                };
+                _db.Purchased.Add(cartItem);
+            }
+
+            foreach (var item in cartItems)
+            {
+
+                RemoveFromCart(item.BookId);
+            }
+
+            _db.SaveChanges();
+
+            return View("Final");
+        }
+         */
     }
 }

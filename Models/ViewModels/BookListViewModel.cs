@@ -14,12 +14,13 @@ namespace The_Book_Cave.Models.ViewModels
     public int Price { get; set; }
   
     public double Rating { get; set; }
+    public int RatingCount { get; set; }
     public string Summary { get; set; }
     public string Review { get; set; }
     public int Pages { get; set; }
-    public string Type { get; set; }
-    
+    public string Type { get; set; }    
     public string Language { get; set; }
+    public int Quantity { get; set; }
     public string Image { get; set;}
 
     public int AuthorId {get; set;}
