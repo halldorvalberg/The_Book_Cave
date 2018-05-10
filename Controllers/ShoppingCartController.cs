@@ -109,7 +109,7 @@ namespace The_Book_Cave.Controllers
                          select a).SingleOrDefault();
             return View(account);
         }
-        
+       /* 
         [HttpPost]
         public IActionResult Checkout(UserInputModel updatedAccount)
         {
@@ -201,7 +201,7 @@ namespace The_Book_Cave.Controllers
                 };
                 _db.Purchased.Add(cartItem);
             }
-            */
+            
             foreach (var item in cartItems)
             {
                     var thebook = (from b in _db.Books
@@ -223,3 +223,6 @@ namespace The_Book_Cave.Controllers
         }
 
     }
+*/
+    }
+}
