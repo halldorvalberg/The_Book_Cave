@@ -47,7 +47,7 @@ namespace The_Book_Cave.Controllers
          public IActionResult AddNewReview(int id, string review)
         {   
 
-        var newReview = new Reviews()
+            var newReview = new Reviews()
                       {   
                           BookId = id,
                           Review = review,
@@ -57,7 +57,7 @@ namespace The_Book_Cave.Controllers
             _db.SaveChanges();
 
            return  RedirectToAction("Details", new { id = id });
-            }
+        }
 
         public IActionResult AddRating(int id, double rating)
         {
