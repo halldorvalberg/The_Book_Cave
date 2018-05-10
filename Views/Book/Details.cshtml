@@ -75,7 +75,6 @@
                     </select>
                      <input type="submit" value="Staðfesta">
             </form>
-
             <form asp-controller="Book" asp-action="AddNewReview" method="Post">
            <input name="Id" type="hidden" value="@Model.Id">
                 <label for="umsögn">Gefa bók umsögn</label>
@@ -88,7 +87,7 @@
 </div>
 </br>
 <div class="white-tab">
-    <h1>Reviews<h1>
+    <h1>Umsagnir<h1>
     @foreach(var review in ViewBag.BookReviews)
     {
     <p>@review.Review</p>

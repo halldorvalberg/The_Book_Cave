@@ -59,15 +59,16 @@ namespace The_Book_Cave.Controllers
            return  RedirectToAction("Details", new { id = id });
             }
 
-        public void AddRating(int id, double rating)
+        public IActionResult AddRating(int id, double rating)
         {
              var bookById = _bookService.GetBookById(id);
              var bookRating = bookById.Rating; 
              var TotalRating = (bookRating + rating);
 
-           //  _db.Books.Add(TotalRating);
+             _db.Books.Add(TotalRating);
+             _db.SaveChanges();
 
-             RedirectToAction("Details", "Book");
+             return  RedirectToAction("Details", new { id = id });
         }
 
         public IActionResult BooksByOrder()
