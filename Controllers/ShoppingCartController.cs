@@ -8,6 +8,7 @@ using System.Linq;
 using The_Book_Cave.Models.InputModels;
 using System;
 using System.Security.Claims;
+using The_Book_Cave.Data.EntityModels;
 
 namespace The_Book_Cave.Controllers
 {
@@ -41,7 +42,7 @@ namespace The_Book_Cave.Controllers
                 CartTotal = _cartService.GetTotal(cartId)
             };
 
-            var accountModel = _userService.GetAllUsers();
+            var userModel = _userService.GetAllUsers();
 
             var books = (from b in _db.Books
                         join c in _db.Carts on b.Id equals c.BookId
@@ -107,56 +108,39 @@ namespace The_Book_Cave.Controllers
         }
         
         [HttpGet]
+        [HttpGet]
         public IActionResult Checkout(string email)
         {
-            var accounts = _userService.GetAllUsers();
-            var account = (from a in accounts
+            var users = _userService.GetAllUsers();
+
+            var user = (from a in users
                          where a.Email == email
                          select a).SingleOrDefault();
-            return View(account);
+            return View(user);
         }
         
         [HttpPost]
-        public IActionResult Checkout(UserInputModel updatedAccount)
+        public IActionResult Checkout(UserInputModel userinfo)
         {
             if(!ModelState.IsValid)
             {
-                Console.Write("ModelState Is not Valid");
                 return View();
             }
-            Console.Write("ModelState Is Valid");
+            
+            var user = new User()
+                {
+                    Name = userinfo.Name,
+                    Email = userinfo.Email,
+                    StreetName = userinfo.StreetName,
+                    HouseNumber = userinfo.HouseNumber,
+                    City = userinfo.City,
+                    Country = userinfo.Country,
+                    ZipCode = userinfo.ZipCode,
 
-            _userService.ProcessUser(updatedAccount);
-            /*
-            using (var db = new DataContext())
-            {
-                var user = (from a in db.Users
-                            where a.Email == updatedAccount.Email
-                            select a).FirstOrDefault();
-
-                user.FirstName = updatedAccount.FirstName;
-                user.LastName = updatedAccount.LastName;
-                user.Email = updatedAccount.Email;
-                user.BillingAddressStreet = updatedAccount.BillingAddressStreet;
-                user.BillingAddressHouseNumber = updatedAccount.BillingAddressHouseNumber;
-                user.BillingAddressLine2 = updatedAccount.BillingAddressLine2;
-                user.BillingAddressCity = updatedAccount.BillingAddressCity;
-                user.BillingAddressCountry = updatedAccount.BillingAddressCountry;
-                user.BillingAddressZipCode = updatedAccount.BillingAddressZipCode;
-                user.DeliveryAddressStreet = updatedAccount.DeliveryAddressStreet;
-                user.DeliveryAddressHouseNumber = updatedAccount.DeliveryAddressHouseNumber;
-                user.DeliveryAddressLine2 = updatedAccount.DeliveryAddressLine2;
-                user.DeliveryAddressCity = updatedAccount.DeliveryAddressCity;
-                user.DeliveryAddressCountry = updatedAccount.DeliveryAddressCountry;
-                user.DeliveryAddressZipCode = updatedAccount.DeliveryAddressZipCode;
-               
-
-                db.SaveChanges();
-
-            }
-            */
+                };
+                _db.Users.Add(user);
+            
             return RedirectToAction("ReviewStep");
-
         }
         
         [HttpGet]
