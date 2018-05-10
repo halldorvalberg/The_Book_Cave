@@ -117,7 +117,7 @@ li a {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1);
-    height: 300px;
+    height: 400px;
     width: 100%;
 }
 .white-tab > h1 {
@@ -128,6 +128,7 @@ li a {
 }
 .book-showbox-wrapper{
     overflow: auto;
+    height: 360px;
     display: grid;
     grid-template-columns: repeat(20, 160px);
     grid-auto-flow: column;
