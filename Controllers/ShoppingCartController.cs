@@ -81,7 +81,7 @@ namespace The_Book_Cave.Controllers
 
             _cartService.AddToCart(bookAdded, this.HttpContext);
 
-            return RedirectToAction("Index", "Home");
+            return Redirect("/ShoppingCart");
         }
 
         public IActionResult RemoveFromCart(int bookId)
@@ -221,6 +221,15 @@ namespace The_Book_Cave.Controllers
 
             return View("Confirmation");
         }
+
+        // [HttpGet]
+        // public int GetCartCount()
+        // {
+        //     var cart = CartService.GetCart(this.HttpContext);
+        //     var cartId = cart.ShoppingCartId;
+        //     return _cartService.GetCartItems(cartId).Count;
+            
+        // }
 
     }
 */
