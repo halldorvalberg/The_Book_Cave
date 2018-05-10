@@ -6,6 +6,8 @@ using The_Book_Cave.Services;
 using The_Book_Cave.Models.ViewModels;
 using System.Linq;
 using The_Book_Cave.Models.InputModels;
+using System;
+using System.Security.Claims;
 
 namespace The_Book_Cave.Controllers
 {
@@ -63,7 +65,12 @@ namespace The_Book_Cave.Controllers
                             AuthorId = b.AuthorId,
                             Quantity = c.Quantity,
                         }).ToList();
-            
+
+            Console.Write(this.HttpContext);
+            var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault( c => c.Type == "EMail")?.Value;
+            Console.Write(claim);
+
+
             return View(books);
         }
 
@@ -103,7 +110,6 @@ namespace The_Book_Cave.Controllers
         public IActionResult Checkout(string email)
         {
             var accounts = _userService.GetAllUsers();
-
             var account = (from a in accounts
                          where a.Email == email
                          select a).SingleOrDefault();
@@ -115,11 +121,13 @@ namespace The_Book_Cave.Controllers
         {
             if(!ModelState.IsValid)
             {
+                Console.Write("ModelState Is not Valid");
                 return View();
             }
+            Console.Write("ModelState Is Valid");
 
             _userService.ProcessUser(updatedAccount);
-            
+            /*
             using (var db = new DataContext())
             {
                 var user = (from a in db.Users
@@ -146,6 +154,7 @@ namespace The_Book_Cave.Controllers
                 db.SaveChanges();
 
             }
+            */
             return RedirectToAction("ReviewStep");
 
         }
@@ -223,3 +232,4 @@ namespace The_Book_Cave.Controllers
         }
 
     }
+}
