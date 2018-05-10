@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace The_Book_Cave.Data.EntityModels
 {
+    /* 
     public class ShoppingCart
     {
         private readonly DataContext _datacontext;
@@ -108,5 +109,6 @@ namespace The_Book_Cave.Data.EntityModels
                 .Select(c => c.Book.Price * c.Amount).Sum();
             return total;
         }
+        */
     }
 }
