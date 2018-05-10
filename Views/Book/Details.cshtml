@@ -29,9 +29,14 @@
         <div class="detail-ship">
             <p>FRÍ HEIMSENDING UM ALLAN HEIM!</p>
         </div>
-        <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@Model.Id" class="detail-buy">
-            <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-        </form>
+        <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@Model.Id)"  id="div-onclick">
+                        @Html.ActionLink("Bæta í körfu", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @Model.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
+                </div>
     </div>
     <div class="detail-more" id="detail-prodinfo">
         <div class="detail-prodinfo">
@@ -112,9 +117,12 @@
                     </a>
                 </div>
                 <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Bæta í körfu", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
                 </div>
             </div>
         }
