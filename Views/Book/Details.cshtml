@@ -30,13 +30,20 @@
             <p>FRÍ HEIMSENDING UM ALLAN HEIM!</p>
         </div>
         <div class="book-showbox-aciton">
-                    <div onclick="itemadded(@Model.Id)"  id="div-onclick">
-                        @Html.ActionLink("Bæta í körfu", "AddToCart",
-                        "ShoppingCart", 
-                        new { bookId = @Model.Id }, 
-                        new { @class = "addToCart btn btn-danger addcart"})
-                </div>
-                </div>
+            <div onclick="itemadded(@Model.Id)"  id="div-onclick">
+                @Html.ActionLink("Bæta í körfu", "AddToCart",
+                "ShoppingCart", 
+                new { bookId = @Model.Id }, 
+                new { @class = "addToCart btn btn-danger addcart"})
+            </div>
+        </div>
+        <div>
+            <a asp-controllor asp-action="WishList">
+                <form>
+                    <input type="button" class="btn btn-primary" value="Setja á óskalista"/>
+                </form>
+            </a>
+        </div>
     </div>
     <div class="detail-more" id="detail-prodinfo">
         <div class="detail-prodinfo">

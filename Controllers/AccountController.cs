@@ -101,7 +101,7 @@ namespace The_Book_Cave.Controllers
               await _userManager.UpdateAsync(user);
               
     
-            return View(model);
+            return RedirectToAction("MyProfile", "Account");
         }
 
         public IActionResult Login()
