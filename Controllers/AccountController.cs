@@ -60,14 +60,14 @@ namespace The_Book_Cave.Controllers
         public async Task <IActionResult> MyProfile()
         {   
           var user = await _userManager.GetUserAsync(User);
-
           return View(new ProfileViewModel {
               FirstName = user.FirstName,
               LastName = user.LastName,
               Image = user.Image,
               FavoriteBook = user.FavoriteBook,
               Address = user.Address
-          });
+          }); 
+           
         }
 
         [Authorize]
@@ -76,6 +76,7 @@ namespace The_Book_Cave.Controllers
         {   
            var user = await _userManager.GetUserAsync(User);
 
+          await _userManager.AddClaimAsync(user, new Claim("Name", $"{user.FirstName} {user.LastName}"));
           return View(new ProfileViewModel {
               FirstName = user.FirstName,
               LastName = user.LastName,
