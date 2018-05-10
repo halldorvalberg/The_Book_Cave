@@ -84,19 +84,28 @@ namespace The_Book_Cave.Controllers
             return Redirect("/ShoppingCart");
         }
 
-        public IActionResult RemoveFromCart(int bookId)
+       [HttpPost]
+        public IActionResult RemoveFromCart(int id)
         {
-            var books = _bookService.GetAllBooks();
-
-            var bookAdded = (from book in books
-                            where book.Id == bookId
-                            select book).SingleOrDefault();
-
             var cart = CartService.GetCart(this.HttpContext);
+            string cartId = cart.ShoppingCartId;
+         string bookName = _db.Carts
+                .Single(item => item.BookId == id).Book.Title;    
+                
+                 int itemCount = _cartService.RemoveFromCart(cartId);
 
-            _cartService.RemoveFromCart(bookAdded, this.HttpContext);
+            // var results = new ShoppingCartViewModel
+            // {
+            //     Message = " has been removed from your shopping cart.",
+            //     // CartTotal = cart.GetTotal(),
+            //     // CartCount = cart.GetCount(),
+            //     ItemCount = itemCount,
+            //     DeleteId = id
+            // };
 
-            return RedirectToAction("Index");
+          
+
+            return Ok();
         }
         
         [HttpGet]
