@@ -14,14 +14,12 @@ namespace The_Book_Cave.Controllers
         {
             _bookService = new BookService();
         }
-
         public IActionResult Index(int? id)
         {
             var shoppingItem = _bookService.AddToCart(id);
 
             return View(shoppingItem);
         }
-
         public IActionResult CheckOut()
         {
             return View();

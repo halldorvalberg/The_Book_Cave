@@ -13,12 +13,6 @@ namespace The_Book_Cave.Services
            _authorRepo = new AuthorRepo();
        }
 
-      public List<AuthorViewModel> GetAllAuthors()
-       {
-           var authors = _authorRepo.GetAllAuthors();
-           return authors;
-       }
-
        public AuthorViewModel GetAuthorById(int? id) 
        {
            var author = _authorRepo.GetAuthorById(id);

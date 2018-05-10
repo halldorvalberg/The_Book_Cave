@@ -12,6 +12,8 @@ namespace The_Book_Cave.Data
 
        public DbSet<Category> Categories {get; set;}
 
+       public DbSet<Reviews> Reviews {get; set;}
+
        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
        {
            optionsBuilder

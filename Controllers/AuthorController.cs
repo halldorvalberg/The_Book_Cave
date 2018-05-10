@@ -17,12 +17,6 @@ namespace The_Book_Cave.Controllers
         {
             _authorService = new AuthorService();
         }
-        public IActionResult Index()
-        {
-            var authors = _authorService.GetAllAuthors();
-
-            return View(authors);
-        }
 
         public IActionResult Details(int? id)
         {

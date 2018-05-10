@@ -47,6 +47,20 @@ namespace The_Book_Cave.Services
       
       return shoppingItem; 
     }
+
+    public List<ReviewViewModel> GetBookReviews(int? id) 
+    {
+        var bookReviews = _bookRepo.GetBookReviews(id);
+        return bookReviews;
+    }
+
+/* 
+    public void AddNewReview(int id, string review)
+    {
+        var newReview = _bookRepo.AddNewReview(id, review);
+  
+    }
+    */
   }
 }
 
