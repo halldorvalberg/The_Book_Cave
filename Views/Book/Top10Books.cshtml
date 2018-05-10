@@ -16,11 +16,14 @@
                 </h3>
                 <p>@book.Price kr.</p>
             </div>
-            <div class="book-item-action">
-                <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                    <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                </form>
-            </div>
+            <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Bæta í körfu", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
+                </div>
         </div>
     }
 </div>
