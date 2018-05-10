@@ -13,16 +13,8 @@
    </div>
 </div>
 
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
-
-
 <div class="white-tab">
-    <h1>Barna- og Unglingabækur</h1>
+    <h1>Barna- og Unglingabækur (spurning: hægt að klikka á flokka?)</h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.a) 
         {
@@ -36,11 +28,12 @@
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                         <h1>@book.Title</h1>
                     </a>
+                    <p>@book.Price kr.</p>
                 </div>
                 <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                    <a class="btn btn-success" id="cartButton" asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-bookid="@book.Id">
+                        Add to cart
+                    </a>
                 </div>
             </div>
         }
@@ -60,7 +53,9 @@
                 <div class="book-showbox-info">
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                         <h1>@book.Title</h1>
-                    </a>                </div>
+                    </a>
+                    <p>@book.Price kr.</p>
+                </div>
                 <div class="book-showbox-aciton">
                     <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
                         <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
@@ -84,7 +79,9 @@
                 <div class="book-showbox-info">
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                         <h1>@book.Title</h1>
-                    </a>                </div>
+                    </a>
+                    <p>@book.Price kr.</p>
+                </div>
                 <div class="book-showbox-aciton">
                     <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
                         <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
@@ -108,7 +105,9 @@
                 <div class="book-showbox-info">
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                         <h1>@book.Title</h1>
-                    </a>                </div>
+                    </a>
+                    <p>@book.Price kr.</p>
+                </div>
                 <div class="book-showbox-aciton">
                     <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
                         <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
@@ -132,7 +131,9 @@
                 <div class="book-showbox-info">
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                         <h1>@book.Title</h1>
-                    </a>                </div>
+                    </a>
+                    <p>@book.Price kr.</p>
+                </div>
                 <div class="book-showbox-aciton">
                     <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
                         <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
@@ -156,7 +157,9 @@
                 <div class="book-showbox-info">
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                         <h1>@book.Title</h1>
-                    </a>                </div>
+                    </a>
+                    <p>@book.Price kr.</p>    
+                </div>
                 <div class="book-showbox-aciton">
                     <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
                         <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />

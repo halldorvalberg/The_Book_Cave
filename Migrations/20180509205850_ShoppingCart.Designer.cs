@@ -11,9 +11,10 @@ using The_Book_Cave.Data;
 namespace The_Book_Cave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180509205850_ShoppingCart")]
+    partial class ShoppingCart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -194,27 +195,7 @@ namespace The_Book_Cave.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-<<<<<<< HEAD
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Reviews", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("BookId");
-
-                    b.Property<string>("Review");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Reviews");
-                });
-
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.CartItem", b =>
-=======
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.ShoppingCartItem", b =>
->>>>>>> 638c23270f4e8a1e56402684c2cbbc4ecf62130b
                 {
                     b.HasOne("The_Book_Cave.Data.EntityModels.Book", "Book")
                         .WithMany()

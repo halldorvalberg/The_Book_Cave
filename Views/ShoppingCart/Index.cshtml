@@ -1,7 +1,7 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
 
-<a asp-controller="Home" asp-action="Index"><< Fara tilbaka</a>
+<a asp-controller="Home" asp-action="Index"><< Fara til baka</a>
 <h3>Karfan þín</h3>
 
 <h5 class="Total">Verð samtals:<span><button type="button">Kaupa</button></span> </h5>
@@ -20,9 +20,6 @@
                     <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><span style="font-weight:bold">@book.Title</span></a>
                 </h3>
                 <p>@book.Price kr.</p>
-            </div>
-            <div class="book-item-action">
-                <button type="button" class="btn btn-primary">Bæta í körfu</button>
             </div>
         </div>
     }

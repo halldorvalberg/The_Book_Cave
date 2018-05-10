@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using The_Book_Cave.Data.EntityModels;
 using The_Book_Cave.Models.ViewModels;
 using The_Book_Cave.Repositories;
 
@@ -21,6 +22,10 @@ namespace The_Book_Cave.Services
     {
       var bookById = _bookRepo.GetBookById(id);
       return bookById;
+    }
+    public Book GetBookBookById(int? id)
+    {
+      return _bookRepo.GetBookBookById(id);
     }
 
     public List<BookListViewModel> GetBooksByOrder()

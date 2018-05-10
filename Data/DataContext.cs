@@ -5,6 +5,7 @@ namespace The_Book_Cave.Data
 {
    public class DataContext : DbContext
    {
+<<<<<<< HEAD
        public DbSet<Book> Books {get; set;}
        public DbSet<Author> Authors {get; set;}
         public DbSet<Cart> Carts {get; set;}
@@ -14,6 +15,14 @@ namespace The_Book_Cave.Data
 
        public DbSet<Reviews> Reviews {get; set;}
 
+=======
+        public DbSet<Book> Books {get; set;}
+        public DbSet<Author> Authors {get; set;}
+        public DbSet<ShoppingCartItem> ShoppingCartItems {get; set;}
+        public DbSet<Category> Categories {get; set;}
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+>>>>>>> 638c23270f4e8a1e56402684c2cbbc4ecf62130b
        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
        {
            optionsBuilder
