@@ -13,7 +13,6 @@ namespace The_Book_Cave.Controllers
     {
         private UserService _userService;
         private CartService _cartService;
-
         private BookService _bookService;
         private DataContext _db = new DataContext();
 
@@ -63,12 +62,8 @@ namespace The_Book_Cave.Controllers
                             AuthorId = b.AuthorId,
                             Quantity = c.Quantity,
                         }).ToList();
-
-            myModel.cartItems = cartModel;
-            myModel.bookItems = books;
-            myModel.account = accountModel;
             
-            return View(myModel);
+            return View(books);
         }
 
         [Authorize]
@@ -192,7 +187,6 @@ namespace The_Book_Cave.Controllers
 =======
 >>>>>>> 638c23270f4e8a1e56402684c2cbbc4ecf62130b
         public IActionResult CheckOut()
->>>>>>> 2022b151c7ad5ddf9a920f255c6f3af2413fa58e
         {
             var user = HttpContext.User.Identity.Name;
             var cart = CartService.GetCart(this.HttpContext);
