@@ -36,11 +36,11 @@ namespace The_Book_Cave.Services
             var booksComingSoon = _categoryRepo.GetBooksComingSoon();
             return booksComingSoon;
         }
-
+        //oddný breytti hér
         public CategoryViewModel GetCategoryById(int? id)
         {
             var categoryName = _categoryRepo.GetCategoryById(id);
-            return categoryName;
+            return categoryName; 
         }
     }
 }

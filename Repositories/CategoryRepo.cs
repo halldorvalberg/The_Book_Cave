@@ -93,16 +93,14 @@ namespace The_Book_Cave.Repositories
 
         public CategoryViewModel GetCategoryById(int? id)
         {
-            var categoryName = (from b in _db.Categories 
-                                where b.Id == id
-                                select new CategoryViewModel
-                                {
-                                    Id = b.Id,
-                                    Name = b.Name,
-                            
-                                }).SingleOrDefault();
-
-            return categoryName;
+            var category = (from c in _db.Categories
+                            where c.Id == id
+                            select new CategoryViewModel
+                            {
+                                Id = c.Id,
+                                Name = c.Name
+                            }).SingleOrDefault();
+            return category; 
         }
     }
 }

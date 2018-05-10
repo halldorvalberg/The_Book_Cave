@@ -60,18 +60,23 @@ namespace The_Book_Cave.Controllers
         }
 
         public IActionResult AddRating(int id, double rating)
-        {
+        {   
+            
              var bookById = _bookService.GetBookBookById(id);
+             bookById.RatingCount++;
              var bookRating = bookById.Rating; 
              var RatingCount = bookById.RatingCount;
-             var TotalRating = (bookRating + rating);
+             var TotalRating = (bookRating + rating)/RatingCount;
+            
+            bookRating = TotalRating;
 
-             bookById.Rating = TotalRating;
-             bookById.RatingCount++;
              _db.SaveChanges();
 
              return  RedirectToAction("Details", new { id = id });
         }
+    
+        
+    
 
         public IActionResult BooksByOrder()
         {
