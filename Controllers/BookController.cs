@@ -40,6 +40,23 @@ namespace The_Book_Cave.Controllers
 
             ViewBag.BookReviews = _bookService.GetBookReviews(id);
 
+            var bookRatings = _bookService.GetBookRatings(id);
+
+            double totalRating = 0; 
+            int ratingCount = bookRatings.Count;
+
+            if (ratingCount > 0)
+            {
+                for(int i = 0; i < ratingCount; i++)
+                {
+                     totalRating = totalRating + bookRatings[i].Rating;
+                }
+                totalRating = ((double)(totalRating/ratingCount));
+            }
+
+            ViewBag.BookRatings = totalRating; 
+
+
             ViewBag.BooksByAuthor = _authorService.GetAllBooksByAuthor(bookById.AuthorId);
             return View(bookById);
         }
@@ -59,25 +76,20 @@ namespace The_Book_Cave.Controllers
            return  RedirectToAction("Details", new { id = id });
         }
 
-        public IActionResult AddRating(int id, double rating)
+        public IActionResult AddRating(int id, int rating)
         {   
-            
-             var bookById = _bookService.GetBookBookById(id);
-             bookById.RatingCount++;
-             var bookRating = bookById.Rating; 
-             var RatingCount = bookById.RatingCount;
-             var TotalRating = (bookRating + rating)/RatingCount;
-            
-            bookRating = TotalRating;
+            var newRating = new Ratings()
+                      {   
+                          BookId = id,
+                          Rating = rating,
+                      };
 
-             _db.SaveChanges();
-
-             return  RedirectToAction("Details", new { id = id });
-        }
-    
+            _db.Ratings.Add(newRating);
+            _db.SaveChanges();
         
-    
+             return  RedirectToAction("Details", new { id = id });
 
+        }
         public IActionResult BooksByOrder()
         {
             var booksByOrder = _bookService.GetBooksByOrder();
