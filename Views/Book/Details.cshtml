@@ -69,7 +69,8 @@
             </ul>
 @if (SignInManager.IsSignedIn(User))
 {
-            <form asp-controller="Book" asp-action="AddRating" asp-roude-id="@Model.Id">
+            <form asp-controller="Book" asp-action="AddRating" method="Post">
+                <input name="Id" type="hidden" value="@Model.Id">
                 <label for="einkunn">Gefa bók einkunn 1-5</label>
                     <select id="einkunn" name="einkunn">
                         <option value="1">1</option>
