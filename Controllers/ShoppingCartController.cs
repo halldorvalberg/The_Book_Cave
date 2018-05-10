@@ -66,12 +66,7 @@ namespace The_Book_Cave.Controllers
                             AuthorId = b.AuthorId,
                             Quantity = c.Quantity,
                         }).ToList();
-
-            Console.Write(this.HttpContext);
-            var claim = ((ClaimsIdentity) User.Identity).Claims.FirstOrDefault( c => c.Type == "EMail")?.Value;
-            Console.Write(claim);
-
-
+            
             return View(books);
         }
 
@@ -89,7 +84,7 @@ namespace The_Book_Cave.Controllers
 
             _cartService.AddToCart(bookAdded, this.HttpContext);
 
-            return RedirectToAction("Index", "Home");
+            return Redirect("/ShoppingCart");
         }
 
         public IActionResult RemoveFromCart(int bookId)
@@ -118,7 +113,7 @@ namespace The_Book_Cave.Controllers
                          select a).SingleOrDefault();
             return View(user);
         }
-        
+       /* 
         [HttpPost]
         public IActionResult Checkout(UserInputModel userinfo)
         {
@@ -194,7 +189,7 @@ namespace The_Book_Cave.Controllers
                 };
                 _db.Purchased.Add(cartItem);
             }
-            */
+            
             foreach (var item in cartItems)
             {
                     var thebook = (from b in _db.Books
@@ -215,5 +210,16 @@ namespace The_Book_Cave.Controllers
             return View("Confirmation");
         }
 
+        // [HttpGet]
+        // public int GetCartCount()
+        // {
+        //     var cart = CartService.GetCart(this.HttpContext);
+        //     var cartId = cart.ShoppingCartId;
+        //     return _cartService.GetCartItems(cartId).Count;
+            
+        // }
+
+    }
+*/
     }
 }

@@ -90,5 +90,17 @@ namespace The_Book_Cave.Repositories
                                    
             return booksComingSoon; 
         }
+
+        public CategoryViewModel GetCategoryById(int? id)
+        {
+            var category = (from c in _db.Categories
+                            where c.Id == id
+                            select new CategoryViewModel
+                            {
+                                Id = c.Id,
+                                Name = c.Name
+                            }).SingleOrDefault();
+            return category; 
+        }
     }
 }
