@@ -11,13 +11,14 @@ using The_Book_Cave.Data;
 namespace The_Book_Cave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180509221829_Reviews")]
+    partial class Reviews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
+                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Author", b =>
@@ -84,22 +85,38 @@ namespace The_Book_Cave.Migrations
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Cart", b =>
                 {
-                    b.Property<int>("RecordId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<int>("BookId");
-
-                    b.Property<string>("CartId");
-
-                    b.Property<DateTime>("DateCreated");
 
                     b.Property<int>("Quantity");
 
-                    b.HasKey("RecordId");
+                    b.Property<int>("TotalPrice");
 
-                    b.HasIndex("BookId");
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookID");
+
+                    b.Property<int?>("CartId");
+
+                    b.Property<int>("Price");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Category", b =>
@@ -114,47 +131,6 @@ namespace The_Book_Cave.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.User", b =>
-                {
-                    b.Property<string>("Email")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BillingAddressCity");
-
-                    b.Property<string>("BillingAddressCountry");
-
-                    b.Property<string>("BillingAddressHouseNumber");
-
-                    b.Property<string>("BillingAddressLine2");
-
-                    b.Property<string>("BillingAddressStreet");
-
-                    b.Property<string>("BillingAddressZipCode");
-
-                    b.Property<string>("DeliveryAddressCity");
-
-                    b.Property<string>("DeliveryAddressCountry");
-
-                    b.Property<string>("DeliveryAddressHouseNumber");
-
-                    b.Property<string>("DeliveryAddressLine2");
-
-                    b.Property<string>("DeliveryAddressStreet");
-
-                    b.Property<string>("DeliveryAddressZipCode");
-
-                    b.Property<string>("FavoriteBook");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("ProfilePicture");
-
-                    b.HasKey("Email");
-
-                    b.ToTable("Users");
-                });
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Reviews", b =>
                 {
                     b.Property<int>("Id")
@@ -164,7 +140,7 @@ namespace The_Book_Cave.Migrations
 
                     b.Property<string>("Review");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -173,10 +149,9 @@ namespace The_Book_Cave.Migrations
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.CartItem", b =>
                 {
-                    b.HasOne("The_Book_Cave.Data.EntityModels.Book", "Book")
-                        .WithMany()
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("The_Book_Cave.Data.EntityModels.Cart")
+                        .WithMany("CartItem")
+                        .HasForeignKey("CartId");
                 });
 #pragma warning restore 612, 618
         }

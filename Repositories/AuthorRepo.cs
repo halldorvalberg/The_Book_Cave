@@ -14,22 +14,6 @@ namespace The_Book_Cave.Repositories
             _db = new DataContext();
         }
 
-       public List<AuthorViewModel> GetAllAuthors()
-        {
-            var authors =(from a in _db.Authors
-                            join b in _db.Books on a.BookId equals b.Id
-                            select new AuthorViewModel 
-                            {
-                            Id = a.Id,
-                            Name = a.Name,
-                            Summary = a.Summary,
-                            Image = a.Image,
-                            BookId = b.Id
-                            }).ToList();
-
-            return authors;
-        }
-
         public AuthorViewModel GetAuthorById(int? id)
         {
             var author =(from a in _db.Authors
@@ -78,7 +62,7 @@ namespace The_Book_Cave.Repositories
         {
             var authorByName =(from a in _db.Authors
                                 join b in _db.Books on a.BookId equals b.Id
-                                where a.Name == search
+                                where a.Name.ToLower().Contains(search.ToLower() )
                                 select new AuthorViewModel 
                                 {
                                 Id = a.Id,

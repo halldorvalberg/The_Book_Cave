@@ -1,7 +1,6 @@
 @using Microsoft.AspNetCore.Identity 
 @using System.Security.Claims 
 @model The_Book_Cave.Models.ViewModels.BookListViewModel
-
 @inject SignInManager<ApplicationUser> SignInManager
 
 <div class="detail-body">
@@ -65,7 +64,7 @@
             </ul>
 @if (SignInManager.IsSignedIn(User))
 {
-            <form action="">
+            <form asp-controller="Book" asp-action="AddRating" asp-roude-id="@Model.Id">
                 <label for="einkunn">Gefa bók einkunn 1-5</label>
                     <select id="einkunn" name="einkunn">
                         <option value="1">1</option>
@@ -76,15 +75,26 @@
                     </select>
                      <input type="submit" value="Staðfesta">
             </form>
-            <form asp-action="Book" asp-action="Review" method="Post">
+            <form asp-controller="Book" asp-action="AddNewReview" method="Post">
+           <input name="Id" type="hidden" value="@Model.Id">
                 <label for="umsögn">Gefa bók umsögn</label>
-                <textarea asp-for="Review" id="umsögn" name="umsögn" value="@Model.Review">Your text here...</textarea>
+                <textarea asp-for="Review" id="umsögn" value="@Model.Review">Your text here...</textarea>
                 <input type="submit" value="Staðfesta">
             </form>
 }
         </div>
     </div>
 </div>
+</br>
+<div class="white-tab">
+    <h1>Umsagnir<h1>
+    @foreach(var review in ViewBag.BookReviews)
+    {
+    <p>@review.Review</p>
+    }
+</div>
+
+
 <div class="white-tab">
     <h1>Bækur eftir sama höfund</h1>
     <div class="book-showbox-wrapper">

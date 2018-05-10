@@ -25,7 +25,7 @@ namespace The_Book_Cave.Controllers
             
         }
 
-        public IActionResult Index()
+     public IActionResult Index(int? id)
         {
             var cart = CartService.GetCart(this.HttpContext);
 
@@ -153,6 +153,7 @@ namespace The_Book_Cave.Controllers
             return RedirectToAction("ReviewStep");
 
         }
+<<<<<<< HEAD
         
         [HttpGet]
         public IActionResult ReviewStep()
@@ -184,6 +185,14 @@ namespace The_Book_Cave.Controllers
         }
         
         public IActionResult ConfirmationStep()
+=======
+<<<<<<< HEAD
+=======
+
+=======
+>>>>>>> 638c23270f4e8a1e56402684c2cbbc4ecf62130b
+        public IActionResult CheckOut()
+>>>>>>> 2022b151c7ad5ddf9a920f255c6f3af2413fa58e
         {
             var user = HttpContext.User.Identity.Name;
             var cart = CartService.GetCart(this.HttpContext);

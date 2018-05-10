@@ -1,0 +1,14 @@
+@using Microsoft.AspNetCore.Identity 
+@using System.Security.Claims 
+@model List <The_Book_Cave.Models.ViewModels.BookListViewModel>
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+<h1>Óskalistinn minn</h1>
+
+}
+else {
+    <h1>Þú þarft að vera skráður/ skráð inn til að sjá óskalistann þinn</h1>
+}

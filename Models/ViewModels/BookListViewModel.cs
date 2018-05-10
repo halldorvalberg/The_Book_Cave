@@ -32,6 +32,8 @@ namespace The_Book_Cave.Models.ViewModels
     public string Category {get; set;}
 
     public int InStock {get; set;}
+
+    public List<ReviewViewModel> Reviews {get; set;}
     public List<AuthorViewModel> Authors {get; set;}
    }
 

@@ -14,7 +14,12 @@ namespace The_Book_Cave.Repositories
     {
       _db = new DataContext();
     }
-    
+    public void AddBookToBookTable ()
+    {
+      var newbook = new Book{Title = "Verrguds"};
+      _db.Add(newbook);
+      _db.SaveChanges();
+    }
     public List<BookListViewModel> GetAllBooks()
     {
       var books = (from b in _db.Books
@@ -64,7 +69,14 @@ namespace The_Book_Cave.Repositories
                         AuthorId = a.Id,
                         Author = a.Name,
                         CategoryId = c.Id,
-                        Category = c.Name
+                        Category = c.Name,
+                        Reviews =(from r in _db.Reviews join b in _db.Books
+                                  on r.BookId equals b.Id
+                                  select new ReviewViewModel
+                                  {
+                                    Review = r.Review 
+                                  }).ToList()
+                                  
                       }).SingleOrDefault();
 
       return bookById;
@@ -198,8 +210,35 @@ namespace The_Book_Cave.Repositories
                         CategoryId = b.CategoryId
                       }).ToList();
 
+
+
       return shoppingItem;
     }
+
+    public List<ReviewViewModel>GetBookReviews(int? id)
+    {
+      var bookReviews =(from r in _db.Reviews
+                        where r.BookId == id
+                        select new ReviewViewModel
+                        { 
+                          Review = r.Review
+                        }).ToList();
+        return bookReviews;
+    }
+/* 
+    public void AddNewReview(int id, string review)
+    {   
+
+        var newReview = new Reviews
+                      {   
+                          BookId = id,
+                          Review = review
+                      };
+
+            _db.Reviews.Add(newReview);
+            _db.SaveChanges();
+    }
+    */
   }
 }
 
