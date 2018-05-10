@@ -36,5 +36,10 @@ namespace The_Book_Cave.Services
             var booksComingSoon = _categoryRepo.GetBooksComingSoon();
             return booksComingSoon;
         }
+        public CategoryViewModel GetCategoryById(int? id)
+        {
+            var categoryName = _categoryRepo.GetCategoryById(id);
+            return categoryName; 
+        }
     }
 }

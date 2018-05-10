@@ -14,7 +14,7 @@
 </div>
 
 <div class="white-tab">
-    <h1>Barna- og Unglingabækur (spurning: hægt að klikka á flokka?)</h1>
+    <h1><a asp-controller="Category" asp-action="Details" asp-route-id="1">Barna- og Unglingabækur</a></h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.a) 
         {
@@ -43,7 +43,7 @@
     </div>
 </div>
 <div class="white-tab">
-    <h1>Erlendar skáldsögur</h1>
+    <h1><a asp-controller="Category" asp-action="Details" asp-route-id="2">Erlendar skáldsögur</a></h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.b) 
         {
@@ -72,7 +72,7 @@
     </div>
 </div>
 <div class="white-tab">
-    <h1>Íslenskar skáldsögur</h1>
+    <h1><a asp-controller="Category" asp-action="Details" asp-route-id="3">Íslenskar skáldsögur</a></h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.c) 
         {
@@ -101,7 +101,7 @@
     </div>
 </div>
 <div class="white-tab">
-    <h1>Matreiðslubækur</h1>
+    <h1><a asp-controller="Category" asp-action="Details" asp-route-id="4">Matreiðslubækur</a></h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.d) 
         {
@@ -130,7 +130,7 @@
     </div>
 </div>
 <div class="white-tab">
-    <h1>Ævisögur</h1>
+    <h1><a asp-controller="Category" asp-action="Details" asp-route-id="5">Ævisögur</a></h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.e) 
         {
@@ -159,7 +159,7 @@
     </div>
 </div>
 <div class="white-tab">
-    <h1>Spennusögur</h1>
+    <h1><a asp-controller="Category" asp-action="Details" asp-route-id="6">Spennusögur</a></h1>
     <div class="book-showbox-wrapper">
         @foreach (var book in ViewBag.f) 
         {

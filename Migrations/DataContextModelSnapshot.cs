@@ -114,47 +114,6 @@ namespace The_Book_Cave.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.User", b =>
-                {
-                    b.Property<string>("Email")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("BillingAddressCity");
-
-                    b.Property<string>("BillingAddressCountry");
-
-                    b.Property<string>("BillingAddressHouseNumber");
-
-                    b.Property<string>("BillingAddressLine2");
-
-                    b.Property<string>("BillingAddressStreet");
-
-                    b.Property<string>("BillingAddressZipCode");
-
-                    b.Property<string>("DeliveryAddressCity");
-
-                    b.Property<string>("DeliveryAddressCountry");
-
-                    b.Property<string>("DeliveryAddressHouseNumber");
-
-                    b.Property<string>("DeliveryAddressLine2");
-
-                    b.Property<string>("DeliveryAddressStreet");
-
-                    b.Property<string>("DeliveryAddressZipCode");
-
-                    b.Property<string>("FavoriteBook");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("ProfilePicture");
-
-                    b.HasKey("Email");
-
-                    b.ToTable("Users");
-                });
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Reviews", b =>
                 {
                     b.Property<int>("Id")
@@ -171,7 +130,29 @@ namespace The_Book_Cave.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.CartItem", b =>
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.User", b =>
+                {
+                    b.Property<string>("Email")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("HouseNumber");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("StreetName");
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Cart", b =>
                 {
                     b.HasOne("The_Book_Cave.Data.EntityModels.Book", "Book")
                         .WithMany()
