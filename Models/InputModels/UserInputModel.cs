@@ -7,10 +7,9 @@ namespace The_Book_Cave.Models.InputModels
 
         [Required(ErrorMessage="Field required")]
         public string FirstName { get; set; }
-        
+        /*
         [Required(ErrorMessage="Field required")]
         public string LastName { get; set; }
-
         [Required(ErrorMessage="Field required")]
         public string Email { get; set; }
 
@@ -45,6 +44,6 @@ namespace The_Book_Cave.Models.InputModels
 
         [Required(ErrorMessage="Field required")]
         public string DeliveryAddressZipCode { get; set; }
-
+         */
     }
 }
