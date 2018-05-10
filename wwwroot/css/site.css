@@ -52,19 +52,17 @@
     height: 20px;
 }
 
+/* Footer begin */
+
 .Bottom-footer {
-    bottom: 0;
     width: 100%;
 }
 
-
-/* Footer begin */
-
 .footer-style {
-    position: relative;
     text-align: center;
     padding: 50px;
     margin-left: 145px;
+    bottom: 0;
 }
 
 /* Nota þetta til að fá inline og til að taka bulletið úr ol */
@@ -131,12 +129,12 @@ li a {
 .book-showbox-wrapper{
     overflow: auto;
     display: grid;
-    grid-template-columns: repeat(20, 140px);
+    grid-template-columns: repeat(20, 160px);
     grid-auto-flow: column;
     grid-gap: 0.5em;
 }
 .book-showbox {
-    height: 240px;
+    height: 280px;
     text-align: center;
     display: flex;
     flex-direction: column;
