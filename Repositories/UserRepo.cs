@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 using The_Book_Cave.Data;
+using The_Book_Cave.Data.EntityModels;
 using The_Book_Cave.Models.ViewModels;
 
 namespace The_Book_Cave.Repositories
@@ -19,28 +20,19 @@ namespace The_Book_Cave.Repositories
         public List<UserListViewModel> GetAllUsers()
         {
             
-            var accounts = (from a in _db.Users
+            var user = (from a in _db.Users
                             select new UserListViewModel
-                           {
-                                FirstName = a.FirstName,
-                                LastName = a.LastName,
+                            {
+                                Name = a.Name,
                                 Email = a.Email,
-                                ProfilePicture = a.ProfilePicture,
-                                FavoriteBook = a.FavoriteBook,
-                                BillingAddressStreet = a.BillingAddressStreet,
-                                BillingAddressHouseNumber = a.BillingAddressHouseNumber,
-                                BillingAddressLine2 = a.BillingAddressLine2, 
-                                BillingAddressCity = a.BillingAddressCity,
-                                BillingAddressCountry = a.BillingAddressCountry,
-                                BillingAddressZipCode = a.BillingAddressZipCode,
-                                DeliveryAddressStreet  = a.DeliveryAddressStreet,
-                                DeliveryAddressHouseNumber = a.DeliveryAddressHouseNumber,
-                                DeliveryAddressLine2 = a.DeliveryAddressLine2,
-                                DeliveryAddressCity = a.DeliveryAddressCity,
-                                DeliveryAddressCountry = a.DeliveryAddressCountry,
-                                DeliveryAddressZipCode = a.DeliveryAddressZipCode,
-                           }).ToList();
-            return accounts;
+                                StreetName = a.StreetName,
+                                HouseNumber = a.HouseNumber,
+                                City = a.City,
+                                Country = a.Country,
+                                ZipCode = a.ZipCode,
+                                
+                            }).ToList();
+            return user;
         }
 
         public static string GetUser(HttpContext context)

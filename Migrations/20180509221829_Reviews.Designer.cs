@@ -99,26 +99,6 @@ namespace The_Book_Cave.Migrations
                     b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.CartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("BookID");
-
-                    b.Property<int?>("CartId");
-
-                    b.Property<int>("Price");
-
-                    b.Property<int>("Quantity");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CartId");
-
-                    b.ToTable("CartItems");
-                });
-
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -146,14 +126,6 @@ namespace The_Book_Cave.Migrations
 
                     b.ToTable("Reviews");
                 });
-
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.CartItem", b =>
-                {
-                    b.HasOne("The_Book_Cave.Data.EntityModels.Cart")
-                        .WithMany("CartItem")
-                        .HasForeignKey("CartId");
-                });
-#pragma warning restore 612, 618
         }
     }
 }

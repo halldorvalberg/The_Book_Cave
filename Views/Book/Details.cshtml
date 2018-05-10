@@ -4,10 +4,6 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 <div class="detail-body">
-    <div class="detail-header">
-        <p>Hingað koma einhverjar djússí upplýsingar eins og allir bókaflokkarnir sem þessi bók er í og hlekkir á þær síður
-        </p>
-    </div>
     <div class="detail-main">
         <div class="detail-image">
             <img src="@Model.Image" alt="@Model.Title">
@@ -30,13 +26,20 @@
             <p>FRÍ HEIMSENDING UM ALLAN HEIM!</p>
         </div>
         <div class="book-showbox-aciton">
-                    <div onclick="itemadded(@Model.Id)"  id="div-onclick">
-                        @Html.ActionLink("Bæta í körfu", "AddToCart",
-                        "ShoppingCart", 
-                        new { bookId = @Model.Id }, 
-                        new { @class = "addToCart btn btn-danger addcart"})
-                </div>
-                </div>
+            <div onclick="itemadded(@Model.Id)"  id="div-onclick">
+                @Html.ActionLink("Bæta í körfu", "AddToCart",
+                "ShoppingCart", 
+                new { bookId = @Model.Id }, 
+                new { @class = "addToCart btn btn-danger addcart"})
+            </div>
+        </div>
+        <div>
+            <a asp-controllor asp-action="WishList">
+                <form>
+                    <input type="button" class="btn btn-primary" value="Setja á óskalista"/>
+                </form>
+            </a>
+        </div>
     </div>
     <div class="detail-more" id="detail-prodinfo">
         <div class="detail-prodinfo">
@@ -69,7 +72,8 @@
             </ul>
 @if (SignInManager.IsSignedIn(User))
 {
-            <form asp-controller="Book" asp-action="AddRating" asp-roude-id="@Model.Id">
+            <form asp-controller="Book" asp-action="AddRating" method="Post">
+                <input name="Id" type="hidden" value="@Model.Id">
                 <label for="einkunn">Gefa bók einkunn 1-5</label>
                     <select id="einkunn" name="einkunn">
                         <option value="1">1</option>
