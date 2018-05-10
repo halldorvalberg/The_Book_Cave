@@ -28,6 +28,8 @@ namespace The_Book_Cave.Controllers
             if(categoryById == null){
                 return View("NotFound");
             }
+
+            ViewBag.Category = _categoryService.GetCategoryById(id);
             
             return View(categoryById);
         }
