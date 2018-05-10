@@ -81,7 +81,7 @@ namespace The_Book_Cave.Controllers
 
             _cartService.AddToCart(bookAdded, this.HttpContext);
 
-            return RedirectToAction("Index", "Home");
+            return Redirect("/ShoppingCart");
         }
 
         public IActionResult RemoveFromCart(int bookId)
