@@ -22,7 +22,7 @@ namespace The_Book_Cave.Services
 
             return users;
         }
-        /*
+        
         public void ProcessUser(UserInputModel user)
         {
             if(string.IsNullOrEmpty(user.FirstName)) { throw new Exception("First name is missing"); }
@@ -39,7 +39,7 @@ namespace The_Book_Cave.Services
             if(string.IsNullOrEmpty(user.DeliveryAddressCountry)) { throw new Exception("Country is missing"); }
             if(string.IsNullOrEmpty(user.DeliveryAddressZipCode)) { throw new Exception("Postal code is missing"); }
         }
-        
+        /*
         public List<PurchasesViewModel> GetAllPurchases(HttpContext context)
         {
             

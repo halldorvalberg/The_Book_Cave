@@ -5,6 +5,7 @@ using The_Book_Cave.Data;
 using The_Book_Cave.Services;
 using The_Book_Cave.Models.ViewModels;
 using System.Linq;
+using The_Book_Cave.Models.InputModels;
 
 namespace The_Book_Cave.Controllers
 {
@@ -97,11 +98,11 @@ namespace The_Book_Cave.Controllers
 
             return RedirectToAction("Index");
         }
-        /*
+        
         [HttpGet]
         public IActionResult Checkout(string email)
         {
-            var accounts = _accountService.GetAllAccounts();
+            var accounts = _userService.GetAllUsers();
 
             var account = (from a in accounts
                          where a.Email == email
@@ -110,36 +111,36 @@ namespace The_Book_Cave.Controllers
         }
         
         [HttpPost]
-        public IActionResult Checkout(AccountInputModel updatedAccount)
+        public IActionResult Checkout(UserInputModel updatedAccount)
         {
             if(!ModelState.IsValid)
             {
                 return View();
             }
 
-            _accountService.ProcessAccount(updatedAccount);
+            _userService.ProcessUser(updatedAccount);
             
             using (var db = new DataContext())
             {
-                var account = (from a in db.Accounts
+                var user = (from a in db.Users
                             where a.Email == updatedAccount.Email
                             select a).FirstOrDefault();
 
-                account.FirstName = updatedAccount.FirstName;
-                account.LastName = updatedAccount.LastName;
-                account.Email = updatedAccount.Email;
-                account.BillingAddressStreet = updatedAccount.BillingAddressStreet;
-                account.BillingAddressHouseNumber = updatedAccount.BillingAddressHouseNumber;
-                account.BillingAddressLine2 = updatedAccount.BillingAddressLine2;
-                account.BillingAddressCity = updatedAccount.BillingAddressCity;
-                account.BillingAddressCountry = updatedAccount.BillingAddressCountry;
-                account.BillingAddressZipCode = updatedAccount.BillingAddressZipCode;
-                account.DeliveryAddressStreet = updatedAccount.DeliveryAddressStreet;
-                account.DeliveryAddressHouseNumber = updatedAccount.DeliveryAddressHouseNumber;
-                account.DeliveryAddressLine2 = updatedAccount.DeliveryAddressLine2;
-                account.DeliveryAddressCity = updatedAccount.DeliveryAddressCity;
-                account.DeliveryAddressCountry = updatedAccount.DeliveryAddressCountry;
-                account.DeliveryAddressZipCode = updatedAccount.DeliveryAddressZipCode;
+                user.FirstName = updatedAccount.FirstName;
+                user.LastName = updatedAccount.LastName;
+                user.Email = updatedAccount.Email;
+                user.BillingAddressStreet = updatedAccount.BillingAddressStreet;
+                user.BillingAddressHouseNumber = updatedAccount.BillingAddressHouseNumber;
+                user.BillingAddressLine2 = updatedAccount.BillingAddressLine2;
+                user.BillingAddressCity = updatedAccount.BillingAddressCity;
+                user.BillingAddressCountry = updatedAccount.BillingAddressCountry;
+                user.BillingAddressZipCode = updatedAccount.BillingAddressZipCode;
+                user.DeliveryAddressStreet = updatedAccount.DeliveryAddressStreet;
+                user.DeliveryAddressHouseNumber = updatedAccount.DeliveryAddressHouseNumber;
+                user.DeliveryAddressLine2 = updatedAccount.DeliveryAddressLine2;
+                user.DeliveryAddressCity = updatedAccount.DeliveryAddressCity;
+                user.DeliveryAddressCountry = updatedAccount.DeliveryAddressCountry;
+                user.DeliveryAddressZipCode = updatedAccount.DeliveryAddressZipCode;
                
 
                 db.SaveChanges();
@@ -148,7 +149,6 @@ namespace The_Book_Cave.Controllers
             return RedirectToAction("ReviewStep");
 
         }
-<<<<<<< HEAD
         
         [HttpGet]
         public IActionResult ReviewStep()
@@ -167,7 +167,7 @@ namespace The_Book_Cave.Controllers
                 CartTotal = _cartService.GetTotal(cartId)
             };
 
-            var accounts = _userService.GetAllAccounts();
+            var accounts = _userService.GetAllUsers();
 
             var accountmodel = (from a in accounts
                          where a.Email == user
@@ -180,13 +180,6 @@ namespace The_Book_Cave.Controllers
         }
         
         public IActionResult ConfirmationStep()
-=======
-<<<<<<< HEAD
-=======
-
-=======
->>>>>>> 638c23270f4e8a1e56402684c2cbbc4ecf62130b
-        public IActionResult CheckOut()
         {
             var user = HttpContext.User.Identity.Name;
             var cart = CartService.GetCart(this.HttpContext);
@@ -195,7 +188,7 @@ namespace The_Book_Cave.Controllers
             dynamic myModel = new ExpandoObject();
             
             var cartItems = _cartService.GetCartItems(cartId);
-            
+            /* 
             foreach (var item in cartItems)
             {
                 var cartItem = new Purchased()
@@ -208,17 +201,25 @@ namespace The_Book_Cave.Controllers
                 };
                 _db.Purchased.Add(cartItem);
             }
-
+            */
             foreach (var item in cartItems)
             {
+                    var thebook = (from b in _db.Books
+                            where b.Id == item.BookId
+                            select b).SingleOrDefault();
 
+                    thebook.Quantity -= item.Quantity;
+                    //thebook.BoughtCopies += item.Quantity;
+            }
+            
+            foreach (var item in cartItems)
+            {   
                 RemoveFromCart(item.BookId);
             }
 
             _db.SaveChanges();
 
-            return View("Final");
+            return View("Confirmation");
         }
-         */
+
     }
-}
