@@ -59,10 +59,13 @@
                     </a>
                     <p>@book.Price kr.</p>
                 </div>
-                <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                   <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Add to cart", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
                 </div>
             </div>
         }
@@ -85,10 +88,13 @@
                     </a>
                     <p>@book.Price kr.</p>
                 </div>
-                <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                   <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Add to cart", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
                 </div>
             </div>
         }
@@ -111,10 +117,13 @@
                     </a>
                     <p>@book.Price kr.</p>
                 </div>
-                <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                   <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Add to cart", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
                 </div>
             </div>
         }
@@ -137,10 +146,13 @@
                     </a>
                     <p>@book.Price kr.</p>
                 </div>
-                <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                   <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Add to cart", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
                 </div>
             </div>
         }
@@ -163,10 +175,13 @@
                     </a>
                     <p>@book.Price kr.</p>    
                 </div>
-                <div class="book-showbox-aciton">
-                    <form asp-controller="ShoppingCart" asp-action="Index" asp-route-id="@book.Id" class="detail-buy">
-                        <input type="submit" class="btn btn-primary" value="Bæta í Körfu" />
-                    </form>
+                   <div class="book-showbox-aciton">
+                    <div onclick="itemadded(@book.Id)"  id="div-onclick">
+                        @Html.ActionLink("Add to cart", "AddToCart",
+                        "ShoppingCart", 
+                        new { bookId = @book.Id }, 
+                        new { @class = "addToCart btn btn-danger addcart"})
+                </div>
                 </div>
             </div>
         }
