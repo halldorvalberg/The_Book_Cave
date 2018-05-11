@@ -59,6 +59,14 @@ namespace The_Book_Cave.Controllers
 
             ViewBag.BookRatings = totalRating; 
 
+            var result = _db.Books.SingleOrDefault(b => b.Id == id);
+            if(result != null)
+            {
+                Console.Write("I got to here");
+                result.Rating = totalRating;
+                _db.SaveChanges();
+            }
+
             ViewBag.BooksByAuthor = _authorService.GetAllBooksByAuthor(bookById.AuthorId);
             return View(bookById);
         }
