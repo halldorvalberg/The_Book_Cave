@@ -25,7 +25,7 @@
         <div class="detail-ship">
             <p>FRÍ HEIMSENDING UM ALLAN HEIM!</p>
         </div>
-        <div class="book-showbox-aciton">
+        <div id="pay-button" class="book-showbox-aciton">
             <div onclick="itemadded(@Model.Id)"  id="div-onclick">
                 @Html.ActionLink("Bæta í körfu", "AddToCart",
                 "ShoppingCart", 
@@ -33,7 +33,7 @@
                 new { @class = "addToCart btn btn-danger addcart"})
             </div>
         </div>
-        <div>
+        <div id="wish-list-button">
             <a asp-controllor asp-action="WishList">
                 <form>
                     <input type="button" class="btn btn-primary" value="Setja á óskalista"/>
@@ -75,7 +75,7 @@
             <form asp-controller="Book" asp-action="AddRating" method="Post">
                 <input name="Id" type="hidden" value="@Model.Id">
                 <label for="einkunn">Gefa bók einkunn 1-5</label>
-                    <select id="einkunn" name="einkunn">
+                    <select asp-for="Rating" id="einkunn" value="@Model.Rating">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -94,6 +94,13 @@
         </div>
     </div>
 </div>
+<div class="white-tab">
+    <h1>Einkunn<h1>
+   
+
+    <p>@ViewBag.BookRatings</p>
+    
+</div>
 </br>
 <div class="white-tab">
     <h1>Umsagnir<h1>
@@ -102,8 +109,6 @@
     <p>@review.Review</p>
     }
 </div>
-
-
 <div class="white-tab">
     <h1>Bækur eftir sama höfund</h1>
     <div class="book-showbox-wrapper">

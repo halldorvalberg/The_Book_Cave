@@ -1,6 +1,6 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
-<h3 id="top10bækur-h3">Top 10 Bækur</h3>
+<h3 id="top10bækur-h3">Topp 10 Bækur</h3>
 <div class="book-items">
     @foreach(var book in Model)
     {
@@ -16,7 +16,7 @@
                 </h3>
                 <p>@book.Price kr.</p>
             </div>
-            <div class="book-showbox-aciton">
+            <div id="pay-button" class="book-showbox-aciton">
                     <div onclick="itemadded(@book.Id)"  id="div-onclick">
                         @Html.ActionLink("Bæta í körfu", "AddToCart",
                         "ShoppingCart", 
@@ -27,3 +27,4 @@
         </div>
     }
 </div>
+

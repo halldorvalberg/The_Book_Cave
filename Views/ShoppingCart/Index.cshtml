@@ -1,5 +1,34 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
+
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+    
+
+<h3>
+    <em>Review</em> your cart:
+ </h3>
+<p class="button">
+    @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")
+</p>
+<div id="update-message">
+</div>
+<table>
+    <tr>
+        <th>
+             Title
+        </th>
+        <th>
+            Price (each)
+        </th>
+        <th>
+            Quantity
+        </th>
+        <th></th>
+    </tr>
 <div class="book-items">
     @foreach(var book in Model)
     {
@@ -8,14 +37,11 @@
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                     <img src="@book.Image" alt="~/images/250x250image.png">
                 </a>
+            <p>@book.Price kr.</p>
             </div>
-            <div class="book-item-info">
-                <h3>
-                    <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id"><span style="font-weight:bold">@book.Title</span></a>
-                </h3>
-                <p>@book.Price kr.</p>
-            </div>
-        </div>
+            <button class="RemoveLink btn btn-danger btn-small" type="button">Remove from cart</button>
+             </div>
+        
     }
 </div>
 <div>Verð Samtals: </div>

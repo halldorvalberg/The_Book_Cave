@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace The_Book_Cave.Data.EntityModels
@@ -7,5 +8,6 @@ namespace The_Book_Cave.Data.EntityModels
         [Key]
         public string ShoppingCartId { get; set; }
 
+       
     }
 }

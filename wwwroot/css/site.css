@@ -52,19 +52,17 @@
     height: 20px;
 }
 
+/* Footer begin */
+
 .Bottom-footer {
-    bottom: 0;
     width: 100%;
 }
 
-
-/* Footer begin */
-
 .footer-style {
-    position: relative;
     text-align: center;
     padding: 50px;
     margin-left: 145px;
+    bottom: 0;
 }
 
 /* Nota þetta til að fá inline og til að taka bulletið úr ol */
@@ -119,7 +117,7 @@ li a {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1);
-    height: 300px;
+    height: 370px;
     width: 100%;
 }
 .white-tab > h1 {
@@ -130,13 +128,14 @@ li a {
 }
 .book-showbox-wrapper{
     overflow: auto;
+    height: 330px;
     display: grid;
-    grid-template-columns: repeat(20, 140px);
+    grid-template-columns: repeat(20, 160px);
     grid-auto-flow: column;
     grid-gap: 0.5em;
 }
 .book-showbox {
-    height: 240px;
+    height: 280px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -157,7 +156,7 @@ li a {
 
 /*Book by Order Css*/
 .book-items {
-    padding: 4px;
+    padding: 30px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -169,8 +168,9 @@ li a {
 .book-item-thumb {
     background-color: white;
     width: 160px;
-    margin-bottom: 10px;
-    margin-right: 10px; 
+    height: 350px;
+    margin-bottom: 30px;
+    margin-right: 40px; 
     box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1)
 }
 .book-item-image img {
@@ -217,7 +217,7 @@ li a {
     grid-column: 1 / span 5;
 }
 
-  .detail-main {
+.detail-main {
     grid-column: 1 / span 3;
 }
   
@@ -408,4 +408,21 @@ li a {
     display:block;
     margin: auto;
     margin-bottom: 5px;
+}
+
+/* Category begin */
+
+#category-name {
+    text-align: center;
+}
+
+/* Category end */
+
+#pay-button {
+    text-align: center;
+}
+
+#wish-list-button {
+    text-align: center;
+    margin-bottom: 50px;
 }

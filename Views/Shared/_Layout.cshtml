@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Book Cave</title>
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
-
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -57,12 +57,12 @@
             </li>
             <li><a asp-controller="Category" asp-action="ComingSoon">Væntanlegar bækur</a></li>
             
-            <li><a asp-controller="Book" asp-action="Top10Books">Top 10 bækur</a></li>
+            <li><a asp-controller="Book" asp-action="Top10Books">Topp 10 bækur</a></li>
         </ul>
-        <div class="nav navbar-nav navbarcenter">
+        <div id="search-icon" class="nav navbar-nav navbarcenter">
             <form class="navbar-form" asp-controller="Home" asp-action="SearchIndex">
                 <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search" name="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="Search">
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </form>    
@@ -84,7 +84,7 @@
         <ul>
             <li class="footerli"><a asp-controller="Home" asp-action="About">Um okkur</a></li>
             <li class="footerli"><a asp-controller="Home" asp-action="Conditions">Skilmálar</a></li>
-            <li class="footerli"><a href="/interestbasedads/ref=footer_iba" class="nav_a">Samfélagsmiðlar</a></li>
+            <li class="footerli"><a href="http://www.facebook.com/ikea" class="nav_a">Samfélagsmiðlar</a></li>
             <li class="footerli"><a asp-controller="Home" asp-action="Contact">Hafa samband</a></li>
             <li class="nav_last footerli">© 2018, Book-Cave, Inc.</li>
         </ul>

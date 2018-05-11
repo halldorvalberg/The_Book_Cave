@@ -47,8 +47,16 @@ namespace The_Book_Cave.Repositories
             }
             _db.SaveChanges();
         }
-
-        public int RemoveFromCart(BookListViewModel book, HttpContext context)
+         public int GetQuantity(string shoppingCartId)
+        {
+            
+           var total = (from items in _db.Carts
+                        where items.CartId == shoppingCartId
+                        select items.Quantity).Single();
+            
+            return total;
+        }
+        public The_Book_Cave.Data.EntityModels.Cart RemoveFromCart(BookListViewModel book, HttpContext context)
         {
         var cart = GetCart(context);
 
@@ -56,7 +64,6 @@ namespace The_Book_Cave.Repositories
                     where item.Book.Id == book.Id && item.CartId == cart.ShoppingCartId
                     select item).SingleOrDefault();
         
-        var localQuantity = 0;
         
             if (cartItem != null)
             {
@@ -65,8 +72,9 @@ namespace The_Book_Cave.Repositories
     
             }
             _db.SaveChanges();
-
-            return localQuantity;
+            
+            return cartItem;
+           
         }
 
         public List<The_Book_Cave.Data.EntityModels.Cart> GetCartItems(string shoppingCartId)

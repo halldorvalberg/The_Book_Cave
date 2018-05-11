@@ -35,6 +35,8 @@ namespace The_Book_Cave.Models.ViewModels
 
     public List<ReviewViewModel> Reviews {get; set;}
     public List<AuthorViewModel> Authors {get; set;}
+
+    public List<RatingViewModel> Ratings {get; set;}
    }
 
 
