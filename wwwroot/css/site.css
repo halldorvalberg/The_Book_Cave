@@ -169,6 +169,7 @@ li a {
     background-color: white;
     width: 160px;
     height: 350px;
+    text-align: center;
     margin-bottom: 30px;
     margin-right: 40px; 
     box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1)

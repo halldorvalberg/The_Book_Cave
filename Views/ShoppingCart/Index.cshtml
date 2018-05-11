@@ -11,7 +11,9 @@
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                     <img src="@book.Image" alt="~/images/250x250image.png">
                 </a>
-            <p>@book.Price kr.</p>
+            <div>
+                <p>@book.Price kr.</p>
+            </div>
             <div>
                <p>@book.Quantity stk</p> 
             </div>
@@ -25,6 +27,7 @@
     }
 </div>
 <p>Samtals verð: @ViewBag.CartTotal kr.</p>
+
 <form asp-controller="ShoppingCart" asp-action="CheckOut">
     <input class="btn btn-success btn-lg btn-block" id="p2-btn" type="submit" value="Klára pöntun">
 </form>
