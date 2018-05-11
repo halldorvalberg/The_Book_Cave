@@ -64,7 +64,6 @@ namespace The_Book_Cave.Services
         var bookRatings = _bookRepo.GetBookRatings(id);
         return bookRatings;
     }
-
 /* 
     public void AddNewReview(int id, string review)
     {
