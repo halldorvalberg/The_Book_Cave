@@ -191,13 +191,19 @@ li a {
     font-size: 14px;
     margin: 5px, 4px, 5px, 4px;
     height: 50%;
-    
+    text-align: center;
 }
-
-.book-item-action button {
+.book-item-info-cart h3, .book-item-info-cart p {
+    font-size: 20px;
+    margin: 5px, 4px, 5px, 4px;
+    height: 50%;
+    text-align: center;
+}
+.book-item-action button, .book-item-action span a {
     display:block;
     margin: auto;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 #booksbyOrder-h3{
