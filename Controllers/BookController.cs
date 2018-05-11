@@ -23,10 +23,13 @@ namespace The_Book_Cave.Controllers
             _authorService = new AuthorService();
             _db = new DataContext();
         }
+
+        /* 
         public IActionResult Index()
         {
             return View();
         }
+        */
 
         public IActionResult Details(int? id) 
         {
@@ -55,7 +58,6 @@ namespace The_Book_Cave.Controllers
             }
 
             ViewBag.BookRatings = totalRating; 
-
 
             ViewBag.BooksByAuthor = _authorService.GetAllBooksByAuthor(bookById.AuthorId);
             return View(bookById);
