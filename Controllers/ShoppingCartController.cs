@@ -42,7 +42,7 @@ namespace The_Book_Cave.Controllers
                 CartItems = _cartService.GetCartItems(cartId),
                 CartTotal = _cartService.GetTotal(cartId)
             };
-
+            ViewBag.CartTotal = _cartService.GetTotal(cartId);
             var books = (from b in _db.Books
                         join c in _db.Carts on b.Id equals c.BookId
                         where c.CartId == cartId

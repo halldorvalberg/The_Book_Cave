@@ -55,6 +55,7 @@ namespace The_Book_Cave.Controllers
                      totalRating = totalRating + bookRatings[i].Rating;
                 }
                 totalRating = ((double)(totalRating/ratingCount));
+                totalRating =System.Math.Round(totalRating,2);
             }
 
             ViewBag.BookRatings = totalRating; 
