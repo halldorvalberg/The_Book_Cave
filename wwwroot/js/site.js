@@ -17,14 +17,15 @@ $(document).ready(() => {
 
  });
 
- $("#p2-btn").click(function() {
+//  $("#p2-btn").click(function() {
 
-  $.get("Home/ShoppingCart",(data, status) => {
-    $("#p2-btn").append("btn-block");
-  })
-  .fail((err) => {
-    alert("Karfan er tóm");
-  });
+//   $.get("Home/ShoppingCart",(data, status) => {
+//     $("#p2-btn").append("btn-block");
+//   })
+//   .fail((err) => {
+//     alert("Karfan er tóm");
+//   });
 
-  $(this).addClass("disabled").prop("disabled", true);
+//   $(this).addClass("disabled").prop("disabled", true);
 
+// });
