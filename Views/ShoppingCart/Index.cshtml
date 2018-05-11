@@ -1,4 +1,5 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
+  
 
 <h1>Karfan Þín</h1>
 
@@ -23,7 +24,7 @@
             </div>       
     }
 </div>
-
+<p>Samtals verð: @ViewBag.CartTotal kr.</p>
 <form asp-controller="ShoppingCart" asp-action="CheckOut">
     <input type="submit" value="Klára pöntun">
 </form>

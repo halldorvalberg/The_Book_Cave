@@ -37,13 +37,13 @@ namespace The_Book_Cave.Controllers
             var cart = CartService.GetCart(this.HttpContext);
 
             var cartId = cart.ShoppingCartId;
-            
+                 
             var cartModel = new ShoppingCartViewModel
             {
                 CartItems = _cartService.GetCartItems(cartId),
                 CartTotal = _cartService.GetTotal(cartId)
             };
-
+            ViewBag.CartTotal = _cartService.GetTotal(cartId);
             var books = (from b in _db.Books
                         join c in _db.Carts on b.Id equals c.BookId
                         where c.CartId == cartId
