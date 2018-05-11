@@ -83,10 +83,21 @@ namespace The_Book_Cave.Controllers
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult Checkout()
+        public async Task <IActionResult> Checkout()
         {   
-            //Biður notenda um að filla inn sendingarupplýsingar skv OrderInputModel
-            return View(new OrderInputModel());
+            var user = await _userManager.GetUserAsync(User); 
+            
+            var cartId = user.Email;
+
+            var cartItems = _cartService.GetCartItems(cartId);
+
+            if(cartItems != null)
+            {
+                //Biður notenda um að filla inn sendingarupplýsingar skv OrderInputModel
+                return View(new OrderInputModel());
+            }
+
+            return RedirectToAction("Index");
         }
        
         [HttpPost]
