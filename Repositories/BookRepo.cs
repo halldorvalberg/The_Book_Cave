@@ -134,8 +134,8 @@ namespace The_Book_Cave.Repositories
     {
       
       var bookBySearch =(from b in _db.Books 
-                         join a in _db.Authors on b.AuthorId equals a.Id 
-                         where b.Title.ToLower().Contains(search.ToLower() )|| a.Name.ToLower().Contains(search.ToLower())
+                        join a in _db.Authors on b.AuthorId equals a.Id 
+                        where b.Title.ToLower().Contains(search.ToLower() )|| a.Name.ToLower().Contains(search.ToLower())
                         where b.InStock == 1
                         select new BookListViewModel
                         {

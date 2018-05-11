@@ -23,10 +23,13 @@ namespace The_Book_Cave.Controllers
             _authorService = new AuthorService();
             _db = new DataContext();
         }
+
+        /* 
         public IActionResult Index()
         {
             return View();
         }
+        */
 
         public IActionResult Details(int? id) 
         {
