@@ -32,11 +32,10 @@ namespace The_Book_Cave.Controllers
             _userManager = userManager;
         }
 
-     public IActionResult Index(int? id)
-        {
-            var cart = CartService.GetCart(this.HttpContext);
-
-            var cartId = cart.ShoppingCartId;
+     public async Task <IActionResult> Index(int? id)
+        {   
+            var user = await _userManager.GetUserAsync(User);
+            var cartId = user.Email;
             
             var cartModel = new ShoppingCartViewModel
             {
@@ -79,9 +78,6 @@ namespace The_Book_Cave.Controllers
                             where book.Id == bookId
                             select book).SingleOrDefault();
 
-            var cart = CartService.GetCart(this.HttpContext);
-
-
             _cartService.AddToCart(bookAdded, this.HttpContext);
 
             return Redirect("/ShoppingCart");
@@ -94,8 +90,6 @@ namespace The_Book_Cave.Controllers
             var bookAdded = (from book in books
                             where book.Id == bookId
                             select book).SingleOrDefault();
-
-            var cart = CartService.GetCart(this.HttpContext);
 
             _cartService.RemoveFromCart(bookAdded, this.HttpContext);
 
@@ -135,8 +129,7 @@ namespace The_Book_Cave.Controllers
         {   //Sækir innskráðann notenda
             var user = await _userManager.GetUserAsync(User); 
             //Sækir körfu innskráða notenda
-            var cart = CartService.GetCart(this.HttpContext);
-            var cartId = cart.ShoppingCartId;
+            var cartId = user.Email;
 
             ViewBag.CartTotal = _cartService.GetTotal(cartId);
             
@@ -152,8 +145,7 @@ namespace The_Book_Cave.Controllers
         public async Task <IActionResult> ConfirmationStep()
         {
             var user = await _userManager.GetUserAsync(User); 
-            var cart = CartService.GetCart(this.HttpContext);
-            var cartId = cart.ShoppingCartId;
+            var cartId = user.Email;
 
             var cartItems = _cartService.GetCartItems(cartId);
             
@@ -190,15 +182,6 @@ namespace The_Book_Cave.Controllers
             _db.SaveChanges();
 
             return View();
-        }
-
-         [HttpGet]
-         public int GetCartCount()
-         {
-             var cart = CartService.GetCart(this.HttpContext);
-             var cartId = cart.ShoppingCartId;
-             return _cartService.GetCartItems(cartId).Count;
-            
         }
     }
 }
