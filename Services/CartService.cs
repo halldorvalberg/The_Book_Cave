@@ -46,5 +46,11 @@ namespace The_Book_Cave.Services
         {
             return _cartRepo.GetTotal(shoppingCartId);
         }
+
+        public List<OrderViewModel> GetOrder(string email)
+        {
+            var orders = _cartRepo.GetOrder(email);
+            return orders;
+        }
     }
 }

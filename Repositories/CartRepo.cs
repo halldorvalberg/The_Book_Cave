@@ -95,5 +95,23 @@ namespace The_Book_Cave.Repositories
             
             return total;
         }
+
+        public List<OrderViewModel> GetOrder(string email)
+        {
+            var allOrders = (from a in _db.Orders
+                                join b in _db.Books on a.BookId equals b.Id
+                                where a.Email == email
+                                select new OrderViewModel{
+                                    BookTitle  = b.Title,
+                                    BookImage = b.Image,
+                                    Quantity = a.Quantity,
+                                    Address = a.Address,
+                                    City = a.City,
+                                    Country = a.Country,
+                                    DateCreated = a.DateCreated,
+                                    Book = a.Book,
+                                }).ToList();
+            return allOrders;
+        }
     }
 }

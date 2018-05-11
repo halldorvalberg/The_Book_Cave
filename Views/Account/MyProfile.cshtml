@@ -14,5 +14,26 @@
     </div>
 </div>
 
+<div> 
+    <table>
+        <tr>
+            <th>Mynd</th>
+            <th>Bókatitill</th>
+            <th>Eintök pönntuð</th>
+            <th>Pöntunardagur</th>
+            <th>Sendingarheimilisfang</th>
+        </tr>
+        @foreach(var item in ViewBag.OrderList)
+        {
+            <tr>
+                <td> <img src="@item.BookImage" alt="@item.BookTitle"> </td>
+                <td>@item.BookTitle</td>
+                <td>@item.Quantity stk.</td>
+                <td>@item.DateCreated</td>
+                <td>@item.Address, @item.City, @item.ZipCode, @item.Country</td>
+            </tr>
+        }
+    </table>
+</div>
 
 
