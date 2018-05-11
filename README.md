@@ -2,14 +2,7 @@
 
 ```
 This project is a asp.net core mvc online bookstore made by students of Reykjavík University
-
 ```
-
-# Table of contents
-
-  - [Features](#features)
-  - [Built With](#built-with)
-  - [Authors](#authors)
 
 ## Features
 
