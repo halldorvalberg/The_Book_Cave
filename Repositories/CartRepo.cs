@@ -14,19 +14,12 @@ namespace The_Book_Cave.Repositories
 
         private BookRepo _bookRepo = new BookRepo();
 
-        public ShoppingCart GetCart(HttpContext context)
-        {
-            var cart = new ShoppingCart();
-            cart.ShoppingCartId = context.User.Identity.Name;
-            return cart;
-        }
-
         public void AddToCart(BookListViewModel book, HttpContext context)
         {
-            var cart = GetCart(context);
+            var cart = context.User.Identity.Name;
 
             var cartItem = (from item in _db.Carts
-                        where item.Book.Id == book.Id && item.CartId == cart.ShoppingCartId
+                        where item.Book.Id == book.Id && item.CartId == cart
                         select item).SingleOrDefault();
             
             
@@ -35,7 +28,7 @@ namespace The_Book_Cave.Repositories
                 cartItem = new The_Book_Cave.Data.EntityModels.Cart
                 {
                     BookId = book.Id,
-                    CartId = cart.ShoppingCartId,
+                    CartId = cart,
                     Quantity = 1,
                     DateCreated = DateTime.Now
                 };
@@ -59,10 +52,10 @@ namespace The_Book_Cave.Repositories
         }
         public int RemoveFromCart(BookListViewModel book, HttpContext context)
         {
-            var cart = GetCart(context);
+            var cart = context.User.Identity.Name;
 
             var cartItem = (from item in _db.Carts
-                    where item.Book.Id == book.Id && item.CartId == cart.ShoppingCartId
+                    where item.Book.Id == book.Id && item.CartId == cart
                     select item).SingleOrDefault();
         
             var localQuantity = 0;
@@ -94,6 +87,24 @@ namespace The_Book_Cave.Repositories
                         select items.Quantity * items.Book.Price).Sum();
             
             return total;
+        }
+
+        public List<OrderViewModel> GetOrder(string email)
+        {
+            var allOrders = (from a in _db.Orders
+                                join b in _db.Books on a.BookId equals b.Id
+                                where a.Email == email
+                                select new OrderViewModel{
+                                    BookTitle  = b.Title,
+                                    BookImage = b.Image,
+                                    Quantity = a.Quantity,
+                                    Address = a.Address,
+                                    City = a.City,
+                                    Country = a.Country,
+                                    DateCreated = a.DateCreated,
+                                    Book = a.Book,
+                                }).ToList();
+            return allOrders;
         }
     }
 }

@@ -23,10 +23,13 @@ namespace The_Book_Cave.Controllers
             _authorService = new AuthorService();
             _db = new DataContext();
         }
+
+        /* 
         public IActionResult Index()
         {
             return View();
         }
+        */
 
         public IActionResult Details(int? id) 
         {
@@ -52,10 +55,18 @@ namespace The_Book_Cave.Controllers
                      totalRating = totalRating + bookRatings[i].Rating;
                 }
                 totalRating = ((double)(totalRating/ratingCount));
+                totalRating =System.Math.Round(totalRating,2);
             }
 
             ViewBag.BookRatings = totalRating; 
 
+            var result = _db.Books.SingleOrDefault(b => b.Id == id);
+            if(result != null)
+            {
+                Console.Write("I got to here");
+                result.Rating = totalRating;
+                _db.SaveChanges();
+            }
 
             ViewBag.BooksByAuthor = _authorService.GetAllBooksByAuthor(bookById.AuthorId);
             return View(bookById);

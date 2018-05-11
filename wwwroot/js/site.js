@@ -13,34 +13,20 @@ $(document).ready(() => {
       .end()
       .appendTo('#slideshow');
   },  12000);
-
-
-  
-  
-     
-          // Document.ready -> link up remove event handler
-          $(".RemoveLink").click(function () {
-              // Get the id from the link
-              var recordToDelete = $(this).attr("data-id");
-              if (recordToDelete != '') {
-                  // Perform the ajax post
-                  $.post("/ShoppingCart/RemoveFromCart", {"id": recordToDelete },
-                      function (data) {
-                          // Successful requests get here
-                          // Update the page elements
-                          if (data.ItemCount == 0) {
-                              $('#row-' + data.DeleteId).fadeOut('slow');
-                          } else {
-                              $('#item-count-' + data.DeleteId).text(data.ItemCount);
-                          }
-                          $('#cart-total').text(data.CartTotal);
-                          $('#update-message').text(data.Message);
-                          $('#cart-status').text('Cart (' + data.CartCount + ')');
-                      });
-              }
-          });
       
 
+ });
+
+ $("#p2-btn").click(function() {
+
+  $.get("Home/ShoppingCart",(data, status) => {
+    $("#p2-btn").append("btn-block");
+  })
+  .fail((err) => {
+    alert("Karfan er tóm");
+  });
+
+  $(this).addClass("disabled").prop("disabled", true);
 
 });
 

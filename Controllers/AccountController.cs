@@ -14,10 +14,13 @@ namespace The_Book_Cave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
+        private CartService _cartService;
+
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _cartService = new CartService();
         }
         public IActionResult Register()
         {
@@ -53,16 +56,19 @@ namespace The_Book_Cave.Controllers
 
         [Authorize]
         public async Task <IActionResult> MyProfile()
-        {   
-          var user = await _userManager.GetUserAsync(User);
-          return View(new ProfileViewModel {
-              FirstName = user.FirstName,
-              LastName = user.LastName,
-              Image = user.Image,
-              FavoriteBook = user.FavoriteBook,
-              Address = user.Address
-          }); 
-           
+        { 
+            
+            var user = await _userManager.GetUserAsync(User);
+            
+            ViewBag.OrderList = _cartService.GetOrder(user.Email);
+
+            return View(new ProfileViewModel {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Image = user.Image,
+                FavoriteBook = user.FavoriteBook,
+                Address = user.Address
+            }); 
         }
 
         [Authorize]
