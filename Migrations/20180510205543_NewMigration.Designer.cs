@@ -11,14 +11,14 @@ using The_Book_Cave.Data;
 namespace The_Book_Cave.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180509223116_breytareviews")]
-    partial class breytareviews
+    [Migration("20180510205543_NewMigration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
+                .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Author", b =>
@@ -85,16 +85,20 @@ namespace The_Book_Cave.Migrations
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Cart", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RecordId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookId");
+
+                    b.Property<string>("CartId");
+
+                    b.Property<DateTime>("DateCreated");
 
                     b.Property<int>("Quantity");
 
-                    b.Property<int>("TotalPrice");
+                    b.HasKey("RecordId");
 
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
+                    b.HasIndex("BookId");
 
                     b.ToTable("Carts");
                 });
@@ -109,6 +113,22 @@ namespace The_Book_Cave.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Ratings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Reviews", b =>
@@ -126,6 +146,37 @@ namespace The_Book_Cave.Migrations
 
                     b.ToTable("Reviews");
                 });
+
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.User", b =>
+                {
+                    b.Property<string>("Email")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("HouseNumber");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("StreetName");
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("Email");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Cart", b =>
+                {
+                    b.HasOne("The_Book_Cave.Data.EntityModels.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+#pragma warning restore 612, 618
         }
     }
 }

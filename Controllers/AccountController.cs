@@ -14,7 +14,6 @@ namespace The_Book_Cave.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
-
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
         {
             _signInManager = signInManager;
@@ -28,31 +27,27 @@ namespace The_Book_Cave.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
-        {
+        {   
             if(!ModelState.IsValid)
             {
                 ViewData["ErrorMessage"] = "Vinsamlegast fylltu inn í viðeigandi reiti";
                 return View();
             }
-
             var user = new ApplicationUser 
             {
                 UserName = model.Email, 
                 Email = model.Email
             };
-
             var result = await _userManager.CreateAsync(user, model.Password);
-
             if(result.Succeeded)
             {
                 //The user is successfully registered
                 //add the concatenated first and last name as fullname in claims
                 await _userManager.AddClaimAsync(user, new Claim("Name", $"{model.FirstName} {model.LastName}"));
                 await _signInManager.SignInAsync(user, false);
-
+                
                 return RedirectToAction("Index", "Home");
             }
-
             return View();
         }
 
@@ -72,17 +67,17 @@ namespace The_Book_Cave.Controllers
 
         [Authorize]
         [HttpGet]
-       public async Task <IActionResult> EditProfile()
+        public async Task <IActionResult> EditProfile()
         {   
-           var user = await _userManager.GetUserAsync(User);
+            var user = await _userManager.GetUserAsync(User);
 
-          return View(new ProfileViewModel {
-              FirstName = user.FirstName,
-              LastName = user.LastName,
-              Image = user.Image,
-              FavoriteBook = user.FavoriteBook,
-              Address = user.Address
-          });
+            return View(new ProfileViewModel {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Image = user.Image,
+                FavoriteBook = user.FavoriteBook,
+                Address = user.Address
+            });
         } 
 
         [Authorize]

@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace The_Book_Cave.Models.InputModels
 {
-    public class UserInputModel
+    public class OrderInputModel
     {
 
 
