@@ -33,10 +33,10 @@ namespace The_Book_Cave.Services
             _cartRepo.AddToCart(book, context);
         }
 
-        // public int RemoveFromCart(BookListViewModel book, HttpContext context)
-        // {
-        //     return _cartRepo.RemoveFromCart(book, context);
-        // }
+        public int RemoveFromCart(BookListViewModel book, HttpContext context)
+        {
+             return _cartRepo.RemoveFromCart(book, context);
+        }
       
        
        public int RemoveFromCart(string shoppingCartId)

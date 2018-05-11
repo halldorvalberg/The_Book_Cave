@@ -9,23 +9,27 @@ using The_Book_Cave.Models.InputModels;
 using System;
 using System.Security.Claims;
 using The_Book_Cave.Data.EntityModels;
+using Microsoft.AspNetCore.Identity;
+using The_Book_Cave.Models;
+using System.Threading.Tasks;
 
 namespace The_Book_Cave.Controllers
 {
+    
+
     [Authorize]
     public class ShoppingCartController : Controller
     {
-        private UserService _userService;
         private CartService _cartService;
         private BookService _bookService;
+        private readonly UserManager<ApplicationUser> _userManager;
         private DataContext _db = new DataContext();
 
-        public ShoppingCartController()
+        public ShoppingCartController(UserManager<ApplicationUser> userManager)
         {
             _cartService = new CartService();
             _bookService = new BookService();
-            _userService = new UserService();
-            
+            _userManager = userManager;
         }
 
      public IActionResult Index(int? id)
@@ -33,16 +37,12 @@ namespace The_Book_Cave.Controllers
             var cart = CartService.GetCart(this.HttpContext);
 
             var cartId = cart.ShoppingCartId;
-
-            dynamic myModel = new ExpandoObject();
             
             var cartModel = new ShoppingCartViewModel
             {
                 CartItems = _cartService.GetCartItems(cartId),
                 CartTotal = _cartService.GetTotal(cartId)
             };
-
-            var userModel = _userService.GetAllUsers();
 
             var books = (from b in _db.Books
                         join c in _db.Carts on b.Id equals c.BookId
@@ -87,148 +87,118 @@ namespace The_Book_Cave.Controllers
             return Redirect("/ShoppingCart");
         }
 
-       [HttpPost]
-        public IActionResult RemoveFromCart(int id)
+        public IActionResult RemoveFromCart(int bookId)
         {
+            var books = _bookService.GetAllBooks();
+
+            var bookAdded = (from book in books
+                            where book.Id == bookId
+                            select book).SingleOrDefault();
+
             var cart = CartService.GetCart(this.HttpContext);
-            string cartId = cart.ShoppingCartId;
-         string bookName = _db.Carts
-                .Single(item => item.BookId == id).Book.Title;    
-                
-                 int itemCount = _cartService.RemoveFromCart(cartId);
 
-            // var results = new ShoppingCartViewModel
-            // {
-            //     Message = " has been removed from your shopping cart.",
-            //     // CartTotal = cart.GetTotal(),
-            //     // CartCount = cart.GetCount(),
-            //     ItemCount = itemCount,
-            //     DeleteId = id
-            // };
+            _cartService.RemoveFromCart(bookAdded, this.HttpContext);
 
-          
-
-            return Ok();
+            return RedirectToAction("Index");
         }
+
         
         [HttpGet]
-        [HttpGet]
-        public IActionResult Checkout(string email)
-        {
-            var users = _userService.GetAllUsers();
-
-            var user = (from a in users
-                         where a.Email == email
-                         select a).SingleOrDefault();
-            return View(user);
+        public IActionResult Checkout()
+        {   
+            return View(new OrderInputModel());
         }
-       /* 
+       
         [HttpPost]
-        public IActionResult Checkout(UserInputModel userinfo)
+        public async Task<IActionResult> Checkout(OrderInputModel updateduser)
         {
             if(!ModelState.IsValid)
             {
                 return View();
             }
-            
-            var user = new User()
-                {
-                    Name = userinfo.Name,
-                    Email = userinfo.Email,
-                    StreetName = userinfo.StreetName,
-                    HouseNumber = userinfo.HouseNumber,
-                    City = userinfo.City,
-                    Country = userinfo.Country,
-                    ZipCode = userinfo.ZipCode,
 
-                };
-                _db.Users.Add(user);
-            
+            var user = await _userManager.GetUserAsync(User);
+                user.Address = updateduser.Address;
+                user.City = updateduser.City;
+                user.Country = updateduser.Country;
+                user.ZipCode = updateduser.ZipCode;
+
+              await _userManager.UpdateAsync(user);
+
+            _db.SaveChanges();
+                
             return RedirectToAction("ReviewStep");
         }
         
         [HttpGet]
-        public IActionResult ReviewStep()
-        {
-            var user = HttpContext.User.Identity.Name;
-
+        public async Task <IActionResult> ReviewStep()                                                                        
+        {   //Sækir innskráðann notenda
+            var user = await _userManager.GetUserAsync(User); 
+            //Sækir körfu innskráða notenda
             var cart = CartService.GetCart(this.HttpContext);
-
             var cartId = cart.ShoppingCartId;
 
-            dynamic myModel = new ExpandoObject();
+            ViewBag.CartTotal = _cartService.GetTotal(cartId);
             
-            var cartModel = new ShoppingCartViewModel
-            {
-                CartItems = _cartService.GetCartItems(cartId),
-                CartTotal = _cartService.GetTotal(cartId)
-            };
-
-            var accounts = _userService.GetAllUsers();
-
-            var accountmodel = (from a in accounts
-                         where a.Email == user
-                         select a).SingleOrDefault();
-
-            myModel.cartItems = cartModel;
-            myModel.account = accountmodel;
-
-            return View(myModel);
+            return View(new OrderViewModel {
+                Name = (user.FirstName + " " + user.LastName),
+                Email = user.Email,
+                Address = user.Address,
+                City = user.City,
+                Country = user.Country,
+                ZipCode = user.ZipCode,
+            });
         }
-        
-        public IActionResult ConfirmationStep()
+        public async Task <IActionResult> ConfirmationStep()
         {
-            var user = HttpContext.User.Identity.Name;
+            var user = await _userManager.GetUserAsync(User); 
             var cart = CartService.GetCart(this.HttpContext);
             var cartId = cart.ShoppingCartId;
 
-            dynamic myModel = new ExpandoObject();
-            
             var cartItems = _cartService.GetCartItems(cartId);
-            /* 
-            foreach (var item in cartItems)
+            
+            foreach (var b in cartItems)
             {
-                var cartItem = new Purchased()
+                var cartItem = new Order()
                 {
-                    CartId = item.CartId,
-                    BookId = item.BookId,
-                    Quantity = item.Quantity,
-                    DateCreated = item.DateCreated,
-                    Book = item.Book
+                    CartId = b.CartId,
+                    BookId = b.BookId,
+                    Quantity = b.Quantity,
+                    DateCreated = b.DateCreated,
+                    Book = b.Book,
+                    Email = user.Email,
+                    Address = user.Address,
+                    City = user.City,
+                    Country = user.Country,
+                    ZipCode = user.ZipCode,
                 };
-                _db.Purchased.Add(cartItem);
+                _db.Orders.Add(cartItem);
             }
-            
-            foreach (var item in cartItems)
+            foreach (var q in cartItems)
             {
-                    var thebook = (from b in _db.Books
-                            where b.Id == item.BookId
+                var book = (from b in _db.Books
+                            where b.Id == q.BookId
                             select b).SingleOrDefault();
-
-                    thebook.Quantity -= item.Quantity;
-                    //thebook.BoughtCopies += item.Quantity;
+                book.Quantity -= q.Quantity;
             }
             
-            foreach (var item in cartItems)
+            foreach (var t in cartItems)
             {   
-                RemoveFromCart(item.BookId);
+                RemoveFromCart(t.BookId);
             }
 
             _db.SaveChanges();
 
-            return View("Confirmation");
+            return View();
         }
 
-        // [HttpGet]
-        // public int GetCartCount()
-        // {
-        //     var cart = CartService.GetCart(this.HttpContext);
-        //     var cartId = cart.ShoppingCartId;
-        //     return _cartService.GetCartItems(cartId).Count;
+         [HttpGet]
+         public int GetCartCount()
+         {
+             var cart = CartService.GetCart(this.HttpContext);
+             var cartId = cart.ShoppingCartId;
+             return _cartService.GetCartItems(cartId).Count;
             
-        // }
-
-    }
-*/
+        }
     }
 }

@@ -1,50 +1,29 @@
 @model List<The_Book_Cave.Models.ViewModels.BookListViewModel>
 
+<h1>Karfan Þín</h1>
 
-
-@{
-    ViewBag.Title = "Shopping Cart";
-}
-
-    
-
-<h3>
-    <em>Review</em> your cart:
- </h3>
-<p class="button">
-    @Html.ActionLink("Checkout", "AddressAndPayment", "Checkout")
-</p>
-<div id="update-message">
-</div>
-<table>
-    <tr>
-        <th>
-             Title
-        </th>
-        <th>
-            Price (each)
-        </th>
-        <th>
-            Quantity
-        </th>
-        <th></th>
-    </tr>
 <div class="book-items">
     @foreach(var book in Model)
     {
         <div class="BooksByOrder book-item-thumb">
-            <div class="book-item-image">
+            <div class="book-item-image"> 
                 <a asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">
                     <img src="@book.Image" alt="~/images/250x250image.png">
                 </a>
             <p>@book.Price kr.</p>
+            <div>
+                
             </div>
-            <button class="RemoveLink btn btn-danger btn-small" type="button">Remove from cart</button>
-             </div>
-        
+            </div>
+                <span> 
+                    @Html.ActionLink("", "RemoveFromCart", "ShoppingCart", 
+                                 new { bookId = @book.Id }, 
+                                 new { @class= "glyphicon glyphicon-trash" })
+                </span>
+            </div>       
     }
 </div>
-<div>Verð Samtals: </div>
+
 <form asp-controller="ShoppingCart" asp-action="CheckOut">
     <input type="submit" value="Klára pöntun">
 </form>

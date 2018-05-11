@@ -11,9 +11,10 @@ using The_Book_Cave.Data;
 namespace The_Book_Cave.Migrations.AuthenticationDb
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    partial class AuthenticationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180511130606_userinfoupdate")]
+    partial class userinfoupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

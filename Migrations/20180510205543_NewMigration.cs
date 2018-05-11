@@ -5,10 +5,11 @@ using System.Collections.Generic;
 
 namespace The_Book_Cave.Migrations
 {
-    public partial class ShoppingCart : Migration
+    public partial class NewMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.CreateTable(
                 name: "Carts",
                 columns: table => new
@@ -31,33 +32,6 @@ namespace The_Book_Cave.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Email = table.Column<string>(nullable: false),
-                    BillingAddressCity = table.Column<string>(nullable: true),
-                    BillingAddressCountry = table.Column<string>(nullable: true),
-                    BillingAddressHouseNumber = table.Column<string>(nullable: true),
-                    BillingAddressLine2 = table.Column<string>(nullable: true),
-                    BillingAddressStreet = table.Column<string>(nullable: true),
-                    BillingAddressZipCode = table.Column<string>(nullable: true),
-                    DeliveryAddressCity = table.Column<string>(nullable: true),
-                    DeliveryAddressCountry = table.Column<string>(nullable: true),
-                    DeliveryAddressHouseNumber = table.Column<string>(nullable: true),
-                    DeliveryAddressLine2 = table.Column<string>(nullable: true),
-                    DeliveryAddressStreet = table.Column<string>(nullable: true),
-                    DeliveryAddressZipCode = table.Column<string>(nullable: true),
-                    FavoriteBook = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    ProfilePicture = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Email);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_BookId",
                 table: "Carts",
@@ -70,7 +44,21 @@ namespace The_Book_Cave.Migrations
                 name: "Carts");
 
             migrationBuilder.DropTable(
+                name: "Ratings");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
+
+            migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "InStock",
+                table: "Books");
+
+            migrationBuilder.DropColumn(
+                name: "RatingCount",
+                table: "Books");
         }
     }
 }

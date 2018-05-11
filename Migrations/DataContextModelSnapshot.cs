@@ -114,6 +114,52 @@ namespace The_Book_Cave.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Order", b =>
+                {
+                    b.Property<int>("RecordId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<int>("BookId");
+
+                    b.Property<string>("CartId");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("Email");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<string>("ZipCode");
+
+                    b.HasKey("RecordId");
+
+                    b.HasIndex("BookId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Ratings", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("BookId");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ratings");
+                });
+
             modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Reviews", b =>
                 {
                     b.Property<int>("Id")
@@ -130,29 +176,15 @@ namespace The_Book_Cave.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.User", b =>
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Cart", b =>
                 {
-                    b.Property<string>("Email")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Country");
-
-                    b.Property<string>("HouseNumber");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("StreetName");
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("Email");
-
-                    b.ToTable("Users");
+                    b.HasOne("The_Book_Cave.Data.EntityModels.Book", "Book")
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Cart", b =>
+            modelBuilder.Entity("The_Book_Cave.Data.EntityModels.Order", b =>
                 {
                     b.HasOne("The_Book_Cave.Data.EntityModels.Book", "Book")
                         .WithMany()
