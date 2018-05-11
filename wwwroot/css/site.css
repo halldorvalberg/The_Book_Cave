@@ -217,7 +217,7 @@ li a {
     grid-column: 1 / span 5;
 }
 
-  .detail-main {
+.detail-main {
     grid-column: 1 / span 3;
 }
   
@@ -426,4 +426,3 @@ li a {
     text-align: center;
     margin-bottom: 50px;
 }
-
