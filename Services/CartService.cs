@@ -37,48 +37,6 @@ namespace The_Book_Cave.Services
         {
              return _cartRepo.RemoveFromCart(book, context);
         }
-      
-       
-       public int RemoveFromCart(string shoppingCartId)
-        {
-           
-            var cartItem = _cartRepo.GetQuantity(shoppingCartId);
-            if (cartItem != 0)
-            {
-                if(cartItem > 1)
-                {
-                    cartItem--;
-
-                }
-                if(cartItem == 1)
-                {
-                    cartItem--;
-                    cartItem = 0;
-                }
-                
-              
-            }
-            
-            return cartItem;
-        
-        }
-
-        private void NewMethod1()
-        {
-            // Save changes
-            NewMethod1();
-        }
-
-        private object GetCart()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void NewMethod()
-        {
-             NewMethod1();
-        }
-
         public List<Cart> GetCartItems(string shoppingCartId)
         {
             return _cartRepo.GetCartItems(shoppingCartId);

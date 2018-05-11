@@ -238,21 +238,6 @@ namespace The_Book_Cave.Repositories
       
         return bookRatings;
     }
-    
-/* 
-    public void AddNewReview(int id, string review)
-    {   
-
-        var newReview = new Reviews
-                      {   
-                          BookId = id,
-                          Review = review
-                      };
-
-            _db.Reviews.Add(newReview);
-            _db.SaveChanges();
-    }
-    */
   }
 }
 
