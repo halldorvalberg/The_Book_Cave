@@ -1,12 +1,13 @@
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using The_Book_Cave.Models;
 using The_Book_Cave.Services;
 using The_Book_Cave.Models.ViewModels;
-using System;
-using Microsoft.AspNetCore.Authorization;
+
 
 namespace The_Book_Cave.Controllers
 {
@@ -17,7 +18,7 @@ namespace The_Book_Cave.Controllers
         private CartService _cartService;
 
         public AccountController(SignInManager<ApplicationUser> signInManager, UserManager<ApplicationUser> userManager)
-        {
+        {   //Tengir Controller við Cart Service, User og SignIn Manager
             _signInManager = signInManager;
             _userManager = userManager;
             _cartService = new CartService();
@@ -53,13 +54,13 @@ namespace The_Book_Cave.Controllers
             }
             return View();
         }
-
+        //Controller fyrir MínarSíður 
         [Authorize]
         public async Task <IActionResult> MyProfile()
         { 
-            
+            //Sækir upplýsingar um innskráðann notenda
             var user = await _userManager.GetUserAsync(User);
-            
+            //Sækir upplýisngar um allar pantanir skráðar á innskráðan notenda
             ViewBag.OrderList = _cartService.GetOrder(user.Email);
 
             return View(new ProfileViewModel {
@@ -75,34 +76,34 @@ namespace The_Book_Cave.Controllers
         [HttpGet]
         public async Task <IActionResult> EditProfile()
         {   
-           var user = await _userManager.GetUserAsync(User);
+            //Sækir upplýsingar um innskráðann notenda
+            var user = await _userManager.GetUserAsync(User);
 
-          await _userManager.AddClaimAsync(user, new Claim("Name", $"{user.FirstName} {user.LastName}"));
-          return View(new ProfileViewModel {
-              FirstName = user.FirstName,
-              LastName = user.LastName,
-              Image = user.Image,
-              FavoriteBook = user.FavoriteBook,
-              Address = user.Address
-          });
+            await _userManager.AddClaimAsync(user, new Claim("Name", $"{user.FirstName} {user.LastName}"));
+            return View(new ProfileViewModel {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Image = user.Image,
+                FavoriteBook = user.FavoriteBook,
+                Address = user.Address
+            });
         } 
 
         [Authorize]
         [HttpPost]
        public async Task <IActionResult> EditProfile(ProfileViewModel model)
         {   
+            //Tengir user breytu við gagnabankann
+            var user = await _userManager.GetUserAsync(User);
+            //Uppfærir upplýsingar skráðar á notenda
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Image = model.Image;
+            user.FavoriteBook = model.FavoriteBook;
+            user.Address = model.Address;
 
-             var user = await _userManager.GetUserAsync(User);
+            await _userManager.UpdateAsync(user);
 
-              user.FirstName = model.FirstName;
-              user.LastName = model.LastName;
-              user.Image = model.Image;
-              user.FavoriteBook = model.FavoriteBook;
-              user.Address = model.Address;
-
-              await _userManager.UpdateAsync(user);
-              
-    
             return RedirectToAction("MyProfile", "Account");
         }
 

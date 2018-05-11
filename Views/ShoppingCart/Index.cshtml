@@ -27,7 +27,16 @@
     }
 </div>
 <p>Samtals verð: @ViewBag.CartTotal kr.</p>
+<<<<<<< HEAD
 
 <form asp-controller="ShoppingCart" asp-action="CheckOut">
     <input class="btn btn-success btn-lg btn-block" id="p2-btn" type="submit" value="Klára pöntun">
 </form>
+=======
+@if(ViewBag.CartTotal != 0)
+{
+    <form asp-controller="ShoppingCart" asp-action="CheckOut">
+        <input class="btn btn-success btn-lg btn-block" id="p2-btn" type="submit" value="Klára pöntun">
+    </form>
+}
+>>>>>>> 7c49e4063deb99d085fe7a89e567be4691a97d23
