@@ -210,6 +210,7 @@ li a {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     grid-gap: 1em;
+    padding-bottom: 1em;
 }
 
 .detail-header,
@@ -295,8 +296,16 @@ li a {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
-
 /*BookDetail CSS End*/
+.OrderHistory{
+    padding-top: 1em;
+    width: 100%;
+}
+.OHItem > td > img {
+    max-width: 50px;
+    max-height: 100px;
+}
+
 
 .login-buttons{
     display: flex;
@@ -426,3 +435,4 @@ li a {
     text-align: center;
     margin-bottom: 50px;
 }
+

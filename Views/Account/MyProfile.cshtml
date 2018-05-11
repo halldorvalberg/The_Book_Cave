@@ -14,26 +14,27 @@
     </div>
 </div>
 
-<div> 
-    <table>
-        <tr>
-            <th>Mynd</th>
-            <th>Bókatitill</th>
-            <th>Eintök pönntuð</th>
-            <th>Pöntunardagur</th>
-            <th>Sendingarheimilisfang</th>
-        </tr>
-        @foreach(var item in ViewBag.OrderList)
-        {
+    <div class="OrderHistory"> 
+        <h2>Pantanir</h2>
+        <table class="table table-hover table-striped table-bordered">
             <tr>
-                <td> <img src="@item.BookImage" alt="@item.BookTitle"> </td>
-                <td>@item.BookTitle</td>
-                <td>@item.Quantity stk.</td>
-                <td>@item.DateCreated</td>
-                <td>@item.Address, @item.City, @item.ZipCode, @item.Country</td>
+                <th>Mynd</th>
+                <th>Bókatitill</th>
+                <th>Eintök pönntuð</th>
+                <th>Pöntunardagur</th>
+                <th>Sendingarheimilisfang</th>
             </tr>
-        }
-    </table>
-</div>
+            @foreach(var item in ViewBag.OrderList)
+            {
+                <tr class="OHItem">
+                    <td><img src="@item.BookImage" alt="@item.BookTitle"></td>
+                    <td>@item.BookTitle</td>
+                    <td>@item.Quantity stk.</td>
+                    <td >@item.DateCreated</td>
+                    <td>@item.Address, @item.City, @item.ZipCode, @item.Country</td>
+                </tr>
+            }
+        </table>
+    </div>
 
 
