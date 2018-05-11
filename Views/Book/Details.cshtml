@@ -25,7 +25,7 @@
         <div class="detail-ship">
             <p>FRÍ HEIMSENDING UM ALLAN HEIM!</p>
         </div>
-        <div class="book-showbox-aciton">
+        <div id="pay-button" class="book-showbox-aciton">
             <div onclick="itemadded(@Model.Id)"  id="div-onclick">
                 @Html.ActionLink("Bæta í körfu", "AddToCart",
                 "ShoppingCart", 
@@ -33,7 +33,7 @@
                 new { @class = "addToCart btn btn-danger addcart"})
             </div>
         </div>
-        <div>
+        <div id="wish-list-button">
             <a asp-controllor asp-action="WishList">
                 <form>
                     <input type="button" class="btn btn-primary" value="Setja á óskalista"/>

@@ -16,7 +16,7 @@
                 </h3>
                 <p>@book.Price kr.</p>
             </div>
-            <div class="book-showbox-aciton">
+            <div id="pay-button" class="book-showbox-aciton">
                     <div onclick="itemadded(@book.Id)"  id="div-onclick">
                         @Html.ActionLink("Bæta í körfu", "AddToCart",
                         "ShoppingCart", 

@@ -117,7 +117,7 @@ li a {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0.1rem 0.1rem 0.2rem rgba(0,0,0,0.1);
-    height: 400px;
+    height: 370px;
     width: 100%;
 }
 .white-tab > h1 {
@@ -128,7 +128,7 @@ li a {
 }
 .book-showbox-wrapper{
     overflow: auto;
-    height: 360px;
+    height: 330px;
     display: grid;
     grid-template-columns: repeat(20, 160px);
     grid-auto-flow: column;
@@ -156,7 +156,7 @@ li a {
 
 /*Book by Order Css*/
 .book-items {
-    padding: 4px;
+    padding: 30px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -168,8 +168,9 @@ li a {
 .book-item-thumb {
     background-color: white;
     width: 160px;
-    margin-bottom: 10px;
-    margin-right: 10px; 
+    height: 350px;
+    margin-bottom: 30px;
+    margin-right: 40px; 
     box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem rgba(0,0,0,0.1)
 }
 .book-item-image img {
@@ -407,5 +408,22 @@ li a {
     display:block;
     margin: auto;
     margin-bottom: 5px;
+}
+
+/* Category begin */
+
+#category-name {
+    text-align: center;
+}
+
+/* Category end */
+
+#pay-button {
+    text-align: center;
+}
+
+#wish-list-button {
+    text-align: center;
+    margin-bottom: 50px;
 }
 
