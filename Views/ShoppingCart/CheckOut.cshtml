@@ -5,28 +5,28 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="Name">Nafn</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="Name" placeholder="Name">
+            <input type="text" class="form-control" asp-for="Name" placeholder="Nafn">
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="Address">Heimilisfang</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="Address" placeholder="Address">
+            <input type="text" class="form-control" asp-for="Address" placeholder="Heimilisfang">
             <span asp-validation-for="Address" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="City">Staður</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="City" placeholder="City">
+            <input type="text" class="form-control" asp-for="City" placeholder="Staður">
             <span asp-validation-for="City" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-sm-2" for="ZipCode">Póstnúmer</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" asp-for="ZipCode" placeholder="ZipCode">
+            <input type="text" class="form-control" asp-for="ZipCode" placeholder="Póstnúmer">
             <span asp-validation-for="ZipCode" class="text-danger"></span>
         </div>
     </div>
@@ -52,6 +52,6 @@
             <span asp-validation-for="Country" class="text-danger"></span>
         </div>
     </div>
-    <input type="submit" value="Proceed to next step" class="btn btn-default">
+    <input type="submit" value="Halda áfram" class="btn btn-default">
     <a asp-controller="Home" asp-action="Index"><input type="button" value="Cancel" class="btn btn-danger"></a>
 </form>

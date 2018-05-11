@@ -19,14 +19,6 @@ namespace The_Book_Cave.Services
         {
             _cartRepo = new CartRepo();
         }
-
-        public static ShoppingCart GetCart(HttpContext context)
-        {
-            var cart = new ShoppingCart();
-            cart.ShoppingCartId = context.User.Identity.Name;
-            
-            return cart;
-        }
         
         public void AddToCart(BookListViewModel book, HttpContext context)
         {
