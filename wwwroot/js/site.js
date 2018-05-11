@@ -28,7 +28,3 @@ $(document).ready(() => {
 
   $(this).addClass("disabled").prop("disabled", true);
 
-});
-
-
-
