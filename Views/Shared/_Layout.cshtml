@@ -62,7 +62,7 @@
         <div id="search-icon" class="nav navbar-nav navbarcenter">
             <form class="navbar-form" asp-controller="Home" asp-action="SearchIndex">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="Search">
+                    <input type="text" class="form-control" placeholder="Leita eftir titli/ höfundi" name="Search">
                 </div>
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
             </form>    
@@ -111,7 +111,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

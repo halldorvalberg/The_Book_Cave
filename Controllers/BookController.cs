@@ -8,6 +8,8 @@ using The_Book_Cave.Models;
 using The_Book_Cave.Services;
 using The_Book_Cave.Data.EntityModels;
 using The_Book_Cave.Data;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace The_Book_Cave.Controllers
 {
@@ -15,11 +17,14 @@ namespace The_Book_Cave.Controllers
     {
         private BookService _bookService;
         private AuthorService _authorService;
+        private readonly UserManager<ApplicationUser> _userManager;
         private DataContext _db;
-        public BookController()
+         public BookController(UserManager<ApplicationUser> userManager)
         {
+            //Tengir Controller við service fyrir bækur, höfund, og notenda
             _bookService = new BookService();
             _authorService = new AuthorService();
+            _userManager = userManager;
             _db = new DataContext();
         }
         public IActionResult Details(int? id) 
@@ -67,13 +72,17 @@ namespace The_Book_Cave.Controllers
             
             return View(bookById);
         }
-        public IActionResult AddNewReview(int id, string review)
+        public async Task<IActionResult> AddNewReview(int id, string review)
         {   
+            //Sækir upplýsingar um notenda
+            var user = await _userManager.GetUserAsync(User);
             //Ný umfjöllun bætt í gagnabanka
-            var newReview = new Reviews(){   
-                        BookId = id,
-                        Review = review,
-                        };
+            var newReview = new Reviews()
+                      {   
+                          BookId = id,
+                          Review = review,
+                          UserId = user.Email
+                      };
 
             _db.Reviews.Add(newReview);
             
@@ -81,13 +90,18 @@ namespace The_Book_Cave.Controllers
 
             return  RedirectToAction("Details", new { id = id });
         }
-        public IActionResult AddRating(int id, int rating)
+
+        public async Task<IActionResult> AddRating(int id, int rating)
         {   
-            //Ný einkun bætt við í gagnabanka
-            var newRating = new Ratings(){   
-                        BookId = id,
-                        Rating = rating,
-                        };
+            //Sækir upplýinsgar um notenda
+            var user = await _userManager.GetUserAsync(User);
+            //Bætir nýrri einkun í gagnabanka
+            var newRating = new Ratings()
+                      {   
+                          BookId = id,
+                          Rating = rating,
+                          UserId = user.Email
+                      };
 
             _db.Ratings.Add(newRating);
             
