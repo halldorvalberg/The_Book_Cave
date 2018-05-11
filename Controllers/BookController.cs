@@ -8,6 +8,8 @@ using The_Book_Cave.Models;
 using The_Book_Cave.Services;
 using The_Book_Cave.Data.EntityModels;
 using The_Book_Cave.Data;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace The_Book_Cave.Controllers
 {
@@ -15,12 +17,13 @@ namespace The_Book_Cave.Controllers
     {
         private BookService _bookService;
         private AuthorService _authorService;
-
+        private readonly UserManager<ApplicationUser> _userManager;
         private DataContext _db;
-         public BookController()
+         public BookController(UserManager<ApplicationUser> userManager)
         {
             _bookService = new BookService();
             _authorService = new AuthorService();
+            _userManager = userManager;
             _db = new DataContext();
         }
 
@@ -72,13 +75,15 @@ namespace The_Book_Cave.Controllers
             return View(bookById);
         }
 
-         public IActionResult AddNewReview(int id, string review)
+         public async Task<IActionResult> AddNewReview(int id, string review)
         {   
-
+            var user = await _userManager.GetUserAsync(User);
+    
             var newReview = new Reviews()
                       {   
                           BookId = id,
                           Review = review,
+                          UserId = user.Email
                       };
 
             _db.Reviews.Add(newReview);
@@ -87,12 +92,15 @@ namespace The_Book_Cave.Controllers
            return  RedirectToAction("Details", new { id = id });
         }
 
-        public IActionResult AddRating(int id, int rating)
+        public async Task<IActionResult> AddRating(int id, int rating)
         {   
+            var user = await _userManager.GetUserAsync(User);
+
             var newRating = new Ratings()
                       {   
                           BookId = id,
                           Rating = rating,
+                          UserId = user.Email
                       };
 
             _db.Ratings.Add(newRating);
