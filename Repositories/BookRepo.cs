@@ -225,6 +225,20 @@ namespace The_Book_Cave.Repositories
                         }).ToList();
         return bookReviews;
     }
+
+    public List<RatingViewModel>GetBookRatings(int? id)
+    {
+      
+      var bookRatings =(from r in _db.Ratings
+                        where r.BookId == id
+                        select new RatingViewModel
+                        { 
+                          Rating = r.Rating
+                        }).ToList();
+      
+        return bookRatings;
+    }
+    
 /* 
     public void AddNewReview(int id, string review)
     {   
